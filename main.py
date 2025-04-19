@@ -234,22 +234,55 @@ def klanten_behandelingen():
     conn = sqlite3.connect("fytotherapie.db")
     cursor = conn.cursor()
 
-    cursor.execute("""
-        SELECT k.id, k.naam, b.naam
-        FROM klanten k
-        LEFT JOIN (
-            SELECT klant_id, naam
-            FROM behandelingen
-            WHERE id IN (
-                SELECT MAX(id) FROM behandelingen GROUP BY klant_id
-            )
-        ) b ON k.id = b.klant_id
-        ORDER BY k.naam
-    """)
-
+    # Haal klanten op
+    cursor.execute("SELECT id, naam FROM klanten ORDER BY naam")
     klanten = cursor.fetchall()
+
+    klant_data = []
+
+    for klant_id, klant_naam in klanten:
+        # Laatste behandeling van deze klant
+        cursor.execute("""
+            SELECT id, naam, datum FROM behandelingen 
+            WHERE klant_id = ? ORDER BY datum DESC LIMIT 1
+        """, (klant_id,))
+        behandeling = cursor.fetchone()
+
+        if behandeling:
+            behandeling_id, behandelingsnaam, datum = behandeling
+
+            # Klachten voor deze behandeling
+            cursor.execute("""
+                SELECT klachten.naam FROM behandeling_klacht
+                JOIN klachten ON behandeling_klacht.klacht_id = klachten.id
+                WHERE behandeling_klacht.behandeling_id = ?
+            """, (behandeling_id,))
+            klachten = [row[0] for row in cursor.fetchall()]
+
+            # Planten voor deze behandeling
+            cursor.execute("""
+                SELECT planten.naam FROM behandeling_plant
+                JOIN planten ON behandeling_plant.plant_id = planten.id
+                WHERE behandeling_plant.behandeling_id = ?
+            """, (behandeling_id,))
+            planten = [row[0] for row in cursor.fetchall()]
+        else:
+            behandelingsnaam = ""
+            datum = ""
+            klachten = []
+            planten = []
+
+        klant_data.append({
+            'id': klant_id,
+            'naam': klant_naam,
+            'behandeling': behandelingsnaam,
+            'datum': datum,
+            'klachten': klachten,
+            'planten': planten
+        })
+
     conn.close()
-    return render_template("klanten_behandelingen.html", klanten=klanten)
+    return render_template("klanten_behandelingen.html", klanten=klant_data)
 
 @app.route('/klant/<int:klant_id>')
 def klant_detail(klant_id):
