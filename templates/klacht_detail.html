@@ -11,7 +11,8 @@
 <ul>
     {% for plant in gekoppelde_planten %}
         <li>
-            {{ plant }}
+            <a href="{{ url_for('plant_detail', plant_naam=plant) }}">{{ plant }}</a>
+
             <form action="/verwijder_plant" method="post" style="display:inline;" onsubmit="return confirmVerwijderen('{{ plant }}');">
                 <input type="hidden" name="plant_naam" value="{{ plant }}">
                 <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
