@@ -18,5 +18,16 @@ def planten():
     conn.close()
     return render_template('planten.html', planten=planten_lijst)
 
+
+@app.route('/klachten')
+def klachten():
+    conn = sqlite3.connect("fytotherapie.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT naam FROM klachten ORDER BY naam ASC")
+    klachten_lijst = cursor.fetchall()
+    conn.close()
+    return render_template("klachten.html", klachten=klachten_lijst)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

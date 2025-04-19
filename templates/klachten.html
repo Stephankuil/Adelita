@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Klachtenoverzicht</title>
+</head>
+<body>
+    <h1>Alle Klachten 🩺</h1>
+    <ul>
+        {% for klacht in klachten %}
+            <li>{{ klacht[0] }}</li>
+        {% endfor %}
+    </ul>
+    <p><a href="/">← Terug naar startpagina</a></p>
+</body>
+</html>
