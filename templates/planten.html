@@ -6,11 +6,14 @@
 </head>
 <body>
     <h1>Overzicht van alle Planten 🌿</h1>
-    <ul>
-        {% for plant in planten %}
-            <li>{{ plant[0] }}</li>
-        {% endfor %}
-    </ul>
+<ul>
+{% for plant in planten %}
+  <li><a href="{{ url_for('plant_detail', plant_naam=plant[0]) }}">{{ plant[0] }}</a></li>
+{% endfor %}
+
+</ul>
+
+
 
     <p><a href="/">← Terug naar startpagina</a></p>
 </body>

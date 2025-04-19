@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ plant['naam'] }}</title>
+</head>
+<body>
+    <h1>Plant: {{ plant['naam'] }}</h1>
+
+    {% if plant['afbeelding'] %}
+        <img src="{{ url_for('static', filename='uploads/' ~ plant['afbeelding']) }}" width="200"><br>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        <p><label>Beschrijving:<br><textarea name="beschrijving">{{ plant['beschrijving'] or '' }}</textarea></label></p>
+        <p><label>Botanische naam:<br><input type="text" name="botanische_naam" value="{{ plant['botanische_naam'] or '' }}"></label></p>
+        <p><label>Gebruikt plantendeel:<br>
+  <input type="text" name="gebruikt_plantendeel" value="{{ plant['gebruikt_plantendeel'] or '' }}"></label></p>
+        <p><label>Te gebruiken bij:<br><textarea name="te_gebruiken_bij">{{ plant['te_gebruiken_bij'] or '' }}</textarea></label></p>
+        <p><label>Niet gebruiken bij:<br><textarea name="niet_gebruiken_bij">{{ plant['niet_gebruiken_bij'] or '' }}</textarea></label></p>
+        <p><label>Aanbevolen combinaties:<br><textarea name="aanbevolen_combinaties">{{ plant['aanbevolen_combinaties'] or '' }}</textarea></label></p>
+        <p><label>Overige details:<br><textarea name="details">{{ plant['details'] or '' }}</textarea></label></p>
+
+        <p><label>Afbeelding uploaden:<br><input type="file" name="afbeelding"></label></p>
+
+        <button type="submit">Opslaan</button>
+    </form>
+
+    <p><a href="/planten">← Terug naar plantenlijst</a></p>
+</body>
+</html>

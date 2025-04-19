@@ -12,10 +12,13 @@ CREATE TABLE IF NOT EXISTS planten (
     naam TEXT NOT NULL,
     botanische_naam TEXT,
     beschrijving TEXT,
+    te_gebruiken_bij TEXT,
     gebruikt_plantendeel TEXT,
     aanbevolen_combinaties TEXT,
     niet_te_gebruiken_bij TEXT,
-    categorie_kleur TEXT
+    categorie_kleur TEXT,
+    details TEXT,
+    afbeelding TEXT
 );
 
 -- Tabel voor klachten

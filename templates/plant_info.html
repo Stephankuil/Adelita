@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ plant['naam'] }}</title>
+</head>
+<body>
+    <h1>{{ plant['naam'] }}</h1>
+
+    {% if plant['afbeelding'] %}
+        <img src="{{ url_for('static', filename='uploads/' ~ plant['afbeelding']) }}" width="250"><br>
+    {% endif %}
+
+    <p><strong>Botanische naam:</strong><br>{{ plant['botanische_naam'] or '—' }}</p>
+    <p><strong>Beschrijving:</strong><br>{{ plant['beschrijving'] or '—' }}</p>
+    <p><strong>Gebruikt plantendeel:</strong><br>{{ plant['gebruikt_deel'] or '—' }}</p>
+    <p><strong>Te gebruiken bij:</strong><br>{{ plant['te_gebruiken_bij'] or '—' }}</p>
+    <p><strong>Niet gebruiken bij:</strong><br>{{ plant['niet_gebruiken_bij'] or '—' }}</p>
+    <p><strong>Aanbevolen combinaties:</strong><br>{{ plant['aanbevolen_combinaties'] or '—' }}</p>
+    <p><strong>Overige details:</strong><br>{{ plant['details'] or '—' }}</p>
+
+    <p>
+        <a href="{{ url_for('plant_detail', plant_naam=plant['naam']) }}">✏️ Bewerken</a> |
+        <a href="{{ url_for('planten') }}">← Terug naar plantenlijst</a>
+    </p>
+</body>
+</html>
