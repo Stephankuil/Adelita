@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Klant: {{ klant[1] }}</title>
+    <style>
+
+    .scrollbox {
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 300px;
+        height: 200px;
+        overflow-y: scroll;
+        background-color: #f9f9f9;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+
+    .scrollbox label {
+        display: block;
+        margin-bottom: 6px;
+    }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        textarea, input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 12px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Klant: {{ klant[1] }}</h1>
+
+<div class="section">
+    <h2>👤 Klantgegevens</h2>
+    <p><strong>E-mailadres:</strong> {{ klant[2] }}</p>
+    <p><strong>Telefoon:</strong> {{ klant[3] }}</p>
+    <p><strong>Adres:</strong> {{ klant[4] }}</p>
+</div>
+
+<div class="section">
+    <h2>📝 Notities</h2>
+    <ul>
+        {% for inhoud, datum in notities %}
+            <li><strong>{{ datum.split(' ')[0] }}:</strong> {{ inhoud }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{{ url_for('notitie_toevoegen', klant_id=klant[0]) }}">
+        <label>Nieuwe notitie:</label>
+        <textarea name="inhoud" required></textarea>
+        <button type="submit">Notitie toevoegen</button>
+    </form>
+</div>
+
+<div class="section">
+    <h2>📅 Afspraken</h2>
+    <ul>
+        {% for datumtijd, onderwerp in afspraken %}
+            <li><strong>{{ datumtijd }}:</strong> {{ onderwerp }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{{ url_for('nieuwe_afspraak', klant_id=klant[0]) }}">
+        <label>Datum:</label>
+        <input type="date" name="datum" required>
+        <label>Tijd:</label>
+        <input type="time" name="tijd" required>
+        <label>Onderwerp:</label>
+        <input type="text" name="onderwerp" required>
+        <label>Locatie:</label>
+        <input type="text" name="locatie">
+        <button type="submit">Afspraak toevoegen</button>
+    </form>
+</div>
+
+<div class="section">
+    <h2>💊 Behandelingen</h2>
+    <ul>
+        {% for behandeling, datum in behandelingen %}
+            <li><strong>{{ datum }}:</strong> {{ behandeling }}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" action="{{ url_for('nieuwe_behandeling', klant_id=klant[0]) }}">
+        <label>Behandelingsnaam:</label>
+        <input type="text" name="naam" required>
+
+        <label>Datum:</label>
+        <input type="date" name="datum" required>
+
+        <label>Kies klachten:</label><br>
+        {% for klacht in klachten %}
+            <input type="checkbox" name="klachten" value="{{ klacht[0] }}"> {{ klacht[1] }}<br>
+        {% endfor %}
+
+        <br><label>Kies planten:</label><br>
+        {% for plant in planten %}
+            <input type="checkbox" name="planten" value="{{ plant[0] }}"> {{ plant[1] }}<br>
+        {% endfor %}
+
+        <br><button type="submit">Behandeling toevoegen</button>
+    </form>
+</div>
+
+<a href="{{ url_for('klanten') }}">← Terug naar klantenlijst</a>
+
+</body>
+</html>

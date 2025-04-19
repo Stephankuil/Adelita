@@ -1,11 +1,8 @@
 import sqlite3
+import pandas as pd
 
-# Verbind met database (maakt het bestand aan als het nog niet bestaat)
-conn = sqlite3.connect("fytotherapie.db")
-cursor = conn.cursor()
-
-# SQL-commando’s
-sql_script = """
+# SQL-scripts
+sql_script_1 = """
 -- Tabel voor planten
 CREATE TABLE IF NOT EXISTS planten (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -109,30 +106,75 @@ INSERT INTO planten (naam) VALUES
 ('Zaagbladpalm');
 """
 
-# Script uitvoeren
-cursor.executescript(sql_script)
+sql_script_2 = """
+-- Tabel voor klanten
+CREATE TABLE IF NOT EXISTS klanten (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    naam TEXT NOT NULL,
+    emailadres TEXT,
+    telefoon TEXT,
+    adres TEXT
+);
 
-# Opslaan en afsluiten
+-- Tabel voor notities per klant
+CREATE TABLE IF NOT EXISTS notities (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    klant_id INTEGER,
+    inhoud TEXT,
+    datum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (klant_id) REFERENCES klanten(id)
+);
+
+-- Tabel voor afspraken
+CREATE TABLE IF NOT EXISTS afspraken (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    klant_id INTEGER,
+    datumtijd TEXT,
+    onderwerp TEXT,
+    locatie TEXT,
+    FOREIGN KEY (klant_id) REFERENCES klanten(id)
+);
+CREATE TABLE IF NOT EXISTS behandelingen (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    klant_id INTEGER,
+    naam TEXT,
+    datum TEXT,
+    FOREIGN KEY (klant_id) REFERENCES klanten(id)
+);
+CREATE TABLE IF NOT EXISTS behandeling_klacht (
+    behandeling_id INTEGER,
+    klacht_id INTEGER,
+    FOREIGN KEY (behandeling_id) REFERENCES behandelingen(id),
+    FOREIGN KEY (klacht_id) REFERENCES klachten(id)
+);
+
+CREATE TABLE IF NOT EXISTS behandeling_plant (
+    behandeling_id INTEGER,
+    plant_id INTEGER,
+    FOREIGN KEY (behandeling_id) REFERENCES behandelingen(id),
+    FOREIGN KEY (plant_id) REFERENCES planten(id)
+);
+
+"""
+
+# ✅ Alles in één nette transactie
+with sqlite3.connect("fytotherapie.db") as conn:
+    cursor = conn.cursor()
+
+    # Voer SQL-scripts uit
+    cursor.executescript(sql_script_1)
+    cursor.executescript(sql_script_2)
+
+    print("Database en tabellen aangemaakt ✅")
+
+    # Klachten uit CSV importeren
+    df = pd.read_csv("klachtenlijst.csv")
+
+    for klacht in df['klacht']:
+        cursor.execute("INSERT INTO klachten (naam) VALUES (?)", (klacht,))
+
+    print("✅ Klachten succesvol geïmporteerd in de database.")
+
+
 conn.commit()
 conn.close()
-
-print("Database aangemaakt en gevuld ✅")
-
-import pandas as pd
-
-# CSV-bestand inlezen
-df = pd.read_csv("klachtenlijst.csv")
-
-# Verbinden met SQLite-database
-conn = sqlite3.connect("fytotherapie.db")
-cursor = conn.cursor()
-
-# Klachten invoegen in de database
-for klacht in df['klacht']:
-    cursor.execute("INSERT INTO klachten (naam) VALUES (?)", (klacht,))
-
-# Opslaan en afsluiten
-conn.commit()
-conn.close()
-
-print("✅ Klachten succesvol geïmporteerd in de database.")
