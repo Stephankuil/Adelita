@@ -4,62 +4,82 @@
     <meta charset="UTF-8">
     <title>Klant: {{ klant[1] }}</title>
     <style>
-
-    .scrollbox {
-        border: 1px solid #ccc;
-        padding: 10px;
-        width: 300px;
-        height: 200px;
-        overflow-y: scroll;
-        background-color: #f9f9f9;
-        border-radius: 6px;
-        margin-bottom: 20px;
-    }
-
-    .scrollbox label {
-        display: block;
-        margin-bottom: 6px;
-    }
-
-
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
-            background-color: #f9f9f9;
+            background-color: #fefefe;
         }
-        h1, h2 {
+
+        h1 {
             color: #2c3e50;
         }
+
         .section {
-            background-color: #fff;
+            background: #f9f9f9;
             padding: 20px;
-            margin-bottom: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        textarea, input, select {
+
+        .scrollbox {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+            height: 200px;
+            overflow-y: scroll;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .scrollbox label {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h3 {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        textarea,
+        input[type="text"],
+        input[type="date"],
+        input[type="time"] {
+            display: block;
             width: 100%;
             padding: 8px;
-            margin: 6px 0 12px 0;
-            border-radius: 4px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
+            border-radius: 5px;
         }
+
         button {
-            padding: 8px 16px;
-            background-color: #2ecc71;
+            background-color: #3498db;
             color: white;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
+
         button:hover {
-            background-color: #27ae60;
+            background-color: #2980b9;
         }
+
         ul {
             padding-left: 20px;
         }
-        li {
-            margin-bottom: 4px;
+
+        ul li {
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -123,21 +143,29 @@
         <label>Datum:</label>
         <input type="date" name="datum" required>
 
-        <label>Kies klachten:</label><br>
-        {% for klacht in klachten %}
-            <input type="checkbox" name="klachten" value="{{ klacht[0] }}"> {{ klacht[1] }}<br>
-        {% endfor %}
+        <div class="form-section">
+            <h3>📋 Kies klachten</h3>
+            <div class="scrollbox">
+                {% for klacht in klachten %}
+                    <label><input type="checkbox" name="klachten" value="{{ klacht[0] }}"> {{ klacht[1] }}</label>
+                {% endfor %}
+            </div>
+        </div>
 
-        <br><label>Kies planten:</label><br>
-        {% for plant in planten %}
-            <input type="checkbox" name="planten" value="{{ plant[0] }}"> {{ plant[1] }}<br>
-        {% endfor %}
+        <div class="form-section">
+            <h3>🌿 Kies planten</h3>
+            <div class="scrollbox">
+                {% for plant in planten %}
+                    <label><input type="checkbox" name="planten" value="{{ plant[0] }}"> {{ plant[1] }}</label>
+                {% endfor %}
+            </div>
+        </div>
 
-        <br><button type="submit">Behandeling toevoegen</button>
+        <button type="submit">Behandeling toevoegen</button>
     </form>
 </div>
 
-<a href="{{ url_for('klanten') }}">← Terug naar klantenlijst</a>
+<p><a href="{{ url_for('klanten') }}">← Terug naar klantenlijst</a></p>
 
 </body>
 </html>
