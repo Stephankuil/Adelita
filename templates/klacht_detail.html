@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Klacht: {{ klacht }}</title>
+</head>
+<body>
+    <h1>Planten bij klacht: {{ klacht }}</h1>
+
+    <h2>Gekoppelde planten</h2>
+<ul>
+    {% for plant in gekoppelde_planten %}
+        <li>
+            {{ plant }}
+            <form action="/verwijder_plant" method="post" style="display:inline;" onsubmit="return confirmVerwijderen('{{ plant }}');">
+                <input type="hidden" name="plant_naam" value="{{ plant }}">
+                <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
+                <button type="submit">Verwijder</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<script>
+    function confirmVerwijderen(plantNaam) {
+        return confirm("Weet je zeker dat je de plant '" + plantNaam + "' wilt verwijderen uit deze klacht?");
+    }
+</script>
+
+
+    <h2>Voeg plant toe</h2>
+    <form action="/koppel_plant" method="post">
+        <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
+        <select name="plant_id">
+            {% for id, naam in alle_planten %}
+                <option value="{{ id }}">{{ naam }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Toevoegen</button>
+    </form>
+
+    <p><a href="/klachten">← Terug naar klachtenlijst</a></p>
+</body>
+</html>
