@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS planten (
 -- Tabel voor klachten
 CREATE TABLE IF NOT EXISTS klachten (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    naam TEXT NOT NULL
+    naam TEXT NOT NULL,
+    beschrijving TEXT
 );
 
 -- Tussentabel voor relatie tussen planten en klachten
