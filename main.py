@@ -1,13 +1,21 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+app.secret_key = 'geheim123'
 
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+# bovenin je app.py
+ADMIN_GEBRUIKER = "admin"
+ADMIN_WACHTWOORD = "test123"
+
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -15,7 +23,36 @@ def allowed_file(filename):
 # Startpagina
 @app.route('/')
 def index():
+    if 'gebruiker' not in session:
+        return redirect(url_for('login'))
     return render_template('index.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    foutmelding = None
+    if request.method == 'POST':
+        gebruikersnaam = request.form['gebruikersnaam']
+        wachtwoord = request.form['wachtwoord']
+
+        if gebruikersnaam == ADMIN_GEBRUIKER and wachtwoord == ADMIN_WACHTWOORD:
+            session['gebruiker'] = gebruikersnaam
+            return redirect(url_for('index'))
+        else:
+            foutmelding = "Onjuiste gebruikersnaam of wachtwoord."
+
+    return render_template('login.html', foutmelding=foutmelding)
+
+@app.route('/registreren')
+def registreren():
+    return "<h2>Registratiepagina komt nog!</h2><p><a href='/login'>← Terug naar login</a></p>"
+
+
+@app.route('/logout')
+def logout():
+    session.pop('gebruiker', None)
+    return redirect(url_for('login'))
+
+
 
 # Alle planten
 @app.route('/planten')
@@ -27,11 +64,50 @@ def planten():
     conn.close()
     return render_template('planten.html', planten=planten_lijst)
 
+@app.route('/plant/<plant_naam>/info')
+def plant_info(plant_naam):
+    conn = sqlite3.connect("fytotherapie.db")
+    cursor = conn.cursor()
+
+    # Haal plantgegevens op
+    cursor.execute("SELECT * FROM planten WHERE naam = ?", (plant_naam,))
+    row = cursor.fetchone()
+    kolommen = [col[0] for col in cursor.description]
+
+    if not row:
+        conn.close()
+        return "Plant niet gevonden."
+
+    plant = dict(zip(kolommen, row))
+
+    # Haal gekoppelde klachten op via plant_id
+    cursor.execute("SELECT id FROM planten WHERE naam = ?", (plant_naam,))
+    plant_id = cursor.fetchone()[0]
+
+    cursor.execute("""
+        SELECT klachten.naam FROM klachten
+        JOIN plant_klacht ON klachten.id = plant_klacht.klacht_id
+        WHERE plant_klacht.plant_id = ?
+        ORDER BY klachten.naam
+    """, (plant_id,))
+    gekoppelde_klachten = [r[0] for r in cursor.fetchall()]
+
+    conn.close()
+    return render_template("plant_info.html", plant=plant, gekoppelde_klachten=gekoppelde_klachten)
+
 # Plant detail + bewerken
 @app.route('/plant/<plant_naam>', methods=['GET', 'POST'])
 def plant_detail(plant_naam):
     conn = sqlite3.connect("fytotherapie.db")
     cursor = conn.cursor()
+
+    # Ophalen plant_id (nodig voor koppeling met klachten)
+    cursor.execute("SELECT id FROM planten WHERE naam = ?", (plant_naam,))
+    plant_row = cursor.fetchone()
+    if not plant_row:
+        conn.close()
+        return "Plant niet gevonden."
+    plant_id = plant_row[0]
 
     if request.method == 'POST':
         beschrijving = request.form.get("beschrijving")
@@ -41,6 +117,7 @@ def plant_detail(plant_naam):
         niet_te_gebruiken_bij = request.form.get("niet_te_gebruiken_bij")
         aanbevolen_combinaties = request.form.get("aanbevolen_combinaties")
         details = request.form.get("details")
+        geselecteerde_klachten = request.form.getlist("klachten")
 
         afbeelding_bestandsnaam = None
         if 'afbeelding' in request.files:
@@ -49,6 +126,7 @@ def plant_detail(plant_naam):
                 afbeelding_bestandsnaam = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], afbeelding_bestandsnaam))
 
+        # Update plantgegevens
         cursor.execute("""
             UPDATE planten
             SET beschrijving = ?, botanische_naam = ?, gebruikt_plantendeel = ?,
@@ -60,19 +138,36 @@ def plant_detail(plant_naam):
             te_gebruiken_bij, niet_te_gebruiken_bij, aanbevolen_combinaties,
             details, afbeelding_bestandsnaam, plant_naam
         ))
+
+        # ❗ Update koppeling met klachten
+        cursor.execute("DELETE FROM plant_klacht WHERE plant_id = ?", (plant_id,))
+        for klacht_id in geselecteerde_klachten:
+            cursor.execute("INSERT INTO plant_klacht (plant_id, klacht_id) VALUES (?, ?)", (plant_id, klacht_id))
+
         conn.commit()
 
-    # Gegevens ophalen
+    # Haal plantgegevens op
     cursor.execute("SELECT * FROM planten WHERE naam = ?", (plant_naam,))
     row = cursor.fetchone()
     kolommen = [col[0] for col in cursor.description]
-    conn.close()
-
-    if not row:
-        return "Plant niet gevonden."
-
     plant = dict(zip(kolommen, row))
-    return render_template("plant_detail.html", plant=plant)
+
+    # Haal alle klachten op
+    cursor.execute("SELECT id, naam FROM klachten ORDER BY naam")
+    alle_klachten = cursor.fetchall()
+
+    # Haal gekoppelde klachten
+    cursor.execute("SELECT klacht_id FROM plant_klacht WHERE plant_id = ?", (plant_id,))
+    gekoppelde_klachten_ids = {row[0] for row in cursor.fetchall()}
+
+    conn.close()
+    return render_template(
+        "plant_detail.html",
+        plant=plant,
+        klachten=alle_klachten,
+        gekoppelde_klachten=gekoppelde_klachten_ids
+    )
+
 
 # Alle klachten
 @app.route('/klachten')
@@ -90,12 +185,15 @@ def klacht_detail(klacht_naam):
     conn = sqlite3.connect("fytotherapie.db")
     cursor = conn.cursor()
 
-    cursor.execute("SELECT id FROM klachten WHERE naam = ?", (klacht_naam,))
-    klacht_id_row = cursor.fetchone()
-    if not klacht_id_row:
+    # Haal klachtgegevens op
+    cursor.execute("SELECT id, beschrijving FROM klachten WHERE naam = ?", (klacht_naam,))
+    klacht_row = cursor.fetchone()
+    if not klacht_row:
         return f"❌ Klacht '{klacht_naam}' niet gevonden."
-    klacht_id = klacht_id_row[0]
 
+    klacht_id, beschrijving = klacht_row
+
+    # Haal gekoppelde planten op
     cursor.execute("""
         SELECT planten.naam FROM planten
         JOIN plant_klacht ON planten.id = plant_klacht.plant_id
@@ -103,11 +201,22 @@ def klacht_detail(klacht_naam):
     """, (klacht_id,))
     gekoppelde_planten = [r[0] for r in cursor.fetchall()]
 
+    # Haal alle planten op voor eventueel koppelen
     cursor.execute("SELECT id, naam FROM planten ORDER BY naam")
     alle_planten = cursor.fetchall()
+
     conn.close()
 
-    return render_template("klacht_detail.html", klacht=klacht_naam, gekoppelde_planten=gekoppelde_planten, alle_planten=alle_planten, klacht_id=klacht_id)
+    return render_template(
+        "klacht_detail.html",
+        klacht=klacht_naam,
+        beschrijving=beschrijving,
+        gekoppelde_planten=gekoppelde_planten,
+        alle_planten=alle_planten,
+        klacht_id=klacht_id
+    )
+
+
 
 # Koppel plant aan klacht
 @app.route('/koppel_plant', methods=['POST'])
@@ -298,7 +407,8 @@ def klant_detail(klant_id):
     notities = cursor.fetchall()
 
     # Afspraken ophalen
-    cursor.execute("SELECT datumtijd, onderwerp FROM afspraken WHERE klant_id = ? ORDER BY datumtijd ASC", (klant_id,))
+    cursor.execute("SELECT datumtijd, onderwerp, locatie FROM afspraken WHERE klant_id = ? ORDER BY datumtijd ASC",
+                   (klant_id,))
     afspraken = cursor.fetchall()
 
     # Behandelingen ophalen

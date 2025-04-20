@@ -110,11 +110,17 @@
 
 <div class="section">
     <h2>📅 Afspraken</h2>
-    <ul>
-        {% for datumtijd, onderwerp in afspraken %}
-            <li><strong>{{ datumtijd }}:</strong> {{ onderwerp }}</li>
-        {% endfor %}
-    </ul>
+<ul>
+    {% for afspraak in afspraken %}
+        <li>
+            <strong>{{ afspraak[0] }}:</strong> {{ afspraak[1] }}
+            {% if afspraak[2] %}
+                – <em>{{ afspraak[2] }}</em>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
     <form method="post" action="{{ url_for('nieuwe_afspraak', klant_id=klant[0]) }}">
         <label>Datum:</label>
         <input type="date" name="datum" required>

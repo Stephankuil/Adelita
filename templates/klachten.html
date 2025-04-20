@@ -62,7 +62,20 @@
             display: none;
         }
 
-        a {
+        .meer-info {
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 14px;
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .meer-info:hover {
+            text-decoration: underline;
+        }
+
+        a.terug {
             display: block;
             text-align: center;
             margin-top: 40px;
@@ -71,7 +84,7 @@
             font-weight: 500;
         }
 
-        a:hover {
+        a.terug:hover {
             text-decoration: underline;
         }
     </style>
@@ -87,12 +100,14 @@
                 </div>
                 <div class="beschrijving" id="beschrijving-{{ loop.index0 }}">
                     {{ klacht[2] }}
+                    <br>
+                    <a class="meer-info" href="{{ url_for('klacht_detail', klacht_naam=klacht[1]) }}">➡️ Bekijk gekoppelde planten</a>
                 </div>
             </li>
         {% endfor %}
     </ul>
 
-    <a href="/">← Terug naar startpagina</a>
+    <a class="terug" href="/">← Terug naar startpagina</a>
 
     <script>
         function toggleBeschrijving(id) {

@@ -3,24 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <title>Klacht: {{ klacht }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f8f5;
+            margin: 40px;
+            color: #2e7d32;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2e7d32;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        form.inline {
+            display: inline;
+            margin-left: 10px;
+        }
+
+        button {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #b71c1c;
+        }
+
+        select {
+            padding: 6px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .toevoegen-form {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Planten bij klacht: {{ klacht }}</h1>
 
-    <h2>Gekoppelde planten</h2>
-<ul>
-    {% for plant in gekoppelde_planten %}
-        <li>
-            <a href="{{ url_for('plant_detail', plant_naam=plant) }}">{{ plant }}</a>
+<div class="container">
+    <h1>🌿 Klacht: {{ klacht }}</h1>
 
-            <form action="/verwijder_plant" method="post" style="display:inline;" onsubmit="return confirmVerwijderen('{{ plant }}');">
-                <input type="hidden" name="plant_naam" value="{{ plant }}">
-                <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
-                <button type="submit">Verwijder</button>
-            </form>
-        </li>
-    {% endfor %}
-</ul>
+    <h2>🔗 Gekoppelde planten</h2>
+    {% if gekoppelde_planten %}
+        <ul>
+            {% for plant in gekoppelde_planten %}
+                <li>
+                    <a href="{{ url_for('plant_info', plant_naam=plant) }}">{{ plant }}</a>
+                    <form class="inline" action="/verwijder_plant" method="post" onsubmit="return confirmVerwijderen('{{ plant }}');">
+                        <input type="hidden" name="plant_naam" value="{{ plant }}">
+                        <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
+                        <button type="submit">Verwijder</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p><em>Geen planten gekoppeld aan deze klacht.</em></p>
+    {% endif %}
+
+    <div class="toevoegen-form">
+        <h2>➕ Plant koppelen</h2>
+        <form action="/koppel_plant" method="post">
+            <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
+            <select name="plant_id">
+                {% for id, naam in alle_planten %}
+                    <option value="{{ id }}">{{ naam }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" style="background-color: #2e7d32;">Toevoegen</button>
+        </form>
+    </div>
+
+    <div class="back-link">
+        <a href="{{ url_for('klachten') }}">← Terug naar klachtenlijst</a>
+    </div>
+</div>
 
 <script>
     function confirmVerwijderen(plantNaam) {
@@ -28,18 +124,5 @@
     }
 </script>
 
-
-    <h2>Voeg plant toe</h2>
-    <form action="/koppel_plant" method="post">
-        <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
-        <select name="plant_id">
-            {% for id, naam in alle_planten %}
-                <option value="{{ id }}">{{ naam }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Toevoegen</button>
-    </form>
-
-    <p><a href="/klachten">← Terug naar klachtenlijst</a></p>
 </body>
 </html>

@@ -3,25 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ plant['naam'] }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f8f5;
+            margin: 0;
+            padding: 40px;
+            color: #2e7d32;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        img {
+            display: block;
+            max-width: 300px;
+            margin: 0 auto 20px auto;
+            border-radius: 8px;
+        }
+
+        .plant-info p {
+            margin-bottom: 16px;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button {
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #1b5e20;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ plant['naam'] }}</h1>
+
+<div class="container">
+    <h1>🌿 {{ plant['naam'] }}</h1>
 
     {% if plant['afbeelding'] %}
-        <img src="{{ url_for('static', filename='uploads/' ~ plant['afbeelding']) }}" width="250"><br>
+        <img src="{{ url_for('static', filename='uploads/' ~ plant['afbeelding']) }}" alt="Afbeelding van plant">
     {% endif %}
 
-    <p><strong>Botanische naam:</strong><br>{{ plant['botanische_naam'] or '—' }}</p>
-    <p><strong>Beschrijving:</strong><br>{{ plant['beschrijving'] or '—' }}</p>
-    <p><strong>Gebruikt plantendeel:</strong><br>{{ plant['gebruikt_deel'] or '—' }}</p>
-    <p><strong>Te gebruiken bij:</strong><br>{{ plant['te_gebruiken_bij'] or '—' }}</p>
-    <p><strong>Niet gebruiken bij:</strong><br>{{ plant['niet_gebruiken_bij'] or '—' }}</p>
-    <p><strong>Aanbevolen combinaties:</strong><br>{{ plant['aanbevolen_combinaties'] or '—' }}</p>
-    <p><strong>Overige details:</strong><br>{{ plant['details'] or '—' }}</p>
+    <div class="plant-info">
+        <p><span class="label">Botanische naam:</span> {{ plant['botanische_naam'] or '—' }}</p>
+        <p><span class="label">Gebruikt plantendeel:</span> {{ plant['gebruikt_plantendeel'] or '—' }}</p>
+        <p><span class="label">Beschrijving:</span><br>{{ plant['beschrijving'] or '—' }}</p>
+        <p><span class="label">Te gebruiken bij:</span><br>{{ plant['te_gebruiken_bij'] or '—' }}</p>
+        <p><span class="label">Niet gebruiken bij:</span><br>{{ plant['niet_gebruiken_bij'] or '—' }}</p>
+        <p><span class="label">Aanbevolen combinaties:</span><br>{{ plant['aanbevolen_combinaties'] or '—' }}</p>
+        <p><span class="label">Overige details:</span><br>{{ plant['details'] or '—' }}</p>
+    </div>
 
-    <p>
-        <a href="{{ url_for('plant_detail', plant_naam=plant['naam']) }}">✏️ Bewerken</a> |
+    <div class="buttons">
+        <a href="{{ url_for('plant_detail', plant_naam=plant['naam']) }}">✏️ Bewerken</a>
+
+    </div>
+
+    <div class="back-link">
         <a href="{{ url_for('planten') }}">← Terug naar plantenlijst</a>
-    </p>
+    </div>
+<p><span class="label">Verhelpt klachten:</span><br>
+    {% if gekoppelde_klachten %}
+        <ul>
+            {% for klacht in gekoppelde_klachten %}
+                <li>{{ klacht }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <em>Geen klachten gekoppeld.</em>
+    {% endif %}
+</p>
+
+</div>
+
 </body>
 </html>
