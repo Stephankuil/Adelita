@@ -2,6 +2,10 @@ import sqlite3
 import pandas as pd
 import csv
 import json
+
+from planten_met_info import planten_info
+
+
 # SQL-scripts
 sql_script_1 = """
 -- Tabel voor planten
@@ -19,6 +23,7 @@ CREATE TABLE IF NOT EXISTS planten (
     afbeelding TEXT
 );
 
+
 -- Tabel voor klachten
 CREATE TABLE IF NOT EXISTS klachten (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,77 +40,6 @@ CREATE TABLE IF NOT EXISTS plant_klacht (
     FOREIGN KEY (klacht_id) REFERENCES klachten(id)
 );
 
--- Voeg planten toe
-INSERT INTO planten (naam) VALUES 
-('Acidophilus'),
-('Aloe Vera'),
-('Artisjok'),
-('Ashwagandha'),
-('Avena Sativa'),
-('Bacopa'),
-('Biergist'),
-('Blauwe Bosbesvrucht'),
-('Borage-olie'),
-('Boswellia'),
-('Brandnetel'),
-('Canadese Geelwortel'),
-('Cat’s Claw'),
-('Cranberry'),
-('Curcuma'),
-('Damiana'),
-('Driekleurig Viooltje'),
-('Duivelsklauw'),
-('Echinacea'),
-('Fenegriek'),
-('Garcinia'),
-('Gember'),
-('Ginkgo'),
-('Ginseng'),
-('Goudpapaver'),
-('Griffonia'),
-('Groene Thee'),
-('Grote Klis'),
-('Guarana'),
-('Heermoes'),
-('Hop'),
-('Javaanse Thee'),
-('Kersensteel'),
-('Konjac'),
-('Laksavital'),
-('Levertraanolie'),
-('Lijnzaadolie'),
-('Lithothamnium'),
-('Maca'),
-('Maretak'),
-('Mariadistel'),
-('Maté'),
-('Meidoorn'),
-('Melisse'),
-('Moederkruid'),
-('Paardenbloem'),
-('Passiebloem'),
-('Plantaardige Kool'),
-('Pompoenpitolie'),
-('Propolis'),
-('Q10'),
-('Reishi – Shiitake – Maitake'),
-('Resveratrol'),
-('Rhodiola'),
-('Rode Gist Rijst'),
-('Rode Klaver'),
-('Royal Jelly'),
-('Russische Ginseng'),
-('Saffraan'),
-('Salvia'),
-('Sint Janskruid'),
-('Spirulina'),
-('Teunisbloemolie'),
-('Valeriaan'),
-('Venkel'),
-('Vitamine D3 (plantaardig)'),
-('Vrouwenmantel'),
-('Weegbree'),
-('Zaagbladpalm');
 """
 
 
@@ -1069,6 +1003,55 @@ with sqlite3.connect("fytotherapie.db") as conn:
 conn = sqlite3.connect('fytotherapie.db')  # <-- Pas dit aan naar jouw bestandsnaam
 cursor = conn.cursor()
 
+c = conn.cursor()
+
+c.execute('''
+CREATE TABLE IF NOT EXISTS planten (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    naam TEXT,
+    botanische_naam TEXT,
+    beschrijving TEXT,
+    te_gebruiken_bij TEXT,
+    gebruikt_plantendeel TEXT,
+    aanbevolen_combinaties TEXT,
+    niet_te_gebruiken_bij TEXT,
+    categorie_kleur TEXT,
+    details TEXT,
+    afbeelding TEXT
+)
+''')
+
+# Voeg de planten toe
+for plant in planten_info:
+    c.execute('''
+        INSERT INTO planten (
+            naam,
+            botanische_naam,
+            beschrijving,
+            te_gebruiken_bij,
+            gebruikt_plantendeel,
+            aanbevolen_combinaties,
+            niet_te_gebruiken_bij,
+            categorie_kleur,
+            details,
+            afbeelding
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (
+        plant["naam"],
+        plant["botanische_naam"],
+        plant["beschrijving"],
+        plant["te_gebruiken_bij"],
+        plant["gebruikt_plantendeel"],
+        plant["aanbevolen_combinaties"],
+        plant["niet_te_gebruiken_bij"],
+        plant.get("categorie_kleur", ""),  # optioneel
+        plant["details"],
+        plant["afbeelding"]
+    ))
+
+conn.commit()
+
+
 
 # Stap 3: Lees de JSON-file in
 with open('klachten.json', 'r', encoding='utf-8') as f:
@@ -1084,6 +1067,28 @@ for klacht in klachten_lijst:
 
 # ✅ Eerst committen
 conn.commit()
+
+
+cursor = conn.cursor()
+c = conn.cursor()
+
+
+for plant in planten_info:
+    cursor.execute(
+        "INSERT INTO planten (naam, botanische_naam, beschrijving, te_gebruiken_bij, gebruikt_plantendeel, aanbevolen_combinaties, niet_te_gebruiken_bij, categorie_kleur, details, afbeelding) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        (
+            plant["naam"],
+            plant["botanische_naam"],
+            plant["beschrijving"],
+            plant["te_gebruiken_bij"],
+            plant["gebruikt_plantendeel"],
+            plant["aanbevolen_combinaties"],
+            plant["niet_te_gebruiken_bij"],
+            plant.get("categorie_kleur", ""),
+            plant["details"],
+            plant["afbeelding"]
+        )
+    )
 
 # ✅ Dan pas sluiten
 conn.close()
