@@ -174,7 +174,7 @@ def plant_detail(plant_naam):
 def klachten():
     conn = sqlite3.connect("fytotherapie.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT id, naam, beschrijving FROM klachten ORDER BY naam")
+    cursor.execute("SELECT id, naam, beschrijving FROM klachten ORDER BY naam ASC")
     klachten_lijst = cursor.fetchall()
     conn.close()
     return render_template("klachten.html", klachten=klachten_lijst)
@@ -202,7 +202,7 @@ def klacht_detail(klacht_naam):
     gekoppelde_planten = [r[0] for r in cursor.fetchall()]
 
     # Haal alle planten op voor eventueel koppelen
-    cursor.execute("SELECT id, naam FROM planten ORDER BY naam")
+    cursor.execute("SELECT id, naam FROM planten ORDER BY LOWER(naam) ASC)")
     alle_planten = cursor.fetchall()
 
     conn.close()
