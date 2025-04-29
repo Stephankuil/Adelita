@@ -14,9 +14,23 @@
 
         h1 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-size: 32px;
             color: #34495e;
+        }
+
+        .zoekveld-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .zoekveld {
+            padding: 10px;
+            width: 300px;
+            max-width: 90%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
         }
 
         ul {
@@ -91,10 +105,17 @@
 </head>
 <body>
     <h1>Alle Klachten 🩺</h1>
-    <ul>
+
+    <div class="zoekveld-container">
+        <input type="text" id="zoekveld" class="zoekveld" placeholder="Zoek een klacht..." onkeyup="filterKlachten()">
+    </div>
+
+    <ul id="klachten-lijst">
         {% for klacht in klachten %}
             <li>
-                <div class="klacht-titel" onclick="toggleBeschrijving({{ loop.index0 }})">
+<div class="klacht-titel" onclick="toggleBeschrijving('{{ loop.index0 }}')">
+
+
                     <span class="icoon" id="icoon-{{ loop.index0 }}">🔽</span>
                     {{ klacht[1] }}
                 </div>
@@ -110,13 +131,31 @@
     <a class="terug" href="/">← Terug naar startpagina</a>
 
     <script>
-        function toggleBeschrijving(id) {
-            const beschrijving = document.getElementById('beschrijving-' + id);
-            const icoon = document.getElementById('icoon-' + id);
+function toggleBeschrijving(id) {
+    const beschrijving = document.getElementById('beschrijving-' + id);
+    const icoon = document.getElementById('icoon-' + id);
 
-            const isVisible = beschrijving.style.display === 'block';
-            beschrijving.style.display = isVisible ? 'none' : 'block';
-            icoon.textContent = isVisible ? '🔽' : '🔼';
+    const isVisible = beschrijving.style.display === 'block';
+    beschrijving.style.display = isVisible ? 'none' : 'block';
+    icoon.textContent = isVisible ? '🔽' : '🔼';
+}
+
+
+        function filterKlachten() {
+            const zoekveld = document.getElementById('zoekveld').value.toLowerCase();
+            const klachtenLijst = document.getElementById('klachten-lijst');
+            const klachten = klachtenLijst.getElementsByTagName('li');
+
+            for (let i = 0; i < klachten.length; i++) {
+                const titelElement = klachten[i].getElementsByClassName('klacht-titel')[0];
+                const titelText = titelElement.textContent.toLowerCase();
+
+                if (titelText.includes(zoekveld)) {
+                    klachten[i].style.display = '';
+                } else {
+                    klachten[i].style.display = 'none';
+                }
+            }
         }
     </script>
 </body>
