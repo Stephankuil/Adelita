@@ -202,7 +202,7 @@ def klacht_detail(klacht_naam):
     gekoppelde_planten = [r[0] for r in cursor.fetchall()]
 
     # Haal alle planten op voor eventueel koppelen
-    cursor.execute("SELECT id, naam FROM planten ORDER BY LOWER(naam) ASC)")
+    cursor.execute("SELECT id, naam FROM planten ORDER BY LOWER(naam) ASC")
     alle_planten = cursor.fetchall()
 
     conn.close()
