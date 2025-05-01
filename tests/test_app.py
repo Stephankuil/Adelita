@@ -2,10 +2,11 @@ import sys
 import os
 import tempfile
 import pytest
+import sqlite3
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from main import app, allowed_file  # Import de Flask app en de functie die je wilt testen
 
 # Voeg het pad van de bovenliggende directory toe zodat Python 'main' kan vinden
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # ✅ Fixture: maakt een test client aan voor de Flask app
 @pytest.fixture
@@ -75,3 +76,48 @@ def test_planten_route(client):
     response = client.get('/planten')  # Bezoek de plantenpagina
     assert response.status_code == 200 # Pagina laadt succesvol
     assert b"<html" in response.data   # controleer of HTML inhoud aanwezig is
+
+
+def test_plant_info_bestaat(client):
+    # Zorg dat een testplant in de database staat
+    conn = sqlite3.connect("fytotherapie.db")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO planten (naam) VALUES (?)", ("Testplant",))
+    plant_id = cursor.lastrowid
+
+    # Voeg een klacht toe en koppel aan plant
+    cursor.execute("INSERT INTO klachten (naam) VALUES (?)", ("Hoofdpijn123",))
+    klacht_id = cursor.lastrowid
+    cursor.execute("INSERT INTO plant_klacht (plant_id, klacht_id) VALUES (?, ?)", (plant_id, klacht_id))
+    conn.commit()
+    conn.close()
+
+    # Simuleer ingelogde sessie
+    with client.session_transaction() as sess:
+        sess['gebruiker'] = 'admin'
+
+    # Bezoek de info-pagina van de plant
+    response = client.get('/plant/Testplant/info')
+
+    # ✅ Check: statuscode is 200 (pagina laadt goed)
+    assert response.status_code == 200
+
+    # ✅ Check: plantnaam staat ergens in de HTML
+    assert b"Testplant" in response.data
+
+    # ✅ Check: gekoppelde klachtnaam staat ergens in de HTML
+    assert b"Hoofdpijn" in response.data
+
+def test_plant_info_bestaat_niet(client):
+    # Simuleer ingelogde sessie
+    with client.session_transaction() as sess:
+        sess['gebruiker'] = 'admin'
+
+    # Bezoek de info-pagina van een niet-bestaande plant
+    response = client.get('/plant/Onbekend/info')
+
+    # ✅ Check: statuscode is 200 (want returnt string, geen error)
+    assert response.status_code == 200
+
+    # ✅ Check: foutmelding in response
+    assert b"Plant niet gevonden" in response.data
