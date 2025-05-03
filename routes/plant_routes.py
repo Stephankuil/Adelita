@@ -141,7 +141,7 @@ def koppel_plant():
     cursor.execute("SELECT naam FROM klachten WHERE id = ?", (klacht_id,))
     klacht_naam = cursor.fetchone()[0]
     conn.close()
-    return redirect(url_for('klacht_detail', klacht_naam=klacht_naam))
+    return redirect(url_for('klacht_bp.klacht_detail', klacht_naam=klacht_naam))
 
 # Verwijder koppeling plant-klacht
 @plant_bp.route('/verwijder_plant', methods=['POST'])
@@ -163,5 +163,5 @@ def verwijder_plant():
     cursor.execute("SELECT naam FROM klachten WHERE id = ?", (klacht_id,))
     klacht_naam = cursor.fetchone()[0]
     conn.close()
-    return redirect(url_for('klacht_detail', klacht_naam=klacht_naam))
+    return redirect(url_for('klacht_bp.klacht_detail', klacht_naam=klacht_naam))
 

@@ -27,7 +27,7 @@ def notitie_toevoegen(klant_id):
     conn.commit()
     conn.close()
 
-    return redirect(url_for('klant_detail', klant_id=klant_id))
+    return redirect(url_for('klant_bp.klant_detail', klant_id=klant_id))
 
 @klant_bp.route('/klant/<int:klant_id>/nieuwe_behandeling', methods=['POST'])
 def nieuwe_behandeling(klant_id):
@@ -51,7 +51,7 @@ def nieuwe_behandeling(klant_id):
     conn.commit()
     conn.close()
 
-    return redirect(url_for('klant_detail', klant_id=klant_id))
+    return redirect(url_for('klant_bp.klant_detail', klant_id=klant_id))
 
 
 @klant_bp.route('/klant/<int:klant_id>/behandeling_toevoegen', methods=['POST'])
@@ -69,7 +69,7 @@ def behandeling_toevoegen(klant_id):
     conn.commit()
     conn.close()
 
-    return redirect(url_for('klant_detail', klant_id=klant_id))
+    return redirect(url_for('klant_bp.klant_detail', klant_id=klant_id))
 
 @klant_bp.route('/klant/<int:klant_id>/update_behandeling', methods=['POST'])
 def update_behandeling(klant_id):
@@ -81,7 +81,7 @@ def update_behandeling(klant_id):
     conn.commit()
     conn.close()
 
-    return redirect(url_for('klant_detail', klant_id=klant_id))
+    return redirect(url_for('klant_bp.klant_detail', klant_id=klant_id))
 
 @klant_bp.route('/klanten/behandelingen')
 def klanten_behandelingen():
@@ -203,7 +203,7 @@ def nieuwe_klant():
     conn.close()
 
     # Stuur direct door naar de detailpagina
-    return redirect(url_for('klant_detail', klant_id=klant_id))
+    return redirect(url_for('klant_bp.klant_detail', klant_id=klant_id))
 
 @klant_bp.route('/nieuwe_afspraak/<int:klant_id>', methods=['POST'])
 def nieuwe_afspraak(klant_id):
@@ -225,4 +225,4 @@ def nieuwe_afspraak(klant_id):
     conn.commit()
     conn.close()
 
-    return redirect(url_for('klant_detail', klant_id=klant_id))
+    return redirect(url_for('klant_bp.klant_detail', klant_id=klant_id))
