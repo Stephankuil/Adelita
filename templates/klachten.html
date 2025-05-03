@@ -3,105 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Klachtenoverzicht</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
-            color: #2c3e50;
-            margin: 0;
-            padding: 40px;
-        }
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/klachten.css') }}">
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 32px;
-            color: #34495e;
-        }
-
-        .zoekveld-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .zoekveld {
-            padding: 10px;
-            width: 300px;
-            max-width: 90%;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            max-width: 700px;
-            margin: auto;
-        }
-
-        li {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            transition: box-shadow 0.2s ease;
-        }
-
-        li:hover {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .klacht-titel {
-            font-weight: 600;
-            font-size: 18px;
-            color: #2c3e50;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            user-select: none;
-        }
-
-        .icoon {
-            margin-right: 10px;
-            font-size: 16px;
-            transition: transform 0.2s ease;
-        }
-
-        .beschrijving {
-            color: #555;
-            margin-top: 10px;
-            line-height: 1.5;
-            display: none;
-        }
-
-        .meer-info {
-            margin-top: 10px;
-            display: inline-block;
-            font-size: 14px;
-            color: #2e7d32;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .meer-info:hover {
-            text-decoration: underline;
-        }
-
-        a.terug {
-            display: block;
-            text-align: center;
-            margin-top: 40px;
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a.terug:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
     <h1>Alle Klachten 🩺</h1>
@@ -122,13 +25,14 @@
                 <div class="beschrijving" id="beschrijving-{{ loop.index0 }}">
                     {{ klacht[2] }}
                     <br>
-                    <a class="meer-info" href="{{ url_for('klacht_detail', klacht_naam=klacht[1]) }}">➡️ Bekijk gekoppelde planten</a>
+                    <a class="meer-info" href="{{ url_for('klacht_bp.klacht_detail', klacht_naam=klacht[1]) }}">➡️ Bekijk gekoppelde planten</a>
                 </div>
             </li>
         {% endfor %}
     </ul>
 
-    <a class="terug" href="/">← Terug naar startpagina</a>
+<a class="terug" href="{{ url_for('index_bp.index') }}">← Terug naar startpagina</a>
+
 
     <script>
 function toggleBeschrijving(id) {

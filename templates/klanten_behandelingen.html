@@ -3,75 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Klanten & Behandelingen</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f8f5;
-            margin: 0;
-            padding: 40px;
-            color: #2e7d32;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 12px 16px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #e8f5e9;
-            font-weight: bold;
-            color: #2e7d32;
-        }
-
-        ul {
-            margin: 8px 0;
-            padding-left: 20px;
-        }
-
-        ul li {
-            margin-bottom: 5px;
-        }
-
-        a {
-            color: #2e7d32;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .back-link {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .back-link a {
-            color: #555;
-            text-decoration: none;
-        }
-
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/klanten_behandelingen.css') }}">
 </head>
 <body>
 
@@ -117,7 +49,7 @@
                 {% endif %}
             </td>
             <td>
-                <a href="{{ url_for('klant_detail', klant_id=klant.id) }}">Bekijk</a>
+                <a href="{{ url_for('klant_bp.klant_detail', klant_id=klant.id) }}">Bekijk</a>
             </td>
         </tr>
         {% endfor %}
@@ -125,7 +57,7 @@
 </table>
 
 <div class="back-link">
-    <a href="{{ url_for('klanten') }}">← Terug naar klantenlijst</a>
+    <a href="{{ url_for('klant_bp.klanten') }}">← Terug naar klantenlijst</a>
 </div>
 
 </body>

@@ -3,79 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Klacht: {{ klacht }}</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f8f5;
-            margin: 40px;
-            color: #2e7d32;
-        }
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/klacht_detail.css') }}">
 
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        h1, h2 {
-            text-align: center;
-            color: #2e7d32;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        form.inline {
-            display: inline;
-            margin-left: 10px;
-        }
-
-        button {
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #b71c1c;
-        }
-
-        select {
-            padding: 6px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .toevoegen-form {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .back-link {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .back-link a {
-            text-decoration: none;
-            color: #555;
-        }
-
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
 
@@ -87,8 +16,8 @@
         <ul>
             {% for plant in gekoppelde_planten %}
                 <li>
-                    <a href="{{ url_for('plant_info', plant_naam=plant) }}">{{ plant }}</a>
-                    <form class="inline" action="/verwijder_plant" method="post" onsubmit="return confirmVerwijderen('{{ plant }}');">
+                    <a href="{{ url_for('plant_bp.plant_info', plant_naam=plant) }}">{{ plant }}</a>
+                    <form class="inline" action="{{ url_for('plant_bp.verwijder_plant') }}" method="post" onsubmit="return confirmVerwijderen('{{ plant }}');">
                         <input type="hidden" name="plant_naam" value="{{ plant }}">
                         <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
                         <button type="submit">Verwijder</button>
@@ -102,7 +31,7 @@
 
     <div class="toevoegen-form">
         <h2>➕ Plant koppelen</h2>
-        <form action="/koppel_plant" method="post">
+        <form action="{{ url_for('plant_bp.koppel_plant') }}" method="post">
             <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
             <select name="plant_id">
                 {% for id, naam in alle_planten %}
@@ -114,7 +43,7 @@
     </div>
 
     <div class="back-link">
-        <a href="{{ url_for('klachten') }}">← Terug naar klachtenlijst</a>
+        <a href="{{ url_for('klacht_bp.klachten') }}">← Terug naar klachtenlijst</a>
     </div>
 </div>
 
