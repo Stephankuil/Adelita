@@ -4,6 +4,9 @@ import os
 from werkzeug.utils import secure_filename
 
 
+from flask import g
+import sqlite3
+
 from routes.index_routes import index_bp
 from routes.plant_routes import plant_bp
 from routes.klacht_routes import klacht_bp
@@ -37,6 +40,8 @@ app.register_blueprint(klant_bp)
 
 
 # Koppel plant aan klacht
+
+
 
 
 
