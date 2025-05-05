@@ -1,8 +1,8 @@
 import sqlite3
-from planten_met_info import planten_info
+from DATABASE_AANMAKEN.planten_met_info import planten_info
 
 # Verbind met de database
-conn = sqlite3.connect('fytotherapie.db')
+conn = sqlite3.connect('../fytotherapie.db')
 cursor = conn.cursor()
 
 # Voer het SQL-script uit voor het aanmaken van alle tabellen
@@ -86,8 +86,21 @@ CREATE TABLE IF NOT EXISTS behandeling_plant (
     FOREIGN KEY (behandeling_id) REFERENCES behandelingen(id),
     FOREIGN KEY (plant_id) REFERENCES planten(id)
 );
+CREATE TABLE supplementen (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    naam TEXT NOT NULL,
+    andere_namen TEXT,
+    lost_op_in TEXT,
+    eigenschap_functie TEXT,
+    bij_tekort TEXT,
+    inzetten_bij TEXT,
+    voedingsbronnen TEXT,
+    bijzonderheden TEXT
+);
+
 
 """)
+
 
 # Voeg planten toe als ze nog niet bestaan
 for plant in planten_info:

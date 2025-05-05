@@ -3,7 +3,7 @@ from planten_met_info import planten_info
 from nieuwe_lijst_klachten_en_beschrijvingen import klacht_beschrijvingen_1  # <- nieuwe import
 
 # Verbind met de database
-conn = sqlite3.connect("fytotherapie.db")
+conn = sqlite3.connect("../fytotherapie.db")
 cursor = conn.cursor()
 
 for plant in planten_info:

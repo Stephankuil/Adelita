@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("fytotherapie.db")
+conn = sqlite3.connect("../fytotherapie.db")
 cursor = conn.cursor()
 
 # Haal alle unieke klachten op, hoofdletterongevoelig

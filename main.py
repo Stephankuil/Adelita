@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 import os
 from werkzeug.utils import secure_filename
-
+import webbrowser
 
 from flask import g
 import sqlite3
@@ -44,7 +44,12 @@ app.register_blueprint(klant_bp)
 
 
 
+import threading
+import webbrowser
 
+def open_browser():
+    webbrowser.open_new('http://127.0.0.1:5000/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    threading.Timer(1.25, open_browser).start()
+    app.run()
