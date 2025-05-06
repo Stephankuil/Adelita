@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ supplement['naam'] }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f1;
+            margin: 40px;
+            color: #2e7d32;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #1b5e20;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #2e7d32;
+            background-color: #e8f5e9;
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        a:hover {
+            background-color: #c8e6c9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ supplement['naam'] }}</h1>
+
+    <div class="container">
+        <p><strong>Andere Namen:</strong> {{ supplement['andere_namen'] or '-' }}</p>
+        <p><strong>Lost Op In:</strong> {{ supplement['lost_op_in'] or '-' }}</p>
+        <p><strong>Eigenschap/Functie:</strong> {{ supplement['eigenschap_functie'] or '-' }}</p>
+        <p><strong>Bij Tekort:</strong> {{ supplement['bij_tekort'] or '-' }}</p>
+        <p><strong>Inzetten Bij:</strong> {{ supplement['inzetten_bij'] or '-' }}</p>
+        <p><strong>Voedingsbronnen:</strong> {{ supplement['voedingsbronnen'] or '-' }}</p>
+        <p><strong>Bijzonderheden:</strong> {{ supplement['bijzonderheden'] or '-' }}</p>
+        <p><strong>Bouwstof:</strong> {{ supplement['bouwstof'] or '-' }}</p>
+        <p><strong>Eigenschappen:</strong> {{ supplement['eigenschappen'] or '-' }}</p>
+
+        <a href="{{ url_for('supplement_bp.toon_supplementen') }}">← Terug naar overzicht</a>
+    </div>
+
+</body>
+</html>

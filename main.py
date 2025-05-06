@@ -11,6 +11,7 @@ from routes.index_routes import index_bp
 from routes.plant_routes import plant_bp
 from routes.klacht_routes import klacht_bp
 from routes.klant_routes import klant_bp
+from routes.supplement_routes import supplement_bp
 app = Flask(__name__)
 app.secret_key = 'geheim123'
 
@@ -34,6 +35,8 @@ app.register_blueprint(plant_bp)
 app.register_blueprint(klacht_bp)
 
 app.register_blueprint(klant_bp)
+app.register_blueprint(supplement_bp)
+
 # Alle planten
 
 # Alle klachten

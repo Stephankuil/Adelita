@@ -1,6 +1,6 @@
 import sqlite3
 from DATABASE_AANMAKEN.planten_met_info import planten_info
-
+from Supplementen_lijst import supplementen
 # Verbind met de database
 conn = sqlite3.connect('../fytotherapie.db')
 cursor = conn.cursor()
@@ -95,7 +95,9 @@ CREATE TABLE supplementen (
     bij_tekort TEXT,
     inzetten_bij TEXT,
     voedingsbronnen TEXT,
-    bijzonderheden TEXT
+    bijzonderheden TEXT,
+    bouwstof TEXT,
+    eigenschappen TEXT
 );
 
 
@@ -128,6 +130,41 @@ for plant in planten_info:
     else:
         print(f"⏩ Plant '{plant['naam']}' bestaat al, overslaan.")
 
+
+for supplement in supplementen:
+    # Check of supplement al bestaat (optioneel)
+    cursor.execute("SELECT id FROM supplementen WHERE naam = ?", (supplement["naam"],))
+    result = cursor.fetchone()
+
+    if not result:
+        cursor.execute("""
+            INSERT INTO supplementen (
+                naam, andere_namen, lost_op_in, eigenschap_functie,
+                bij_tekort, inzetten_bij, voedingsbronnen, bijzonderheden,
+                bouwstof, eigenschappen
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            supplement.get('naam', ''),
+            supplement.get('andere_namen', ''),
+            supplement.get('lost_op_in', ''),
+            supplement.get('eigenschap_functie', supplement.get('eigenschap', '')),
+            supplement.get('bij_tekort', ''),
+            supplement.get('inzetten_bij', ''),
+            supplement.get('voedingsbronnen', ''),
+            supplement.get('bijzonderheden', ''),
+            supplement.get('bouwstof', ''),
+            supplement.get('eigenschappen', supplement.get('overige', ''))
+        ))
+        print(f"✅ Toegevoegd: {supplement['naam']}")
+    else:
+        print(f"⏩ Bestaat al: {supplement['naam']}")
+
+
+
+
+
+
+print(f"{len(supplementen)} supplement(en) toegevoegd aan de database!")
 # Commit & sluit
 conn.commit()
 conn.close()

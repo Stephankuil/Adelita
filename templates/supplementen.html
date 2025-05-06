@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplementen Overzicht</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f1;
+            margin: 40px;
+            color: #2e7d32;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        a {
+            display: block;
+            padding: 12px 18px;
+            background-color: #e8f5e9;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #2e7d32;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        a:hover {
+            background-color: #c8e6c9;
+        }
+
+        .terug {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            color: #555;
+            text-decoration: none;
+        }
+
+        .terug:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Supplementen Overzicht</h1>
+
+    <div class="container">
+    <a class="terug" href="/">← Terug naar startpagina</a>
+        <ul>
+            {% for supp in supplementen %}
+                <li><a href="{{ url_for('supplement_bp.detail_supplement', id=supp['id']) }}">{{ supp['naam'] }}</a></li>
+            {% endfor %}
+        </ul>
+    <a class="terug" href="/">← Terug naar startpagina</a>
+    </div>
+
+</body>
+</html>
