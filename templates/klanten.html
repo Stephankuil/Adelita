@@ -16,7 +16,10 @@
             {% for id, naam in klanten %}
                 <li><a href="{{ url_for('klant_bp.klant_detail', klant_id=id) }}">{{ naam }}</a></li>
             {% endfor %}
+        <a href="/klanten/download" class="btn btn-primary">📥 Download klantenlijst als CSV</a>
+
         </ul>
+
     </div>
 
     <div class="section">
