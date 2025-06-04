@@ -3,6 +3,7 @@
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             margin: 40px;
+            color: #354B35;
         }
         .top-bar {
     display: flex;
@@ -16,7 +17,7 @@
     align-items: center;
     gap: 10px;
     font-size: 14px;
-    color: #444;
+    color: #395B39;
 }
 .logout {
     background-color: #e57373;
@@ -34,7 +35,7 @@
 
 
         h1 {
-            color: #2e7d32;
+            color: #354B35;
         }
 
         .menu {
@@ -51,14 +52,14 @@
             padding: 10px;
             margin-bottom: 8px;
             background-color: #e8f5e9;
-            color: #2e7d32;
+            color: #395B39;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.2s;
         }
 
         .menu a:hover {
-            background-color: #c8e6c9;
+            background-color: #DCEFDD;
         }
 
         .top-bar {
