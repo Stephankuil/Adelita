@@ -1,70 +1,99 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- Documenttaal is Nederlands -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Klant: {{ klant[1] }}</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/klant_detail.css') }}">
+    <!-- Tekencodering voor correcte weergave van speciale tekens -->
 
+    <title>Klant: {{ klant[1] }}</title>
+    <!-- Dynamische titel met de naam van de klant -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/klant_detail.css') }}">
+    <!-- Link naar externe CSS-bestand voor styling -->
 </head>
+
 <body>
 
 <h1>Klant: {{ klant[1] }}</h1>
+<!-- Hoofdtitel van de pagina met klantnaam -->
 
 <div class="section">
+    <!-- Sectie met klantgegevens -->
     <h2>👤 Klantgegevens</h2>
     <p><strong>E-mailadres:</strong> {{ klant[2] }}</p>
+    <!-- Toon e-mailadres -->
     <p><strong>Telefoon:</strong> {{ klant[3] }}</p>
+    <!-- Toon telefoonnummer -->
     <p><strong>Adres:</strong> {{ klant[4] }}</p>
+    <!-- Toon adres -->
 </div>
 
 <div class="section">
+    <!-- Sectie met notities -->
     <h2>📝 Notities</h2>
     <ul>
         {% for inhoud, datum in notities %}
+            <!-- Loop door alle notities en toon ze met datum -->
             <li><strong>{{ datum.split(' ')[0] }}:</strong> {{ inhoud }}</li>
         {% endfor %}
     </ul>
+
+    <!-- Formulier om een nieuwe notitie toe te voegen -->
     <form method="post" action="{{ url_for('klant_bp.notitie_toevoegen', klant_id=klant[0]) }}">
         <label>Nieuwe notitie:</label>
         <textarea name="inhoud" required></textarea>
+        <!-- Tekstveld voor nieuwe notitie -->
         <button type="submit">Notitie toevoegen</button>
     </form>
 </div>
 
 <div class="section">
+    <!-- Sectie met afspraken -->
     <h2>📅 Afspraken</h2>
-<ul>
-    {% for afspraak in afspraken %}
-        <li>
-            <strong>{{ afspraak[0] }}:</strong> {{ afspraak[1] }}
-            {% if afspraak[2] %}
-                – <em>{{ afspraak[2] }}</em>
-            {% endif %}
-        </li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for afspraak in afspraken %}
+            <!-- Loop door afspraken en toon datum + onderwerp -->
+            <li>
+                <strong>{{ afspraak[0] }}:</strong> {{ afspraak[1] }}
+                {% if afspraak[2] %}
+                    – <em>{{ afspraak[2] }}</em>
+                    <!-- Toon locatie als die is ingevuld -->
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
 
+    <!-- Formulier om een nieuwe afspraak toe te voegen -->
     <form method="post" action="{{ url_for('klant_bp.nieuwe_afspraak', klant_id=klant[0]) }}">
         <label>Datum:</label>
         <input type="date" name="datum" required>
+
         <label>Tijd:</label>
         <input type="time" name="tijd" required>
+
         <label>Onderwerp:</label>
         <input type="text" name="onderwerp" required>
+
         <label>Locatie:</label>
         <input type="text" name="locatie">
+
         <button type="submit">Afspraak toevoegen</button>
     </form>
 </div>
 
 <div class="section">
+    <!-- Sectie met behandelingen -->
     <h2>💊 Behandelingen</h2>
     <ul>
         {% for behandeling, datum in behandelingen %}
+            <!-- Toon behandeling met bijbehorende datum -->
             <li><strong>{{ datum }}:</strong> {{ behandeling }}</li>
         {% endfor %}
     </ul>
 
+    <!-- Formulier om een nieuwe behandeling toe te voegen -->
     <form method="post" action="{{ url_for('klant_bp.nieuwe_behandeling', klant_id=klant[0]) }}">
         <label>Behandelingsnaam:</label>
         <input type="text" name="naam" required>
@@ -75,6 +104,7 @@
         <div class="form-section">
             <h3>📋 Kies klachten</h3>
             <div class="scrollbox">
+                <!-- Checkbox-lijst met klachten -->
                 {% for klacht in klachten %}
                     <label><input type="checkbox" name="klachten" value="{{ klacht[0] }}"> {{ klacht[1] }}</label>
                 {% endfor %}
@@ -84,6 +114,7 @@
         <div class="form-section">
             <h3>🌿 Kies planten</h3>
             <div class="scrollbox">
+                <!-- Checkbox-lijst met planten -->
                 {% for plant in planten %}
                     <label><input type="checkbox" name="planten" value="{{ plant[0] }}"> {{ plant[1] }}</label>
                 {% endfor %}
@@ -94,6 +125,7 @@
     </form>
 </div>
 
+<!-- Navigatielink terug naar de klantenlijst -->
 <p><a href="{{ url_for('klant_bp.klanten') }}">← Terug naar klantenlijst</a></p>
 
 </body>
