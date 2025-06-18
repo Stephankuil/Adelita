@@ -1,27 +1,46 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- De taal van de pagina is Nederlands -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Alle Planten</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/planten.css') }}">
+    <!-- Tekencodering zodat speciale tekens goed worden weergegeven -->
 
+    <title>Alle Planten</title>
+    <!-- Titel die verschijnt in het browsertabblad -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/planten.css') }}">
+    <!-- Link naar het externe CSS-bestand voor styling -->
 </head>
+
 <body>
 
     <h1>🌿 Overzicht van alle Planten</h1>
+    <!-- Hoofdtitel van de pagina -->
 
     <div class="container">
-    <a class="terug" href="/">← Terug naar startpagina</a>
-        <ul>
-            {% for plant in planten %}
-                <li>
-                    <a href="{{ url_for('plant_bp.plant_info', plant_naam=plant[0]) }}">{{ plant[0] }}</a>
+        <!-- Container die de lijst met planten en navigatie bevat -->
 
+        <a class="terug" href="/">← Terug naar startpagina</a>
+        <!-- Link terug naar de homepage -->
+
+        <ul>
+            <!-- Lijst met alle planten -->
+            {% for plant in planten %}
+                <!-- Loop door de lijst van planten uit de backend -->
+                <li>
+                    <a href="{{ url_for('plant_bp.plant_info', plant_naam=plant[0]) }}">
+                        <!-- Link naar de detailpagina van de plant -->
+                        {{ plant[0] }}
+                        <!-- Toon de naam van de plant (index 0 in de tuple of lijst) -->
+                    </a>
                 </li>
             {% endfor %}
         </ul>
 
         <a class="terug" href="/">← Terug naar startpagina</a>
+        <!-- Nogmaals een teruglink onderaan voor gebruiksgemak -->
     </div>
 
 </body>
