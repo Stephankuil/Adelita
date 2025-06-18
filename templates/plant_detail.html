@@ -1,64 +1,88 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- Pagina is in het Nederlands -->
+
 <head>
     <meta charset="UTF-8">
-    <title>{{ plant['naam'] }}</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/plant_detail.css') }}">
+    <!-- Tekencodering voor correcte weergave van speciale tekens -->
 
+    <title>{{ plant['naam'] }}</title>
+    <!-- Dynamische titel met de naam van de plant -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plant_detail.css') }}">
+    <!-- Koppeling met extern CSS-stylesheet voor styling van deze pagina -->
 </head>
+
 <body>
 
 <div class="container">
+    <!-- Hoofdcontainer voor de pagina-inhoud -->
+
     <h1>🌿 Plant: {{ plant['naam'] }}</h1>
+    <!-- Titel met de naam van de plant -->
 
     {% if plant['afbeelding'] %}
+        <!-- Als er een afbeelding beschikbaar is, toon deze -->
         <img src="{{ url_for('static', filename='uploads/' ~ plant['afbeelding']) }}" alt="Afbeelding van plant">
     {% endif %}
 
     <form method="post" enctype="multipart/form-data">
+        <!-- Formulier voor het opslaan van plantgegevens (inclusief upload) -->
+
         <label>Beschrijving</label>
         <textarea name="beschrijving">{{ plant['beschrijving'] or '' }}</textarea>
+        <!-- Invoerveld voor de beschrijving van de plant -->
 
         <label>Botanische naam</label>
         <input type="text" name="botanische_naam" value="{{ plant['botanische_naam'] or '' }}">
+        <!-- Invoerveld voor de botanische naam -->
 
         <label>Gebruikt plantendeel</label>
         <input type="text" name="gebruikt_plantendeel" value="{{ plant['gebruikt_plantendeel'] or '' }}">
+        <!-- Invoerveld voor het gebruikte deel van de plant -->
 
         <label>Te gebruiken bij</label>
         <textarea name="te_gebruiken_bij">{{ plant['te_gebruiken_bij'] or '' }}</textarea>
+        <!-- Invoerveld voor toepassingen: bij welke klachten deze plant gebruikt kan worden -->
 
         <div class="form-section">
-    <h3>🩺 Klachten waarvoor deze plant gebruikt wordt</h3>
-    <div class="scrollbox">
-        {% for klacht in klachten %}
-            <label>
-                <input type="checkbox" name="klachten" value="{{ klacht[0] }}"
-                    {% if klacht[0] in gekoppelde_klachten %}checked{% endif %}>
-                {{ klacht[1] }}
-            </label>
-        {% endfor %}
-    </div>
-</div>
+            <h3>🩺 Klachten waarvoor deze plant gebruikt wordt</h3>
+            <div class="scrollbox">
+                <!-- Scrollbare lijst van klachten met checkboxen -->
+                {% for klacht in klachten %}
+                    <label>
+                        <input type="checkbox" name="klachten" value="{{ klacht[0] }}"
+                            {% if klacht[0] in gekoppelde_klachten %}checked{% endif %}>
+                        <!-- Vink aan als deze klacht al gekoppeld is aan de plant -->
+                        {{ klacht[1] }}
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
 
-
-<label>Niet gebruiken bij</label>
-<textarea name="niet_te_gebruiken_bij">{{ plant['niet_te_gebruiken_bij'] or '' }}</textarea>
+        <label>Niet gebruiken bij</label>
+        <textarea name="niet_te_gebruiken_bij">{{ plant['niet_te_gebruiken_bij'] or '' }}</textarea>
+        <!-- Invoerveld voor contra-indicaties: wanneer je deze plant juist niet moet gebruiken -->
 
         <label>Aanbevolen combinaties</label>
         <textarea name="aanbevolen_combinaties">{{ plant['aanbevolen_combinaties'] or '' }}</textarea>
+        <!-- Invoerveld voor aanbevolen combinaties met andere planten -->
 
         <label>Overige details</label>
         <textarea name="details">{{ plant['details'] or '' }}</textarea>
+        <!-- Invoerveld voor aanvullende of extra informatie -->
 
         <label>Afbeelding uploaden</label>
         <input type="file" name="afbeelding">
-
+        <!-- Bestandsupload voor een afbeelding van de plant -->
 
         <button type="submit">Opslaan</button>
+        <!-- Knop om de wijzigingen op te slaan -->
     </form>
 
-   <a class="terug-link" href="{{ url_for('plant_bp.planten') }}">← Terug naar plantenlijst</a>
+    <a class="terug-link" href="{{ url_for('plant_bp.planten') }}">← Terug naar plantenlijst</a>
+    <!-- Link om terug te keren naar de plantenlijst -->
 
 </div>
 
