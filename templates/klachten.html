@@ -3,51 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Klachtenoverzicht</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/klachten.css') }}">
 
+    <!-- Koppel een externe CSS-bestand voor styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/klachten.css') }}">
 </head>
 <body>
     <h1>Alle Klachten 🩺</h1>
 
+    <!-- Zoekveld voor het filteren van klachten -->
     <div class="zoekveld-container">
         <input type="text" id="zoekveld" class="zoekveld" placeholder="Zoek een klacht..." onkeyup="filterKlachten()">
     </div>
 
+    <!-- Lijst van klachten -->
     <ul id="klachten-lijst">
-    <a class="terug" href="/">← Terug naar startpagina</a>
-    <br>
-    <br>
+        <!-- Link terug naar startpagina -->
+        <a class="terug" href="/">← Terug naar startpagina</a>
+        <br>
+        <br>
+
+        <!-- Loop door alle klachten uit de database -->
         {% for klacht in klachten %}
             <li>
-<div class="klacht-titel" onclick="toggleBeschrijving('{{ loop.index0 }}')">
-
-
+                <!-- Titel van de klacht met klikbare toggle -->
+                <div class="klacht-titel" onclick="toggleBeschrijving('{{ loop.index0 }}')">
                     <span class="icoon" id="icoon-{{ loop.index0 }}">🔽</span>
-                    {{ klacht[1] }}
+                    {{ klacht[1] }}  <!-- Naam van de klacht -->
                 </div>
+
+                <!-- Beschrijving en link naar gekoppelde planten -->
                 <div class="beschrijving" id="beschrijving-{{ loop.index0 }}">
-                    {{ klacht[2] }}
+                    {{ klacht[2] }}  <!-- Beschrijving van de klacht -->
                     <br>
-                    <a class="meer-info" href="{{ url_for('klacht_bp.klacht_detail', klacht_naam=klacht[1]) }}">➡️ Bekijk gekoppelde planten</a>
+                    <a class="meer-info" href="{{ url_for('klacht_bp.klacht_detail', klacht_naam=klacht[1]) }}">
+                        ➡️ Bekijk gekoppelde planten
+                    </a>
                 </div>
             </li>
         {% endfor %}
     </ul>
 
-<a class="terug" href="{{ url_for('index_bp.index') }}">← Terug naar startpagina</a>
-
+    <!-- Nogmaals een terugknop onderaan -->
+    <a class="terug" href="{{ url_for('index_bp.index') }}">← Terug naar startpagina</a>
 
     <script>
-function toggleBeschrijving(id) {
-    const beschrijving = document.getElementById('beschrijving-' + id);
-    const icoon = document.getElementById('icoon-' + id);
+        // Toggle de zichtbaarheid van de klachtbeschrijving
+        function toggleBeschrijving(id) {
+            const beschrijving = document.getElementById('beschrijving-' + id);
+            const icoon = document.getElementById('icoon-' + id);
 
-    const isVisible = beschrijving.style.display === 'block';
-    beschrijving.style.display = isVisible ? 'none' : 'block';
-    icoon.textContent = isVisible ? '🔽' : '🔼';
-}
+            const isVisible = beschrijving.style.display === 'block';
+            beschrijving.style.display = isVisible ? 'none' : 'block';
+            icoon.textContent = isVisible ? '🔽' : '🔼';
+        }
 
-
+        // Filter klachten op basis van zoekterm in het zoekveld
         function filterKlachten() {
             const zoekveld = document.getElementById('zoekveld').value.toLowerCase();
             const klachtenLijst = document.getElementById('klachten-lijst');
@@ -57,6 +67,7 @@ function toggleBeschrijving(id) {
                 const titelElement = klachten[i].getElementsByClassName('klacht-titel')[0];
                 const titelText = titelElement.textContent.toLowerCase();
 
+                // Toon of verberg de klacht op basis van zoekterm
                 if (titelText.includes(zoekveld)) {
                     klachten[i].style.display = '';
                 } else {
