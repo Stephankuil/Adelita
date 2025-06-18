@@ -1,33 +1,55 @@
 <!DOCTYPE html>
+<!-- Geef aan dat dit een HTML5-document is -->
 <html lang="nl">
+<!-- Taal van het document is Nederlands -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Fytotherapie Startpagina</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- Stel de tekencodering in op UTF-8 voor goede weergave van speciale tekens -->
 
+    <title>Fytotherapie Startpagina</title>
+    <!-- Titel van de pagina die in het browsertabblad verschijnt -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- Koppel het externe CSS-bestand voor opmaak via Flask's url_for functie -->
 </head>
+
 <body>
 
 <div class="top-bar">
+    <!-- Topbalk met titel en eventueel login-informatie -->
     <h1>🌿 Welkom bij Adelita Fytotherapie</h1>
+
     {% if session.gebruiker %}
+        <!-- Toon alleen deze sectie als de gebruiker is ingelogd (sessie bevat 'gebruiker') -->
         <div class="gebruiker-info">
             <span>Ingelogd als: <strong>{{ session.gebruiker }}</strong></span>
+            <!-- Toon de naam van de ingelogde gebruiker -->
             <a class="logout" href="{{ url_for('index_bp.logout') }}">Uitloggen</a>
+            <!-- Link om uit te loggen via de route in de index blueprint -->
         </div>
     {% endif %}
 </div>
 
+<div class="menu">
+    <!-- Navigatiemenu met links naar verschillende onderdelen van de applicatie -->
 
-    <div class="menu">
-        <a href="/planten">🌱 Bekijk alle planten</a>
-        <a href="/klachten">💊 Klachten & behandelingen</a>
-        <a href="/klanten">👥 Klantenbeheer</a>
-        <a href="/klanten/behandelingen">📋 Overzicht behandelingen</a>
-        <a href="/supplementen">🧪 Supplementen</a>
+    <a href="/planten">🌱 Bekijk alle planten</a>
+    <!-- Link naar de plantenpagina -->
 
+    <a href="/klachten">💊 Klachten & behandelingen</a>
+    <!-- Link naar de klachtenpagina -->
 
-    </div>
+    <a href="/klanten">👥 Klantenbeheer</a>
+    <!-- Link naar het klantenbeheer -->
+
+    <a href="/klanten/behandelingen">📋 Overzicht behandelingen</a>
+    <!-- Link naar het overzicht van behandelingen -->
+
+    <a href="/supplementen">🧪 Supplementen</a>
+    <!-- Link naar de supplementenpagina -->
+
+</div>
 
 </body>
 </html>
