@@ -1,9 +1,17 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- Taal van de pagina is Nederlands -->
+
 <head>
     <meta charset="UTF-8">
+    <!-- Tekencodering voor correcte weergave van speciale tekens -->
+
     <title>Supplementen Overzicht</title>
+    <!-- Titel van de pagina in het browsertabblad -->
+
     <style>
+        /* Basisopmaak voor de pagina */
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #f0f4f1;
@@ -11,12 +19,14 @@
             color: #2e7d32;
         }
 
+        /* Hoofdtitel styling */
         h1 {
             text-align: center;
             color: #2e7d32;
             margin-bottom: 40px;
         }
 
+        /* Container die de lijst bevat */
         .container {
             max-width: 600px;
             margin: auto;
@@ -26,15 +36,18 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
+        /* Geen standaard opsommingstekens in lijst */
         ul {
             list-style: none;
             padding: 0;
         }
 
+        /* Afstand tussen supplementlinks */
         li {
             margin-bottom: 12px;
         }
 
+        /* Stijl van supplementlinkjes */
         a {
             display: block;
             padding: 12px 18px;
@@ -46,10 +59,12 @@
             transition: background-color 0.2s;
         }
 
+        /* Hover effect bij links */
         a:hover {
             background-color: #c8e6c9;
         }
 
+        /* Stijl voor 'Terug naar startpagina'-links */
         .terug {
             display: block;
             margin-top: 30px;
@@ -63,18 +78,33 @@
         }
     </style>
 </head>
+
 <body>
 
     <h1>Supplementen Overzicht</h1>
+    <!-- Hoofdtitel van de pagina -->
 
     <div class="container">
-    <a class="terug" href="/">← Terug naar startpagina</a>
+        <!-- Container voor inhoud en layoutcentrering -->
+
+        <a class="terug" href="/">← Terug naar startpagina</a>
+        <!-- Navigatielink naar de startpagina -->
+
         <ul>
+            <!-- Dynamisch gegenereerde lijst van supplementen -->
             {% for supp in supplementen %}
-                <li><a href="{{ url_for('supplement_bp.detail_supplement', id=supp['id']) }}">{{ supp['naam'] }}</a></li>
+                <!-- Loop door de lijst 'supplementen' die vanuit Flask wordt meegegeven -->
+                <li>
+                    <!-- Link naar de detailpagina van elk supplement -->
+                    <a href="{{ url_for('supplement_bp.detail_supplement', id=supp['id']) }}">
+                        {{ supp['naam'] }}
+                    </a>
+                </li>
             {% endfor %}
         </ul>
-    <a class="terug" href="/">← Terug naar startpagina</a>
+
+        <a class="terug" href="/">← Terug naar startpagina</a>
+        <!-- Extra teruglink onderaan voor gebruiksgemak -->
     </div>
 
 </body>
