@@ -1,52 +1,83 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- Paginataal is Nederlands -->
+
 <head>
     <meta charset="UTF-8">
-    <title>{{ plant['naam'] }}</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/plant_info.css') }}">
+    <!-- Tekencodering voor correcte weergave van speciale tekens -->
 
+    <title>{{ plant['naam'] }}</title>
+    <!-- Titel van de pagina, dynamisch met de naam van de plant -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plant_info.css') }}">
+    <!-- Koppeling met extern CSS-bestand via Flask -->
 </head>
 
 <body>
 
 <div class="container">
+    <!-- Hoofdcontainer voor de plantinformatie -->
+
     <h1>🌿 {{ plant['naam'] }}</h1>
+    <!-- Titel met de naam van de plant -->
 
     {% if plant['afbeelding'] %}
+        <!-- Als er een afbeelding beschikbaar is, toon deze -->
         <div class="plant-image">
-        <img src="{{ url_for('static', filename='uploads/' ~ plant['afbeelding']) }}" alt="Afbeelding van plant">
+            <img src="{{ url_for('static', filename='uploads/' ~ plant['afbeelding']) }}" alt="Afbeelding van plant">
         </div>
     {% endif %}
 
     <div class="plant-info">
+        <!-- Informatieblok met alle details van de plant -->
+
         <p><span class="label">Botanische naam:</span> {{ plant['botanische_naam'] or '—' }}</p>
+        <!-- Botanische naam of streepje als die ontbreekt -->
+
         <p><span class="label">Gebruikt plantendeel:</span> {{ plant['gebruikt_plantendeel'] or '—' }}</p>
+        <!-- Gebruikt plantendeel (wortel, blad, etc.) -->
+
         <p><span class="label">Beschrijving:</span><br>{{ plant['beschrijving'] or '—' }}</p>
+        <!-- Algemene beschrijving van de plant -->
+
         <p><span class="label">Te gebruiken bij:</span><br>{{ plant['te_gebruiken_bij'] or '—' }}</p>
-       <p><span class="label">Niet gebruiken bij:</span><br>{{ plant['niet_te_gebruiken_bij'] or '—' }}</p>
+        <!-- Klachten waarbij deze plant geschikt is -->
+
+        <p><span class="label">Niet gebruiken bij:</span><br>{{ plant['niet_te_gebruiken_bij'] or '—' }}</p>
+        <!-- Contra-indicaties of situaties waarin gebruik afgeraden wordt -->
+
         <p><span class="label">Aanbevolen combinaties:</span><br>{{ plant['aanbevolen_combinaties'] or '—' }}</p>
+        <!-- Andere planten waarmee deze goed gecombineerd kan worden -->
+
         <p><span class="label">Overige details:</span><br>{{ plant['details'] or '—' }}</p>
+        <!-- Extra info zoals oogstmoment, smaak, dosering enz. -->
     </div>
 
     <div class="buttons">
+        <!-- Knop om naar de bewerkpagina van deze plant te gaan -->
         <a href="{{ url_for('plant_bp.plant_detail', plant_naam=plant['naam']) }}">✏️ Bewerken</a>
-
     </div>
 
     <div class="back-link">
+        <!-- Link terug naar de overzichtspagina met alle planten -->
         <a href="{{ url_for('plant_bp.planten') }}">← Terug naar plantenlijst</a>
     </div>
-<p><span class="label">Verhelpt klachten:</span><br>
-    {% if gekoppelde_klachten %}
-        <ul>
-            {% for klacht in gekoppelde_klachten %}
-                <li>{{ klacht }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <em>Geen klachten gekoppeld.</em>
-    {% endif %}
-</p>
+
+    <p>
+        <span class="label">Verhelpt klachten:</span><br>
+        <!-- Lijst met gekoppelde klachten -->
+
+        {% if gekoppelde_klachten %}
+            <ul>
+                {% for klacht in gekoppelde_klachten %}
+                    <li>{{ klacht }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <em>Geen klachten gekoppeld.</em>
+        {% endif %}
+    </p>
 
 </div>
 
