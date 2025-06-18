@@ -1,47 +1,77 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- De taal van de pagina is Nederlands -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Klanten</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/klanten.css') }}">
+    <!-- Tekencodering voor correcte weergave van speciale tekens -->
 
+    <title>Klanten</title>
+    <!-- Titel die bovenaan in het browsertabblad verschijnt -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/klanten.css') }}">
+    <!-- Koppeling met het CSS-stylesheet voor deze pagina via Flask's url_for -->
 </head>
+
 <body>
 
     <h1>Klanten</h1>
+    <!-- Hoofdtitel van de pagina -->
 
     <div class="section">
+        <!-- Eerste sectie: overzicht van alle klanten -->
+
         <h2>📋 Overzicht</h2>
         <ul>
             {% for id, naam in klanten %}
-                <li><a href="{{ url_for('klant_bp.klant_detail', klant_id=id) }}">{{ naam }}</a></li>
+                <!-- Loop door de lijst met klanten, verkregen uit de backend -->
+                <li>
+                    <a href="{{ url_for('klant_bp.klant_detail', klant_id=id) }}">
+                        <!-- Link naar de detailpagina van een specifieke klant -->
+                        {{ naam }}
+                    </a>
+                </li>
             {% endfor %}
-        <a href="/klanten/download" class="btn btn-primary">📥 Download klantenlijst als CSV</a>
 
+            <a href="/klanten/download" class="btn btn-primary">
+                📥 Download klantenlijst als CSV
+            </a>
+            <!-- Link om de volledige klantenlijst te downloaden als CSV-bestand -->
         </ul>
-
     </div>
 
     <div class="section">
+        <!-- Tweede sectie: formulier voor het toevoegen van een nieuwe klant -->
+
         <h2>➕ Nieuwe klant toevoegen</h2>
+
         <form action="{{ url_for('klant_bp.nieuwe_klant') }}" method="post">
+            <!-- Formulier dat een POST-verzoek stuurt naar de route 'nieuwe_klant' -->
+
             <label>Naam:</label>
             <input type="text" name="naam" required>
+            <!-- Naamveld is verplicht -->
 
             <label>E-mailadres:</label>
             <input type="email" name="emailadres">
+            <!-- E-mailadresveld (optioneel, maar moet geldig e-mailadres zijn als ingevuld) -->
 
             <label>Telefoon:</label>
             <input type="text" name="telefoon">
+            <!-- Telefoonnummer (optioneel) -->
 
             <label>Adres:</label>
             <input type="text" name="adres">
+            <!-- Adresveld (optioneel) -->
 
             <button type="submit">Toevoegen</button>
+            <!-- Knop om het formulier in te dienen en klant toe te voegen -->
         </form>
     </div>
 
     <a href="{{ url_for('index_bp.index') }}" class="terug-link">← Terug naar start</a>
+    <!-- Link terug naar de startpagina -->
 
 </body>
 </html>
