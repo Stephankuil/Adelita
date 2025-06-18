@@ -1,17 +1,30 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- Pagina is in het Nederlands -->
+
 <head>
     <meta charset="UTF-8">
+    <!-- Tekencodering voor correcte weergave van tekens -->
+
     <title>Klanten & Behandelingen</title>
+    <!-- Titel van de pagina -->
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/klanten_behandelingen.css') }}">
+    <!-- Koppeling met extern CSS-bestand via Flask -->
 </head>
+
 <body>
 
 <h1>Klanten & Behandelingen</h1>
+<!-- Hoofdtitel van de pagina -->
 
 <table>
+    <!-- Tabel waarin per klant de gegevens van de laatste behandeling worden getoond -->
+
     <thead>
         <tr>
+            <!-- Kolomnamen -->
             <th>Naam</th>
             <th>Laatste behandeling</th>
             <th>Datum</th>
@@ -20,13 +33,23 @@
             <th>Actie</th>
         </tr>
     </thead>
+
     <tbody>
         {% for klant in klanten %}
+        <!-- Loop door de lijst met klanten uit de backend -->
         <tr>
+            <!-- Rij met gegevens per klant -->
             <td>{{ klant.naam }}</td>
+            <!-- Naam van de klant -->
+
             <td>{{ klant.behandeling or '—' }}</td>
+            <!-- Naam van de laatste behandeling of een streepje als die er niet is -->
+
             <td>{{ klant.datum or '—' }}</td>
+            <!-- Datum van de behandeling of een streepje -->
+
             <td>
+                <!-- Klachten gekoppeld aan de behandeling -->
                 {% if klant.klachten %}
                 <ul>
                     {% for klacht in klant.klachten %}
@@ -37,7 +60,9 @@
                 Geen klachten gekoppeld
                 {% endif %}
             </td>
+
             <td>
+                <!-- Planten gekoppeld aan de behandeling -->
                 {% if klant.planten %}
                 <ul>
                     {% for plant in klant.planten %}
@@ -48,7 +73,9 @@
                 Geen planten gekoppeld
                 {% endif %}
             </td>
+
             <td>
+                <!-- Link naar de detailpagina van de klant -->
                 <a href="{{ url_for('klant_bp.klant_detail', klant_id=klant.id) }}">Bekijk</a>
             </td>
         </tr>
@@ -57,10 +84,9 @@
 </table>
 
 <div class="back-link">
+    <!-- Navigatie teruglinks -->
     <a href="{{ url_for('klant_bp.klanten') }}">← Terug naar klantenlijst</a>
-    <br>
-    <br>
-    <br>
+    <br><br><br>
     <a class="terug" href="/">← Terug naar startpagina</a>
 </div>
 
