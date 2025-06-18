@@ -1,62 +1,97 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- Documenttaal is Nederlands -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Klachtenoverzicht</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/klachten.css') }}">
+    <!-- Tekencodering voor speciale karakters zoals é, ü enz. -->
 
+    <title>Klachtenoverzicht</title>
+    <!-- Titel die getoond wordt in de browser tab -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/klachten.css') }}">
+    <!-- CSS-bestand voor de styling van deze pagina -->
 </head>
+
 <body>
     <h1>Alle Klachten 🩺</h1>
+    <!-- Hoofdtitel van de pagina -->
 
     <div class="zoekveld-container">
+        <!-- Container voor zoekveld -->
         <input type="text" id="zoekveld" class="zoekveld" placeholder="Zoek een klacht..." onkeyup="filterKlachten()">
+        <!-- Zoekveld waarmee live gefilterd kan worden -->
     </div>
 
     <ul id="klachten-lijst">
-    <a class="terug" href="/">← Terug naar startpagina</a>
-    <br>
-    <br>
-        {% for klacht in klachten %}
-            <li>
-<div class="klacht-titel" onclick="toggleBeschrijving('{{ loop.index0 }}')">
+        <!-- Begin van de lijst met klachten -->
 
+        <a class="terug" href="/">← Terug naar startpagina</a>
+        <!-- Navigatielink naar de homepage -->
+
+        <br><br>
+
+        {% for klacht in klachten %}
+            <!-- Loop door alle klachten uit de backend -->
+
+            <li>
+                <!-- Elke klacht in een lijstitem -->
+
+                <div class="klacht-titel" onclick="toggleBeschrijving('{{ loop.index0 }}')">
+                    <!-- Klikbare titel van de klacht, toont of verbergt beschrijving -->
 
                     <span class="icoon" id="icoon-{{ loop.index0 }}">🔽</span>
+                    <!-- Pijl omlaag of omhoog voor visuele feedback -->
+
                     {{ klacht[1] }}
+                    <!-- De naam van de klacht uit de database (klacht[1] is de naam) -->
                 </div>
+
                 <div class="beschrijving" id="beschrijving-{{ loop.index0 }}">
+                    <!-- Beschrijving van de klacht (klacht[2] is de beschrijving) -->
                     {{ klacht[2] }}
                     <br>
-                    <a class="meer-info" href="{{ url_for('klacht_bp.klacht_detail', klacht_naam=klacht[1]) }}">➡️ Bekijk gekoppelde planten</a>
+                    <a class="meer-info" href="{{ url_for('klacht_bp.klacht_detail', klacht_naam=klacht[1]) }}">
+                        ➡️ Bekijk gekoppelde planten
+                    </a>
+                    <!-- Link naar de detailpagina waar je gekoppelde planten kunt zien -->
                 </div>
             </li>
         {% endfor %}
+        <!-- Einde van for-loop -->
     </ul>
 
-<a class="terug" href="{{ url_for('index_bp.index') }}">← Terug naar startpagina</a>
-
+    <a class="terug" href="{{ url_for('index_bp.index') }}">← Terug naar startpagina</a>
+    <!-- Nog een terug-link onderaan voor gemak -->
 
     <script>
-function toggleBeschrijving(id) {
-    const beschrijving = document.getElementById('beschrijving-' + id);
-    const icoon = document.getElementById('icoon-' + id);
+        // Functie om de beschrijving van een klacht te tonen/verbergen
+        function toggleBeschrijving(id) {
+            const beschrijving = document.getElementById('beschrijving-' + id);
+            const icoon = document.getElementById('icoon-' + id);
 
-    const isVisible = beschrijving.style.display === 'block';
-    beschrijving.style.display = isVisible ? 'none' : 'block';
-    icoon.textContent = isVisible ? '🔽' : '🔼';
-}
+            const isVisible = beschrijving.style.display === 'block';
+            // Toggle weergave: block of none
+            beschrijving.style.display = isVisible ? 'none' : 'block';
+            icoon.textContent = isVisible ? '🔽' : '🔼';
+            // Wijzig icoon afhankelijk van status
+        }
 
-
+        // Functie om te filteren op zoekterm in het zoekveld
         function filterKlachten() {
             const zoekveld = document.getElementById('zoekveld').value.toLowerCase();
+            // Haal waarde op en zet om naar kleine letters
+
             const klachtenLijst = document.getElementById('klachten-lijst');
             const klachten = klachtenLijst.getElementsByTagName('li');
+            // Haal alle lijstitems op
 
             for (let i = 0; i < klachten.length; i++) {
                 const titelElement = klachten[i].getElementsByClassName('klacht-titel')[0];
                 const titelText = titelElement.textContent.toLowerCase();
 
+                // Toon of verberg klacht op basis van zoekterm
                 if (titelText.includes(zoekveld)) {
                     klachten[i].style.display = '';
                 } else {
