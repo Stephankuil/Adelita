@@ -197,4 +197,34 @@ def nieuwe_klant():
     cursor.execute("""
         INSERT INTO klanten (naam, emailadres, telefoon, adres)
         VALUES (?, ?, ?, ?)
-    """, (naam, e
+    """, (naam, email, telefoon, adres))
+
+    klant_id = cursor.lastrowid
+    conn.commit()
+    conn.close()
+
+    # Stuur gebruiker door naar de klant-detailpagina
+    return redirect(url_for('klant_bp.klant_detail', klant_id=klant_id))
+
+# Route voor het toevoegen van een nieuwe afspraak aan een klant
+@klant_bp.route('/nieuwe_afspraak/<int:klant_id>', methods=['POST'])
+def nieuwe_afspraak(klant_id):
+    datum = request.form['datum']
+    tijd = request.form['tijd']
+    datumtijd = f"{datum} {tijd}"
+
+    onderwerp = request.form['onderwerp']
+    locatie = request.form['locatie']
+
+    conn = sqlite3.connect("fytotherapie.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO afspraken (klant_id, datumtijd, onderwerp, locatie)
+        VALUES (?, ?, ?, ?)
+    """, (klant_id, datumtijd, onderwerp, locatie))
+
+    conn.commit()
+    conn.close()
+
+    return redirect(url_for('klant_bp.klant_detail', klant_id=klant_id))
