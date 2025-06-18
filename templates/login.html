@@ -1,31 +1,49 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- De taal van het document is Nederlands -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <!-- UTF-8 tekencodering voor correcte weergave van speciale tekens -->
 
+    <title>Login</title>
+    <!-- Titel van de pagina zoals weergegeven in het browsertabblad -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <!-- Koppel een extern CSS-bestand voor de loginpagina styling -->
 </head>
+
 <body>
 
 <div class="login-container">
+    <!-- Container voor het loginformulier -->
+
     <h1>Inloggen</h1>
+    <!-- Hoofdtitel van de pagina -->
 
     {% if foutmelding %}
+        <!-- Als er een foutmelding is (bv. onjuiste login), toon deze -->
         <p class="foutmelding">{{ foutmelding }}</p>
     {% endif %}
 
     <form method="POST">
+        <!-- Formulier met POST-verzoek voor inloggen -->
+
         <label>Gebruikersnaam</label>
         <input type="text" name="gebruikersnaam" required>
+        <!-- Tekstveld voor gebruikersnaam (verplicht) -->
 
         <label>Wachtwoord</label>
         <input type="password" name="wachtwoord" required>
+        <!-- Wachtwoordveld (verplicht) -->
 
         <button type="submit">Inloggen</button>
+        <!-- Knop om het formulier te versturen -->
     </form>
 
     <div class="link">
+        <!-- Link naar de registratiepagina -->
         Nog geen account? <a href="{{ url_for('index_bp.registreren') }}">Registreer hier</a>
     </div>
 </div>
