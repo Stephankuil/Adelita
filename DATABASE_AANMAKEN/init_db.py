@@ -1,14 +1,14 @@
 import sqlite3
-from DATABASE_AANMAKEN.planten_met_info import planten_info
-from Supplementen_lijst import supplementen
-# Verbind met de database
+from DATABASE_AANMAKEN.planten_met_info import planten_info  # Importeer plantgegevens uit extern bestand
+from Supplementen_lijst import supplementen  # Importeer supplementgegevens
+
+# Verbind met de SQLite-database (maakt bestand aan als het nog niet bestaat)
 conn = sqlite3.connect('../fytotherapie.db')
 cursor = conn.cursor()
 
-# Voer het SQL-script uit voor het aanmaken van alle tabellen
+# Voer SQL-script uit voor het aanmaken van alle benodigde tabellen als ze nog niet bestaan
 cursor.executescript("""
-
--- Tabel voor planten
+-- Tabel voor planteninformatie
 CREATE TABLE IF NOT EXISTS planten (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     naam TEXT NOT NULL UNIQUE,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS klachten (
     beschrijving TEXT
 );
 
--- Tussentabel planten-klachten
+-- Koppeltabel voor relatie tussen planten en klachten
 CREATE TABLE IF NOT EXISTS plant_klacht (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     plant_id INTEGER NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS plant_klacht (
     FOREIGN KEY (klacht_id) REFERENCES klachten(id)
 );
 
--- Klanten en gerelateerde tabellen
+-- Tabel voor klantgegevens
 CREATE TABLE IF NOT EXISTS klanten (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     naam TEXT NOT NULL,
@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS klanten (
     adres TEXT
 );
 
+-- Notities per klant
 CREATE TABLE IF NOT EXISTS notities (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     klant_id INTEGER,
@@ -56,6 +57,7 @@ CREATE TABLE IF NOT EXISTS notities (
     FOREIGN KEY (klant_id) REFERENCES klanten(id)
 );
 
+-- Afspraken met klanten
 CREATE TABLE IF NOT EXISTS afspraken (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     klant_id INTEGER,
@@ -65,6 +67,7 @@ CREATE TABLE IF NOT EXISTS afspraken (
     FOREIGN KEY (klant_id) REFERENCES klanten(id)
 );
 
+-- Behandelingen die zijn uitgevoerd
 CREATE TABLE IF NOT EXISTS behandelingen (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     klant_id INTEGER,
@@ -73,6 +76,7 @@ CREATE TABLE IF NOT EXISTS behandelingen (
     FOREIGN KEY (klant_id) REFERENCES klanten(id)
 );
 
+-- Klachten gekoppeld aan behandelingen
 CREATE TABLE IF NOT EXISTS behandeling_klacht (
     behandeling_id INTEGER,
     klacht_id INTEGER,
@@ -80,12 +84,15 @@ CREATE TABLE IF NOT EXISTS behandeling_klacht (
     FOREIGN KEY (klacht_id) REFERENCES klachten(id)
 );
 
+-- Planten gekoppeld aan behandelingen
 CREATE TABLE IF NOT EXISTS behandeling_plant (
     behandeling_id INTEGER,
     plant_id INTEGER,
     FOREIGN KEY (behandeling_id) REFERENCES behandelingen(id),
     FOREIGN KEY (plant_id) REFERENCES planten(id)
 );
+
+-- Supplementenlijst met info
 CREATE TABLE supplementen (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     naam TEXT NOT NULL,
@@ -99,12 +106,9 @@ CREATE TABLE supplementen (
     bouwstof TEXT,
     eigenschappen TEXT
 );
-
-
 """)
 
-
-# Voeg planten toe als ze nog niet bestaan
+# Voeg planten toe aan de database, maar alleen als ze nog niet bestaan
 for plant in planten_info:
     cursor.execute("SELECT id FROM planten WHERE naam = ?", (plant["naam"],))
     result = cursor.fetchone()
@@ -123,16 +127,15 @@ for plant in planten_info:
             plant["gebruikt_plantendeel"],
             plant["aanbevolen_combinaties"],
             plant["niet_te_gebruiken_bij"],
-            plant.get("categorie_kleur", ""),
+            plant.get("categorie_kleur", ""),  # optioneel veld
             plant["details"],
             plant["afbeelding"]
         ))
     else:
         print(f"⏩ Plant '{plant['naam']}' bestaat al, overslaan.")
 
-
+# Voeg supplementen toe aan de database, als ze nog niet bestaan
 for supplement in supplementen:
-    # Check of supplement al bestaat (optioneel)
     cursor.execute("SELECT id FROM supplementen WHERE naam = ?", (supplement["naam"],))
     result = cursor.fetchone()
 
@@ -159,13 +162,10 @@ for supplement in supplementen:
     else:
         print(f"⏩ Bestaat al: {supplement['naam']}")
 
-
-
-
-
-
+# Geef het aantal supplementen dat is verwerkt
 print(f"{len(supplementen)} supplement(en) toegevoegd aan de database!")
-# Commit & sluit
+
+# Sla alle wijzigingen op en sluit de databaseverbinding
 conn.commit()
 conn.close()
 
