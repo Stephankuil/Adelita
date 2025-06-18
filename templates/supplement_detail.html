@@ -1,9 +1,17 @@
 <!DOCTYPE html>
+<!-- HTML5 documenttype -->
 <html lang="nl">
+<!-- Pagina is geschreven in het Nederlands -->
+
 <head>
     <meta charset="UTF-8">
+    <!-- UTF-8 tekencodering voor speciale tekens -->
+
     <title>{{ supplement['naam'] }}</title>
+    <!-- Dynamische titel met de naam van het supplement -->
+
     <style>
+        /* Algemene body-styling */
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #f0f4f1;
@@ -11,12 +19,14 @@
             color: #2e7d32;
         }
 
+        /* Titelstijl */
         h1 {
             text-align: center;
             color: #2e7d32;
             margin-bottom: 30px;
         }
 
+        /* Container voor supplementinfo */
         .container {
             max-width: 700px;
             margin: auto;
@@ -26,15 +36,18 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
+        /* Paragraafstijl */
         p {
             margin-bottom: 15px;
             line-height: 1.6;
         }
 
+        /* Duidelijkere tekst voor labels */
         strong {
             color: #1b5e20;
         }
 
+        /* Linkstijl */
         a {
             display: inline-block;
             margin-top: 20px;
@@ -46,27 +59,50 @@
             transition: background-color 0.2s;
         }
 
+        /* Link hover-effect */
         a:hover {
             background-color: #c8e6c9;
         }
     </style>
 </head>
+
 <body>
 
     <h1>{{ supplement['naam'] }}</h1>
+    <!-- Titel van de pagina, met de naam van het supplement -->
 
     <div class="container">
+        <!-- Container met alle eigenschappen van het supplement -->
+
         <p><strong>Andere Namen:</strong> {{ supplement['andere_namen'] or '-' }}</p>
+        <!-- Alternatieve namen van het supplement -->
+
         <p><strong>Lost Op In:</strong> {{ supplement['lost_op_in'] or '-' }}</p>
+        <!-- Oplosbaarheid van het supplement -->
+
         <p><strong>Eigenschap/Functie:</strong> {{ supplement['eigenschap_functie'] or '-' }}</p>
+        <!-- Wat doet het supplement in het lichaam -->
+
         <p><strong>Bij Tekort:</strong> {{ supplement['bij_tekort'] or '-' }}</p>
+        <!-- Gevolgen van tekort aan dit supplement -->
+
         <p><strong>Inzetten Bij:</strong> {{ supplement['inzetten_bij'] or '-' }}</p>
+        <!-- Wanneer wordt dit supplement aangeraden -->
+
         <p><strong>Voedingsbronnen:</strong> {{ supplement['voedingsbronnen'] or '-' }}</p>
+        <!-- Natuurlijke bronnen waar dit supplement in zit -->
+
         <p><strong>Bijzonderheden:</strong> {{ supplement['bijzonderheden'] or '-' }}</p>
+        <!-- Extra relevante informatie -->
+
         <p><strong>Bouwstof:</strong> {{ supplement['bouwstof'] or '-' }}</p>
+        <!-- Of het supplement als bouwstof wordt gebruikt in het lichaam -->
+
         <p><strong>Eigenschappen:</strong> {{ supplement['eigenschappen'] or '-' }}</p>
+        <!-- Fysieke of medische eigenschappen van het supplement -->
 
         <a href="{{ url_for('supplement_bp.toon_supplementen') }}">← Terug naar overzicht</a>
+        <!-- Link terug naar het overzicht van alle supplementen -->
     </div>
 
 </body>
