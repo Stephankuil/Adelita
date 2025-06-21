@@ -1,12 +1,12 @@
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for, Blueprint
+from flask import render_template, Blueprint
 
 # Maak een blueprint aan voor routes die met klachten te maken hebben
-klacht_bp = Blueprint('klacht_bp', __name__)
+klacht_bp = Blueprint("klacht_bp", __name__)
 
 
 # Route voor het overzicht van alle klachten
-@klacht_bp.route('/klachten')
+@klacht_bp.route("/klachten")
 def klachten():
     # Verbind met de database
     conn = sqlite3.connect("fytotherapie.db")
@@ -24,14 +24,16 @@ def klachten():
 
 
 # Route voor de detailpagina van een specifieke klacht (inclusief koppel-interface)
-@klacht_bp.route('/klacht/<klacht_naam>')
+@klacht_bp.route("/klacht/<klacht_naam>")
 def klacht_detail(klacht_naam):
     # Verbind met de database
     conn = sqlite3.connect("fytotherapie.db")
     cursor = conn.cursor()
 
     # Haal het ID en de beschrijving op van de opgegeven klacht
-    cursor.execute("SELECT id, beschrijving FROM klachten WHERE naam = ?", (klacht_naam,))
+    cursor.execute(
+        "SELECT id, beschrijving FROM klachten WHERE naam = ?", (klacht_naam,)
+    )
     klacht_row = cursor.fetchone()
 
     # Als de klacht niet bestaat, geef een foutmelding terug
@@ -42,11 +44,14 @@ def klacht_detail(klacht_naam):
     klacht_id, beschrijving = klacht_row
 
     # Haal de namen op van alle planten die gekoppeld zijn aan deze klacht
-    cursor.execute("""
+    cursor.execute(
+        """
         SELECT planten.naam FROM planten
         JOIN plant_klacht ON planten.id = plant_klacht.plant_id
         WHERE plant_klacht.klacht_id = ?
-    """, (klacht_id,))
+    """,
+        (klacht_id,),
+    )
     gekoppelde_planten = [r[0] for r in cursor.fetchall()]
 
     # Haal alle planten op (voor het tonen van een keuzelijst om te koppelen)
@@ -63,5 +68,5 @@ def klacht_detail(klacht_naam):
         beschrijving=beschrijving,  # Beschrijving van de klacht
         gekoppelde_planten=gekoppelde_planten,  # Lijst met gekoppelde planten
         alle_planten=alle_planten,  # Alle beschikbare planten
-        klacht_id=klacht_id  # ID van de klacht (nodig voor formulieren)
+        klacht_id=klacht_id,  # ID van de klacht (nodig voor formulieren)
     )

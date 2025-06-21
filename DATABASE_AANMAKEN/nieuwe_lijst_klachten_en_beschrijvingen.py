@@ -260,7 +260,6 @@ klacht_beschrijvingen_1 = {
     "Kortstondige stress": "Tijdelijke stressreactie op acute situaties die het lichaam kortdurend onder druk zet.",
     "Opvliegers": "Plotselinge warmte-aanvallen vaak voorkomend tijdens de overgang, soms met zweten en roodheid.",
     "Stemmingswisselingen": "Snelle veranderingen in emotionele stemming, vaak zonder duidelijke aanleiding.",
-
     "Nachtelijk transpireren": "Overmatig zweten tijdens de slaap, vaak veroorzaakt door hormonale veranderingen of infecties.",
     "Osteoporose (preventief)": "Ondersteuning bij het voorkomen van botontkalking door het versterken van botstructuren.",
     "Te hoge triglyceriden": "Verhoogde vetwaarden in het bloed die het risico op hart- en vaatziekten kunnen vergroten.",
@@ -314,11 +313,3 @@ klacht_beschrijvingen_1 = {
     "Moeilijk plassen": "Moeizame urinelozing, vaak veroorzaakt door blokkades of infecties van de urinewegen.",
     "Zin in sex": "Behoefte of verlangen naar seksuele activiteit, beïnvloed door fysieke, hormonale en emotionele factoren.",
 }
-
-
-
-
-
-
-
-

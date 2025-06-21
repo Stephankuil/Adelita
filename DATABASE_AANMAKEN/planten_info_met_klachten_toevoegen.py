@@ -1,6 +1,8 @@
 import sqlite3
 from planten_met_info import planten_info  # Lijst met planten en hun toepassingen
-from nieuwe_lijst_klachten_en_beschrijvingen import klacht_beschrijvingen_1  # Dictionary: klacht -> beschrijving
+from nieuwe_lijst_klachten_en_beschrijvingen import (
+    klacht_beschrijvingen_1,
+)  # Dictionary: klacht -> beschrijving
 
 # Verbind met de SQLite-database
 conn = sqlite3.connect("../fytotherapie.db")
@@ -23,7 +25,9 @@ for plant in planten_info:
 
     if isinstance(ruwe_klachten, str):
         # Als string: splits op komma's en maak lijst
-        klachten = [k.strip().capitalize() for k in ruwe_klachten.split(",") if k.strip()]
+        klachten = [
+            k.strip().capitalize() for k in ruwe_klachten.split(",") if k.strip()
+        ]
     elif isinstance(ruwe_klachten, list):
         # Als lijst: schoon alle elementen op
         klachten = [k.strip().capitalize() for k in ruwe_klachten if k.strip()]
@@ -41,7 +45,7 @@ for plant in planten_info:
         if not klacht_result:
             cursor.execute(
                 "INSERT INTO klachten (naam, beschrijving) VALUES (?, ?)",
-                (klacht_naam, beschrijving)
+                (klacht_naam, beschrijving),
             )
             klacht_id = cursor.lastrowid
             print(f"Nieuwe klacht toegevoegd: {klacht_naam} (met beschrijving)")

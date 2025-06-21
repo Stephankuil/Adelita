@@ -1,285 +1,275 @@
 supplementen = [
-  {
-    "naam": "A - retinol",
-    "andere_namen": "Retinylacetaat en palmitaat",
-    "lost_op_in": "Vet",
-    "eigenschap_functie": "Weerstand verhogend, anti-infectie vitamine, anti carcinogene werking (gunstige effect op cel differentiatie), bescherming macula (gele vlek in het oog)\nCarotenen (zonder zuurstofatomen: alfa- en betacaroteen, beta-cryptoxanthine)\nXanthofylen (met zuurstofatomen): luteïne, lycopeen en zeaxanthine\nBetacaroteen bewezen anti oxidatieve werking tegen peroxyl-radicaal (vrije radicaal bij oxidatie vetzuren)",
-    "bij_tekort": "Gezichtsvermogen stoornis, verminderde weerstand infecties, ontwikkeling beenderen en gebit, verlies reuk en gebrek aan eetlust, droge en ruwe huid, allergieën en astma",
-    "inzetten_bij": "Oogproblemen, weerstand bij infectieziekten, ruwe huid, acne, slechte ontwikkeling gebit en beenderen",
-    "voedingsbronnen": "lever, vette vis, visolie, wortelen, broccoli, melk, kaas en boter",
-    "bijzonderheden": "Essentieel\nGeen hoge doseringen inzetten bij zwangerschap (risico op aangeboren afwijkingen)"
-  },
-  {
-    "naam": "D - calciferol",
-    "andere_namen": "",
-    "lost_op_in": "Vet",
-    "eigenschap_functie": "Mensen met donkere huid, kinderen, ouderen, zwangeren en mensen die hun huid bedekken zijn risico groepen.\nBij een tekort, verminderde opname van calcium uit de darm waardoor er een tekort in het bloed dreigt en dat",
-    "bij_tekort": "Rachitis (misvorming beendergestel), slecht tandglazuur, fibromyalgie, zenuwstelsel problemen, osteoporose, spierzwakte, vermoeidheid, pijn in spieren, pijn, minder weerstand",
-    "inzetten_bij": "Verminderde weerstand, osteoporose, vermoeidheid, spier klachten, ontstekingen",
-    "voedingsbronnen": "Vette vis, levertraan\nDoor de huid aangemaakt onder invloed van zonlicht UV-B kracht 3",
-    "bijzonderheden": "In lever omgezet in 25-dihydroxyvitamine D (calcidiol), wat in de nieren en andere weefsels wordt omgezet in"
-  },
-  {
-    "naam": "D - calciferol (vervolg)",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "gaat het lichaam uit de botten halen. Daarom bij kinderen erg belangrijk om rachitis te voorkomen.\nContra indicatie hoge dosis bij hoge bloedspiegel van calcium of fosfor, hyperparathyreoïdie, sarcoïdose (ziekte van het afweersysteem) en nieraandoeningen. De omzetting naar calcitriol is vergroot waardoor het risico op hypercalciëmie toeneemt.",
-    "bij_tekort": "tegen infecties, depressie, verhoogde kans op hart- en vaatziekten en auto immuunziekten, ontstekingen, hypertensie, psoriasis, reumatoïde artritis en darmziekten",
-    "inzetten_bij": "",
-    "voedingsbronnen": "(omzetting cholesterol in cholecalciferol)",
-    "bijzonderheden": "1,25-dihydroxyvitamine D (calcitriol)\nRol D2 (ergocalciferol) nog onduidelijk, spiegel langzamer omhoog, maar ook langzamer omlaag\n100IE=2,5mcg\n1000IE=25mcg"
-  },
-  {
-    "naam": "E - tocoferol",
-    "andere_namen": "",
-    "lost_op_in": "Vet",
-    "eigenschap_functie": "Beschermt tegen oxidatie en vrije radicalen, beschermt meervoudig onverzadigde vetzuren tegen oxidatie, verlaging LDL cholesterol,\nVerbetert doorbloeding en vaatstelsel, oppassen bij bloedverdunners, beschermt structuur bloedvaten, reinigt kalk- en vetafzetting in bloedvaten, voorkomt littekenvorming, effectief antitrombine, splits uriniekristallen bij jicht, tegen veroudering.\nHoge dosering kan ijzergebreksanemie verergeren.",
-    "bij_tekort": "Spierproblemen/verslapping, hartafwijkingen, slappe bloedvaten, vervorming rode bloedcellen, (been)krampen, huidproblemen.\nBij teveel: slapeloosheid, indigestie, verhoogde bloeddruk en diarree",
-    "inzetten_bij": "Voorkomen spierafbraak, als antioxidant, tegen vrije radicalen, tegen aderverkalking, verhoogd LDL cholesterol, jicht,",
-    "voedingsbronnen": "Koudgeperste plantaardige olie, zaden, noten, bladgroenten, eieren en orgaanvlees",
-    "bijzonderheden": "Best opneembaar als alfa-tocoferol\nVeel als antioxidant in supplementen met olie basis.\nAltijd L- of R-, nooit DL- dit is de synthetische variant.\n1IE = 0,67mg\nAnorganisch ijzer vernietigt vit e."
-  },
-  {
-    "naam": "K1 - fyllochinon",
-    "andere_namen": "aka fytomenadion",
-    "lost_op_in": "Vet",
-    "eigenschap_functie": "Activeert de stollingsfactoren in lever, tegen aderverkalking en hart- en vaatziekten, reguleert calciumhuishouding, houdt vaten flexibel, remt aderverkalking, voorkomt botontkalking (betere calciumopname in botten), verbetert insulinegevoeligheid, remt gewrichtsontstekingen, remt cognitieve veroudering, ontstekingsremmend door vorming PGE2 af te remmen (PGE2 = ontstekingsbevorderend hormoon)",
-    "bij_tekort": "Spontane bloedingen (bloedneus, tandvlees), vertraagde stolling (blauwe plekken), langere bloedingsstijd, ook bij menstruatie, osteoporose, vergroot de kans slecht genezende wonden en bloedarmoede.",
-    "inzetten_bij": "",
-    "voedingsbronnen": "K1 vooral in groene groenten, groene thee en algen",
-    "bijzonderheden": "K1 in lever opgeslagen, K2 beter opgenomen en overal in het lichaam aanwezig.\nDoseringen >100mcg icm bloedverdunners alleen in overleg met arts."
-  },
-  {
-    "naam": "K2 - menaquinon",
-    "andere_namen": "aka menachinonen, farmachinon en MK-n",
-    "lost_op_in": "Vet",
-    "eigenschap_functie": "",
-    "bij_tekort": "",
-    "inzetten_bij": "",
-    "voedingsbronnen": "K2 geproduceerd door bacteriën in darmen, alleen bij gezonde darmflora, zuivel, eieren en vlees.",
-    "bijzonderheden": ""
-  },
-  {
-    "naam": "C - ascorbinepalmitaat",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Goed voor de hersenfunctie, detoxifierend en antioxidant, kan toxines en vrije radicalen ontgiften.\nKan goed doordringen in vetachtig weefsel zoals celmembranen en hersenweefsel.\nKan hersenenbarrière passeren. Kan geoxideerde vit E omzetten voor hergebruik.\nNiet insuline afhankelijk voor opname, andere varianten van vit C wel.",
-    "bij_tekort": "",
-    "inzetten_bij": "Verbeteren hersenfunctie",
-    "voedingsbronnen": "",
-    "bijzonderheden": "Ascorbylpalmitaat kan in darm worden opgenomen."
-  },
-
-{
-    "naam": "B1 - thiamine",
-    "andere_namen": "",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, psychisch welzijn, aanmaak rode bloedcellen\nSpecifiek\nProductie energie uit koolhydraten (suikers) in cel\nExtra\nEssentieel voor geheugen, activeert schildklier, betrokken bij productie enzymen, hormonen (insuline) en eiwitten",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nSlechte spijsvertering, slechte eetlust, beriberi (hart- en vaatstelsel aantasting of neurologische klachten zoals verlamming), energietekort in hersenen (overgevoeligheid geluiden, prikkels), concentratie- en geheugenverlies, beenkramp, spierzwakte, nervositeit, depressie",
-    "inzetten_bij": "Alcoholisme, neuropathie, tegen insecten (muggen)",
-    "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nNoten, zuivel, vis, eidooier, groente, fruit, aardappelen, avocado en peulvruchten",
-    "bijzonderheden": "Magnesium nodig voor omzetting naar actieve vorm B1"
-  },
-  {
-    "naam": "B2 - riboflavine",
-    "andere_namen": "aka lactoflavine en vitamine G",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, psychisch welzijn, aanmaak rode bloedcellen\nSpecifiek\nStofwisseling vetzuren, koolhydraten en eiwitten\nExtra\nCelademhaling, groei, herstel en ontwikkeling, vruchtbaarheid, goed voor ogen, antioxidant, gaat ontstekingen tegen, goed voor huid, haar en nagels",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nSlechte spijsvertering, problemen met huid, nagels, haar, rood worden tong, verlaging hemoglobine niveau (bloedarmoede)",
-    "inzetten_bij": "Stress",
-    "voedingsbronnen": "Algemeen\nVlees, granen, noten, zuivel\nSpecifiek\nNoten, zuivel, bladgroenten, broccoli, amandelen",
-    "bijzonderheden": "Heeft gele pigmenten, antioxidant, betrokken bij biochemisch proces B3, B6, B11 en B12, cofactor bij aanmaak glutathion."
-  },
-
-   {
-    "naam": "B3 - niacine",
-    "andere_namen": "aka nicotinezuur en nicotinamide",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, stofwisseling koolhydraten, vetten en eiwitten, enzymen, neurotransmitters en hormonen\nSpecifiek\nBelangrijk bij vorming enzymen NAD en NADP (co-enzym I en II)/betrokken bij >200 biochemische reacties, regulering gezonde bloedlipiden, goed voor bloedcirculatie en betrokken bij schildklierhormoon Thyroxine (T4)\nExtra\nBetere bloedcirculatie, positief effect op HDL-cholesterol (bloedlipidenspiegel), kan bloeddruk verlagen, stimuleert regulatie bloedsuikerspiegel",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nHuidproblemen, hartkwalen, slijmvliesproblemen in mond, tong en darmen, gezwollen rode tong, slapeloosheid, mentale problemen, cholesterolverhoging, dementie, migraine, hoge bloeddruk",
-    "inzetten_bij": "Cognitieve achteruitgang (bijv. Alzheimer), schizofrenie, slapeloosheid, migraine",
-    "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nVis, koffie, pinda’s, dadels, vijgen, pruimen",
-    "bijzonderheden": "Beperkte eigen productie uit tryptofaan, Niacine geeft flush (rood hoofd)/nicotinamide niet, PP-factor (pellagra preventief, voorkomt vitamine deficiëntie ziekte)\nnicotinamide adenine dinucleotide (co-enzym I) en nicotinamide adenine dinucleotide fosfaat (co-enzym II)"
-  },
-
-  {
-    "naam": "B5 - pantotheenzuur",
-    "andere_namen": "3 vormen: calcium pantothenaat, dexpanthenol en panthenol",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, anti-stress hormoon\nSpecifiek\nMetabolisme macronutriënten (koolhydraten, vetten, eiwitten), vorming cholesterol, afbraak en transport vetten, vorming en opbouw vetzuren, aanmaak melatonine\nExtra\nVoortplanting, groei, opbouw hormonen, neurotransmitters, vetstoffen, hemoglobine, gezonde huid, gewicht en geestelijk welzijn vanwege gunstige werking op bijnieren en hypofyse",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nEczeem, spierkrampen, reumatische aandoeningen, krampen, haaruitval, verminderde weerstand, bijnieruitputting",
-    "inzetten_bij": "Stress, blessures, huidproblemen en voor het immuunsysteem",
-    "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nVis, ei, groenten, fruit, zuivel, noten, peulvruchten",
-    "bijzonderheden": "Bouwsteen voor acetyl-co-enzym A (cellulair verbrandingsproces), stimuleert werking vitamine C.\nGaat verloren tijdens bewerken en bewaren van voeding\nPantotheen niet veelvoorkomend, zit dus in veel voedingsmiddelen\nWordt afgebroken door aspirine, antibiotica, koffie, anticonceptiepil en stress"
-  },
-  {
-    "naam": "B6 - Pyridoxal-5-fosfaat (P5P)",
-    "andere_namen": "aka pyridoxine (PN) en Pyridoxamine (PM)",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym voor hormonen en enzymen, aanmaak rode bloedcellen\nSpecifiek\nStofwisseling koolhydraten, vetten en eiwitten, zenuwstelsel, regulatie cholesterol/cholesterolstofwisseling\nExtra\nCelenergie en vetstofwisseling, stimuleert oestrogeen, reguleert natrium/kalium balans, ondersteunt vochthuishouding",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nAcné, bloedarmoede, duizeligheid, PMS, weerstandvermindering, zenuwaandoeningen, oedeem, bloedsuikontregeling, verhoogde uitscheiding calcium, zink en magnesium en lagere koperopname",
-    "inzetten_bij": "PMS (stimuleert oestrogeen) en hormonale migraine samen met magnesium tauraat, zwangerschap misselijkheid",
-    "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nEidooier, banaan, aardappelen, kool, soja",
-    "bijzonderheden": "Verlagen homocysteïne gehalte icm B11 (foliumzuur) en B12.\nGaat verloren tijdens koken, hierdoor vaak tekort.\nP5P best opneembare vorm.\nUitscheiding verhoogt door vit C."
-  },
-  {
-    "naam": "B7 - Inositol",
-    "andere_namen": "",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nVettransport van lever naar cellen, galvorming, insulinewerking, geheugen, concentratie, verbranding van lichaamsvet\nSpecifiek\n",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nEczeem, groeistoornissen, haaruitval, oogaandoeningen, constipatie en leververvetting",
-    "inzetten_bij": "Insulineresistentie, metabool syndroom, vermindering depressie icm met omega 3 en B-complex",
-    "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nLecithine (ei, soja, pitten en plantaardige olie), zuivel",
-    "bijzonderheden": "Kan het lichaam zelf aanmaken.\nCholesterol wordt door inositol kleiner gemaakt."
-  },
-  {
-    "naam": "B8 - (afkorting ontbreekt in afbeelding)",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Met choline tegen leververvetting en gezonde cholesterolspiegel, maakt cholesterol kleiner, goed voor de hersenfunctie",
-    "bij_tekort": "Eczeem",
-    "inzetten_bij": "",
-    "voedingsbronnen": "citrusvruchten, peulvruchten, sperziebonen",
-    "bijzonderheden": "Niet in B-complex"
-  },
-
-  {
-    "naam": "B5 - pantotheenzuur",
-    "andere_namen": "3 vormen: calcium pantothenaat, dexpanthenol en panthenol",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, anti-stress hormoon\nSpecifiek\nMetabolisme macronutriënten (koolhydraten, vetten, eiwitten), vorming cholesterol, afbraak en transport vetten, vorming en opbouw vetzuren, aanmaak melatonine\nExtra\nVoortplanting, groei, opbouw hormonen, neurotransmitters, vetstoffen, hemoglobine, gezonde huid, gewicht en geestelijk welzijn vanwege gunstige werking op bijnieren en hypofyse",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nEczeem, spierkrampen, reumatische aandoeningen, krampen, haaruitval, verminderde weerstand, bijnieruitputting",
-    "inzetten_bij": "Stress, blessures, huidproblemen en voor het immuunsysteem",
-    "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nVis, ei, groenten, fruit, zuivel, noten, peulvruchten",
-    "bijzonderheden": "Bouwsteen voor acetyl-co-enzym A (cellulair verbrandingsproces), stimuleert werking vitamine C.\nGaat verloren tijdens bewerken en bewaren van voeding\nPantotheen niet veelvoorkomend, zit dus in veel voedingsmiddelen\nWordt afgebroken door aspirine, antibiotica, koffie, anticonceptiepil en stress"
-  },
-  {
-    "naam": "B6 - Pyridoxal-5-fosfaat (P5P)",
-    "andere_namen": "aka pyridoxine (PN) en Pyridoxamine (PM)",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym voor hormonen en enzymen, aanmaak rode bloedcellen\nSpecifiek\nStofwisseling koolhydraten, vetten en eiwitten, zenuwstelsel, regulatie cholesterol/cholesterolstofwisseling\nExtra\nCelenergie en vetstofwisseling, stimuleert oestrogeen, reguleert natrium/kalium balans, ondersteunt vochthuishouding",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nAcné, bloedarmoede, duizeligheid, PMS, weerstandvermindering, zenuwaandoeningen, oedeem, bloedsuikontregeling, verhoogde uitscheiding calcium, zink en magnesium en lagere koperopname",
-    "inzetten_bij": "PMS (stimuleert oestrogeen) en hormonale migraine samen met magnesium tauraat, zwangerschap misselijkheid",
-    "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nEidooier, banaan, aardappelen, kool, soja",
-    "bijzonderheden": "Verlagen homocysteïne gehalte icm B11 (foliumzuur) en B12.\nGaat verloren tijdens koken, hierdoor vaak tekort.\nP5P best opneembare vorm.\nUitscheiding verhoogt door vit C."
-  },
-
     {
-      "naam": "B7 - Inositol",
-      "andere_namen": "",
-      "lost_op_in": "Water",
-      "eigenschap_functie": "Algemeen\nVettransport van lever naar cellen, galvorming, insulinewerking, geheugen, concentratie, verbranding van lichaamsvet\nSpecifiek\nMet choline tegen leververvetting en gezonde cholesterolspiegel, maakt cholesterol kleiner, goed voor de hersenfunctie\nExtra\nOpbouw neurotransmitters, aanmaak celmembranen (icm choline), groei lichaamscellen (haargroei), kalmerend en stress verlagend",
-      "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nEczeem, groeistoornissen, haaruitval, oogaandoeningen, constipatie en leververvetting",
-      "inzetten_bij": "Insulineresistentie, metabool syndroom, vermindering depressie icm met omega 3 en B-complex",
-      "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nLecithine (ei, soja, pitten en plantaardige olie), zuivel, citrusvruchten, peulvruchten, sperziebonen",
-      "bijzonderheden": "Kan het lichaam zelf aanmaken.\nCholesterol wordt door inositol kleiner gemaakt.\nNiet in B-complex"
+        "naam": "A - retinol",
+        "andere_namen": "Retinylacetaat en palmitaat",
+        "lost_op_in": "Vet",
+        "eigenschap_functie": "Weerstand verhogend, anti-infectie vitamine, anti carcinogene werking (gunstige effect op cel differentiatie), bescherming macula (gele vlek in het oog)\nCarotenen (zonder zuurstofatomen: alfa- en betacaroteen, beta-cryptoxanthine)\nXanthofylen (met zuurstofatomen): luteïne, lycopeen en zeaxanthine\nBetacaroteen bewezen anti oxidatieve werking tegen peroxyl-radicaal (vrije radicaal bij oxidatie vetzuren)",
+        "bij_tekort": "Gezichtsvermogen stoornis, verminderde weerstand infecties, ontwikkeling beenderen en gebit, verlies reuk en gebrek aan eetlust, droge en ruwe huid, allergieën en astma",
+        "inzetten_bij": "Oogproblemen, weerstand bij infectieziekten, ruwe huid, acne, slechte ontwikkeling gebit en beenderen",
+        "voedingsbronnen": "lever, vette vis, visolie, wortelen, broccoli, melk, kaas en boter",
+        "bijzonderheden": "Essentieel\nGeen hoge doseringen inzetten bij zwangerschap (risico op aangeboren afwijkingen)",
     },
-
-  {
-    "naam": "B8 - Biotine",
-    "andere_namen": "aka B7 en vitamine H",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym voor hormonen en enzymen, neurotransmitters, aanmaak rode bloedcellen\nSpecifiek\nHuid, haar, nagels, Stofwisseling koolhydraten, vetten en eiwitten, werking talgklierjes, verhoogt tolerantie zon, gekoppeld aan histonen (eiwitten voor compact DNA)",
-    "bij_tekort": "Roos, haaruitval, grijs haar, hormoon disbalans, huidproblemen",
-    "inzetten_bij": "Haaruitval, wens voor gezond haar, huid en nagels",
-    "voedingsbronnen": "Algemeen\nZuivel, ei, noten, groenten, soja",
-    "bijzonderheden": "Kan aangemaakt worden in darm, B5 verlaagt opname B8, ander tijdstip innemen\nWerkt nauw samen met B6, B11 en B12."
-  },
-  {
-    "naam": "B11 - Foliumzuur",
-    "andere_namen": "In USA en België vitamine B9, folaat",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym voor hormonen en enzymen, neurotransmitters, eiwitten, aanmaak rode bloedcellen\nSpecifiek\nVorming DNA/RNA, nieuwe lichaamscellen, herstel beschadigd weefsel, en methylerying (stoffen en cellen maken/dupliceren)\nExtra\nVerlaagt homocysteïne icm B6 en B12, eetlust, groei, vruchtbaarheid, bevordert melksecretie\nNatuurlijke vorm (tetrahydrofolaat) niet als supplement omdat onstabiel. Omzetting synthetische vorm naar biologisch beschikbare vorm is complex en inefficiënt.",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nBloedarmoede, slapeloosheid, rode tong, verhoogd homocysteïne, prikkelbaar, duizelig, open ruggetje en neurologische klachten",
-    "inzetten_bij": "Zwangerschap (wens), anemie (bloedarmoede)",
-    "voedingsbronnen": "Algemeen\nGranen (niet in vlees)\nSpecifiek\nZuivel, noten, groenten, zalm, soja",
-    "bijzonderheden": "Inname icm vit B12, hoge inname kan zink opname verminderen en vit. C vermindert foliumzuur uitscheiding, groene thee kan foliumzuur verlagen.\n5-MTHF Quatrefolic is actieve en stabiele vorm. Bij hoge dosering ook B11 doseren."
-  },
-  {
-    "naam": "B12 - Cobalamine",
-    "andere_namen": "",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym neurotransmitters, aanmaak rode bloedcellen, goed functioneren zenuwstelsel, omzetten caroteen naar vit. A, ondersteunt ijzer\nSpecifiek\nMethylcobalamine = aanmaak DNA en myeline en neurotransmitters, cel herstel, hersenfunctie, neurologische schade en beenmergfalen\nExtra\nVoor opname afhankelijk van IF (intrinsieke factor), IF wordt aangemaakt in maag en gebonden aan B12 in darm, samen aan einde dunne darm opgenomen",
-    "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nBloedarmoede, vergeetachtigheid, dementie, trillen, duizeligheid\nverhoogd homocysteïne, depressie, zwakke weerstand\nZeer veel symptomen op psychisch, neurologisch en lichamelijk vlak.",
-    "inzetten_bij": "Stress, spanning, maag- en darm aandoeningen ivm IF, vegetariërs, slecht werkende schildklier, tekort aan ijzer, calcium, B6 en vit. C\nMethylcobalamine (actieve vorm) bij neurologische en lichamelijke klachten.\nAdenosylcobalamine bij vermoeidheid",
-    "voedingsbronnen": "Dierlijke producten",
-    "bijzonderheden": "Samen met B11 belangrijk voor vorming DNA en methylerying.\nB11 maskeert een tekort aan B12.\n>1000mg B11 per dag ook B12 suppleren.\nKan ook bij lagere doseringen."
-  },
-
-  {
-    "naam": "C - ascorbinezuur",
-    "andere_namen": "Ester vorm is gebufferde vit. C",
-    "lost_op_in": "Water",
-    "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym o.a. neurotransmitters en prostaglandines (hormoonachtige stof), antioxidant, aanmaak collageen- en bindweefsel, immuunsysteem, vaatwanden en tegen bloedingen\nSpecifiek\nElasticiteit bloedvaten, alle weefsels voor stevigheid (pezen, huid, spieren, hart, botten, bindweefsel), omzetting cholesterol in gal, steroïde hormonen, carnitine, afbraak tyrosine\nExtra\nNatuurlijk vorm is linksdraaiend (L-ascorbinezuur), gebonden varianten (natrium, calcium, magnesium en zink) zijn niet zuur en Ester-C zijn niet zuur, eliminatie zware metalen, voorkomt omzetting nitraat/nitriet in nitrosaminen, verhoogt opname en opslag van ijzer, zink, chroom en mangaan (dus tegelijk met vit. C suppleren), verhoogt uitscheiding B6",
-    "bij_tekort": "Bloedend tandvlees, snel blauwe plekken (ook bij vit K), spataderen, aambeien",
-    "inzetten_bij": "+zink: weerstand, verkoudheid en groep\n+quercetine: hooikoorts\n+OPC: spataderen\n+glutathion: ontgifting en antioxidant\nBloedvat problemen\nGeen hoge dosis bij chemotherapie, bestraling, ijzerstapeling, sterk verminderde nierfunctie, zwangerschap en lactatie.",
-    "voedingsbronnen": "Alleen plantaardig\nCitrusvruchten, spruitjes, tomaten, broccoli, boerenkool en paprika",
-    "bijzonderheden": "Gaat verloren bij bewerken en bewaren voedsel en blootstellen aan lucht, warmte en licht.\nKomt meest voor in lever, skeletspieren, hypofyse en bijnieren.\nAlcohol, aspirine, stress en infecties verhogen vit. C behoefte.\nGebufferde vorm geeft geen zuurbelasting en betere opname = ester-C.\nBasissuppletie."
-  },
-
-
-  {
-    "naam": "Calcium",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Gezonde en stevige botten en tanden, signaaloverdracht langs de celmembranen, zenuwprikkeloverdracht/neurotransmitters (elektrische prikkel), prikkelgeleiding hart, afgifte hormonen en bloedstolling. Bloeddruk regulatie, groei en samentrekking spieren. Ondersteunt enzymen. Gaat opstapeling van zuren (o.a. vetzuren) en basen in het bloed tegen.\nParathormoon (actieve vorm van vitamine D), calcitonine (schildklier) en calcium zelf reguleren calcium transport in maag darmkanaal, botten en nieren.\nCalciumniveau in bloed zegt niets over calcium in het lichaam. Niet snel supplementeren.",
-    "bij_tekort": "Hartkloppingen, hartkwalen, spierzwakte, spierpijn, vermoeidheid, prikkelbaarheid, hoog cholesterol, verhoogde triglyceriden.",
-    "inzetten_bij": "Behoud sterke botten, altijd icm K2 en D3",
-    "voedingsbronnen": "Zuivel, groenten, granen, noten, pitten en bonen.",
-    "bijzonderheden": "Elektrolyt\nMeest voorkomend mineraal in ons lichaam. Botten en tanden zijn opslagplaats. Zit in bloed, lichaamsvloeistof, celmembranen en intracellulaire structuren. Kan ijzer opname verminderen."
-  },
-  {
-    "naam": "Kalium",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Elektrisch functioneren van lichaamscellen. Spiercontractie, zuurgaard in het lichaam, omzetten glycogeen in de lever, Kaliumrijk dieet ondersteunt gezonde nierfunctie.\nHelpt samen met natrium de bloeddruk reguleren, activiteit zenuwstelsel en enzymen.",
-    "bij_tekort": "Algehele zwakte en stijfheid, slapeloosheid, zwakke reflexen, onregelmatige pols, hartslag, hartspierschade, opgezwette buik.",
-    "inzetten_bij": "Slechte spijsvertering, insuline problemen en hart- en vaatproblemen",
-    "voedingsbronnen": "Algemeen\nVlees\nSpecifiek\nVis, citrusvruchten, bladgroenten, broccoli, bloemkool, bananen, tomaten.",
-    "bijzonderheden": "Elektrolyt\nOpgeslagen in cellen."
-  },
-  {
-    "naam": "Magnesium",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Natuurlijk kalmeringsmiddel, stressreductie, betrokken bij meer dan 300 enzymatische reacties, stofwisseling koolhydraten, eiwitten, koolhydraten en vetten, zenuwgeleiding, spiercontractie, cholesterolstofwisseling, temperatuurregulatie, detoxificatie en gezonde botten en tanden (tandglazuur). Krachtig tegen stress, depressie en krampen. Noodzakelijk voor de calciumstofwisseling.\nBevindt zich 50% in organen en weefsels en 50% in botten (met calcium en fosfor). Slechts 1% in het bloed.",
-    "bij_tekort": "Ooglidtrillingen, krampen en spasmen, verhoogde schrikreactie, wakker schrikken omdat je denkt dat je valt. Stress is een magnesium rover!\nMigraine, hartritmestoornissen, kramp, rust in hoofd en PMS - tauraat\nFibromyalgie en CYS - malaat\nMentale functies en ontgifting van amalgaam/kwik - bisglycinaat",
-    "inzetten_bij": "Spierkramp, hartproblemen, hoge bloeddruk, diabetes, verbeteren insulinegevoeligheid, fibromyalgie, migraine, stress, hormonale stoornissen (PMS)",
-    "voedingsbronnen": "",
-    "bijzonderheden": "Elektrolyt\nWordt bij veel stress veel door lichaam gebruikt.\nAbsorptie is afhankelijk van vit D.\nBinding is essentieel voor opname. Goed opneembaar zijn bindingen aan tauraat (taurine), malaat (appelzuur) en bisglycinaat (glycine)."
-  },
-
-  {
-    "naam": "Chroom",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Opname insuline door cellen. Belangrijk voor koolhydraat-, eiwit- en vetmetabolisme. Vorming van vetzuren, groeiproces. Maakt deel uit van de GTF (glucose tolerantie factor). Vetopslag in lichaam onder controle houden en verbetert ratio LDL/HDL. Behoud stabiele bloedsuikerspiegel.",
-    "bij_tekort": "Verhoogde glucose- en cholesterolwaarden. Bij ernstig tekort ook neuropathie en gewichtsverlies.",
-    "inzetten_bij": "Overgewicht, insulineresistentie, diabetes en onderdrukken honger gevoel",
-    "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nPlantaardige olie, groente en zuivel",
-    "bijzonderheden": "Chroom, B3 en D3 versterken elkaar bij verbeteren glucosestofwisseling en bloedsuikerspiegel.\nDit geldt ook voor de combi met alfa-liponzuur en biotine."
-  },
-  {
-    "naam": "Jodium",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Vorming schildklierhormoon thyroxine (T4) en tri-jodothyronine (T3). Deze zorgen voor stofwisseling en lichaamstemperatuur. Jodium helpt bij afbraak voedingsmiddelen (spijsvertering), in de maag bindt het chloride (tekort aan chloride veroorzaakt maaguurtekort), stimuleert HDL-cholesterol, bij kinderen en zwangeren onmisbaar voor ontwikkeling hersenen.\nSchildklierhormonen worden gemaakt uit jodium en tyrosine. Essentieel voor groei botten, spieren en zenuwweefsel. Energieverbruik, verbranding vetten, reguleren hartslag en bloeddruk.",
-    "bij_tekort": "Hypothyreoide, kropvorming (struma), vertraagde groei en ontwikkeling, depressie, prikkelbaarheid, motorische achterstand, droge of gebarsten huid.",
-    "inzetten_bij": "Traag werkende schildklier, omzetten T4 naar T3 (combineren met selenium, zink, L-Tyrosine)",
-    "voedingsbronnen": "Vis, zeewier, gejodeerd brood en zout, zeezout",
-    "bijzonderheden": "20% opgeslagen in de huid, veel zweten kan leiden tot tekort, maaguurtekort kan oprispingen veroorzaken.\nVoorzichtig bij hyperthyreoide en ziekte van hashimoto.\nTekort aan selenium, zink, ijzer en vanadium versterkt hypothyreoide en versterkt daarmee effect van jodiumtekort."
-  },
-  {
-    "naam": "Selenium",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Onderdeel van ontgiftig mechanisme, verhoogt veerkracht weefsels, lever ontgifting, versterkt het immuunsysteem.\nBelangrijk enzym onderdeel van glutathion (sterke antioxidant), onderdeel van enzym glutathion peroxidase (GPx, zet waterstof om in water). Beschermt tegen invloeden van zuurstof, dus tegen veroudering, belasting zware metalen onschadelijk maken, rol binnen jodium stofwisseling en ondersteunt schildklierwerking (omzetten T4 naar T3).\nEnergieproductie door samen met co-enzym Q10 (functioneren mitochondriën en energieproductie daarin), reguleren bloeddruk.",
-    "bij_tekort": "Vroegtijdig verlies van weerstand en ouderdomsverschijnselen, versnelde werking hartspier, achteruitgang huid elasticiteit.",
-    "inzetten_bij": "Traag schildklier en verminderde vruchtbaarheid mannen.",
-    "voedingsbronnen": "Lever, schaaldieren, knoflook, uien, broccoli, paranoten, champignons en tomaten.",
-    "bijzonderheden": "Werking wordt sterker icm vit E, zeker bij onschadelijk maken zware metalen.\nSlechte omzetting van T4 naar T3. Bij voldoende selenium is er een goede omzetting van T4 naar T3 en wordt jodium gebruikt om meer T4 te maken. Bij selenium suppletie kan hypothyreoide daarom verergeren als er een tekort is aan jodium."
-  },
-      {
+    {
+        "naam": "D - calciferol",
+        "andere_namen": "",
+        "lost_op_in": "Vet",
+        "eigenschap_functie": "Mensen met donkere huid, kinderen, ouderen, zwangeren en mensen die hun huid bedekken zijn risico groepen.\nBij een tekort, verminderde opname van calcium uit de darm waardoor er een tekort in het bloed dreigt en dat",
+        "bij_tekort": "Rachitis (misvorming beendergestel), slecht tandglazuur, fibromyalgie, zenuwstelsel problemen, osteoporose, spierzwakte, vermoeidheid, pijn in spieren, pijn, minder weerstand",
+        "inzetten_bij": "Verminderde weerstand, osteoporose, vermoeidheid, spier klachten, ontstekingen",
+        "voedingsbronnen": "Vette vis, levertraan\nDoor de huid aangemaakt onder invloed van zonlicht UV-B kracht 3",
+        "bijzonderheden": "In lever omgezet in 25-dihydroxyvitamine D (calcidiol), wat in de nieren en andere weefsels wordt omgezet in",
+    },
+    {
+        "naam": "D - calciferol (vervolg)",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "gaat het lichaam uit de botten halen. Daarom bij kinderen erg belangrijk om rachitis te voorkomen.\nContra indicatie hoge dosis bij hoge bloedspiegel van calcium of fosfor, hyperparathyreoïdie, sarcoïdose (ziekte van het afweersysteem) en nieraandoeningen. De omzetting naar calcitriol is vergroot waardoor het risico op hypercalciëmie toeneemt.",
+        "bij_tekort": "tegen infecties, depressie, verhoogde kans op hart- en vaatziekten en auto immuunziekten, ontstekingen, hypertensie, psoriasis, reumatoïde artritis en darmziekten",
+        "inzetten_bij": "",
+        "voedingsbronnen": "(omzetting cholesterol in cholecalciferol)",
+        "bijzonderheden": "1,25-dihydroxyvitamine D (calcitriol)\nRol D2 (ergocalciferol) nog onduidelijk, spiegel langzamer omhoog, maar ook langzamer omlaag\n100IE=2,5mcg\n1000IE=25mcg",
+    },
+    {
+        "naam": "E - tocoferol",
+        "andere_namen": "",
+        "lost_op_in": "Vet",
+        "eigenschap_functie": "Beschermt tegen oxidatie en vrije radicalen, beschermt meervoudig onverzadigde vetzuren tegen oxidatie, verlaging LDL cholesterol,\nVerbetert doorbloeding en vaatstelsel, oppassen bij bloedverdunners, beschermt structuur bloedvaten, reinigt kalk- en vetafzetting in bloedvaten, voorkomt littekenvorming, effectief antitrombine, splits uriniekristallen bij jicht, tegen veroudering.\nHoge dosering kan ijzergebreksanemie verergeren.",
+        "bij_tekort": "Spierproblemen/verslapping, hartafwijkingen, slappe bloedvaten, vervorming rode bloedcellen, (been)krampen, huidproblemen.\nBij teveel: slapeloosheid, indigestie, verhoogde bloeddruk en diarree",
+        "inzetten_bij": "Voorkomen spierafbraak, als antioxidant, tegen vrije radicalen, tegen aderverkalking, verhoogd LDL cholesterol, jicht,",
+        "voedingsbronnen": "Koudgeperste plantaardige olie, zaden, noten, bladgroenten, eieren en orgaanvlees",
+        "bijzonderheden": "Best opneembaar als alfa-tocoferol\nVeel als antioxidant in supplementen met olie basis.\nAltijd L- of R-, nooit DL- dit is de synthetische variant.\n1IE = 0,67mg\nAnorganisch ijzer vernietigt vit e.",
+    },
+    {
+        "naam": "K1 - fyllochinon",
+        "andere_namen": "aka fytomenadion",
+        "lost_op_in": "Vet",
+        "eigenschap_functie": "Activeert de stollingsfactoren in lever, tegen aderverkalking en hart- en vaatziekten, reguleert calciumhuishouding, houdt vaten flexibel, remt aderverkalking, voorkomt botontkalking (betere calciumopname in botten), verbetert insulinegevoeligheid, remt gewrichtsontstekingen, remt cognitieve veroudering, ontstekingsremmend door vorming PGE2 af te remmen (PGE2 = ontstekingsbevorderend hormoon)",
+        "bij_tekort": "Spontane bloedingen (bloedneus, tandvlees), vertraagde stolling (blauwe plekken), langere bloedingsstijd, ook bij menstruatie, osteoporose, vergroot de kans slecht genezende wonden en bloedarmoede.",
+        "inzetten_bij": "",
+        "voedingsbronnen": "K1 vooral in groene groenten, groene thee en algen",
+        "bijzonderheden": "K1 in lever opgeslagen, K2 beter opgenomen en overal in het lichaam aanwezig.\nDoseringen >100mcg icm bloedverdunners alleen in overleg met arts.",
+    },
+    {
+        "naam": "K2 - menaquinon",
+        "andere_namen": "aka menachinonen, farmachinon en MK-n",
+        "lost_op_in": "Vet",
+        "eigenschap_functie": "",
+        "bij_tekort": "",
+        "inzetten_bij": "",
+        "voedingsbronnen": "K2 geproduceerd door bacteriën in darmen, alleen bij gezonde darmflora, zuivel, eieren en vlees.",
+        "bijzonderheden": "",
+    },
+    {
+        "naam": "C - ascorbinepalmitaat",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Goed voor de hersenfunctie, detoxifierend en antioxidant, kan toxines en vrije radicalen ontgiften.\nKan goed doordringen in vetachtig weefsel zoals celmembranen en hersenweefsel.\nKan hersenenbarrière passeren. Kan geoxideerde vit E omzetten voor hergebruik.\nNiet insuline afhankelijk voor opname, andere varianten van vit C wel.",
+        "bij_tekort": "",
+        "inzetten_bij": "Verbeteren hersenfunctie",
+        "voedingsbronnen": "",
+        "bijzonderheden": "Ascorbylpalmitaat kan in darm worden opgenomen.",
+    },
+    {
+        "naam": "B1 - thiamine",
+        "andere_namen": "",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, psychisch welzijn, aanmaak rode bloedcellen\nSpecifiek\nProductie energie uit koolhydraten (suikers) in cel\nExtra\nEssentieel voor geheugen, activeert schildklier, betrokken bij productie enzymen, hormonen (insuline) en eiwitten",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nSlechte spijsvertering, slechte eetlust, beriberi (hart- en vaatstelsel aantasting of neurologische klachten zoals verlamming), energietekort in hersenen (overgevoeligheid geluiden, prikkels), concentratie- en geheugenverlies, beenkramp, spierzwakte, nervositeit, depressie",
+        "inzetten_bij": "Alcoholisme, neuropathie, tegen insecten (muggen)",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nNoten, zuivel, vis, eidooier, groente, fruit, aardappelen, avocado en peulvruchten",
+        "bijzonderheden": "Magnesium nodig voor omzetting naar actieve vorm B1",
+    },
+    {
+        "naam": "B2 - riboflavine",
+        "andere_namen": "aka lactoflavine en vitamine G",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, psychisch welzijn, aanmaak rode bloedcellen\nSpecifiek\nStofwisseling vetzuren, koolhydraten en eiwitten\nExtra\nCelademhaling, groei, herstel en ontwikkeling, vruchtbaarheid, goed voor ogen, antioxidant, gaat ontstekingen tegen, goed voor huid, haar en nagels",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nSlechte spijsvertering, problemen met huid, nagels, haar, rood worden tong, verlaging hemoglobine niveau (bloedarmoede)",
+        "inzetten_bij": "Stress",
+        "voedingsbronnen": "Algemeen\nVlees, granen, noten, zuivel\nSpecifiek\nNoten, zuivel, bladgroenten, broccoli, amandelen",
+        "bijzonderheden": "Heeft gele pigmenten, antioxidant, betrokken bij biochemisch proces B3, B6, B11 en B12, cofactor bij aanmaak glutathion.",
+    },
+    {
+        "naam": "B3 - niacine",
+        "andere_namen": "aka nicotinezuur en nicotinamide",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, stofwisseling koolhydraten, vetten en eiwitten, enzymen, neurotransmitters en hormonen\nSpecifiek\nBelangrijk bij vorming enzymen NAD en NADP (co-enzym I en II)/betrokken bij >200 biochemische reacties, regulering gezonde bloedlipiden, goed voor bloedcirculatie en betrokken bij schildklierhormoon Thyroxine (T4)\nExtra\nBetere bloedcirculatie, positief effect op HDL-cholesterol (bloedlipidenspiegel), kan bloeddruk verlagen, stimuleert regulatie bloedsuikerspiegel",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nHuidproblemen, hartkwalen, slijmvliesproblemen in mond, tong en darmen, gezwollen rode tong, slapeloosheid, mentale problemen, cholesterolverhoging, dementie, migraine, hoge bloeddruk",
+        "inzetten_bij": "Cognitieve achteruitgang (bijv. Alzheimer), schizofrenie, slapeloosheid, migraine",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nVis, koffie, pinda’s, dadels, vijgen, pruimen",
+        "bijzonderheden": "Beperkte eigen productie uit tryptofaan, Niacine geeft flush (rood hoofd)/nicotinamide niet, PP-factor (pellagra preventief, voorkomt vitamine deficiëntie ziekte)\nnicotinamide adenine dinucleotide (co-enzym I) en nicotinamide adenine dinucleotide fosfaat (co-enzym II)",
+    },
+    {
+        "naam": "B5 - pantotheenzuur",
+        "andere_namen": "3 vormen: calcium pantothenaat, dexpanthenol en panthenol",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, anti-stress hormoon\nSpecifiek\nMetabolisme macronutriënten (koolhydraten, vetten, eiwitten), vorming cholesterol, afbraak en transport vetten, vorming en opbouw vetzuren, aanmaak melatonine\nExtra\nVoortplanting, groei, opbouw hormonen, neurotransmitters, vetstoffen, hemoglobine, gezonde huid, gewicht en geestelijk welzijn vanwege gunstige werking op bijnieren en hypofyse",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nEczeem, spierkrampen, reumatische aandoeningen, krampen, haaruitval, verminderde weerstand, bijnieruitputting",
+        "inzetten_bij": "Stress, blessures, huidproblemen en voor het immuunsysteem",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nVis, ei, groenten, fruit, zuivel, noten, peulvruchten",
+        "bijzonderheden": "Bouwsteen voor acetyl-co-enzym A (cellulair verbrandingsproces), stimuleert werking vitamine C.\nGaat verloren tijdens bewerken en bewaren van voeding\nPantotheen niet veelvoorkomend, zit dus in veel voedingsmiddelen\nWordt afgebroken door aspirine, antibiotica, koffie, anticonceptiepil en stress",
+    },
+    {
+        "naam": "B6 - Pyridoxal-5-fosfaat (P5P)",
+        "andere_namen": "aka pyridoxine (PN) en Pyridoxamine (PM)",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym voor hormonen en enzymen, aanmaak rode bloedcellen\nSpecifiek\nStofwisseling koolhydraten, vetten en eiwitten, zenuwstelsel, regulatie cholesterol/cholesterolstofwisseling\nExtra\nCelenergie en vetstofwisseling, stimuleert oestrogeen, reguleert natrium/kalium balans, ondersteunt vochthuishouding",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nAcné, bloedarmoede, duizeligheid, PMS, weerstandvermindering, zenuwaandoeningen, oedeem, bloedsuikontregeling, verhoogde uitscheiding calcium, zink en magnesium en lagere koperopname",
+        "inzetten_bij": "PMS (stimuleert oestrogeen) en hormonale migraine samen met magnesium tauraat, zwangerschap misselijkheid",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nEidooier, banaan, aardappelen, kool, soja",
+        "bijzonderheden": "Verlagen homocysteïne gehalte icm B11 (foliumzuur) en B12.\nGaat verloren tijdens koken, hierdoor vaak tekort.\nP5P best opneembare vorm.\nUitscheiding verhoogt door vit C.",
+    },
+    {
+        "naam": "B7 - Inositol",
+        "andere_namen": "",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nVettransport van lever naar cellen, galvorming, insulinewerking, geheugen, concentratie, verbranding van lichaamsvet\nSpecifiek\n",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nEczeem, groeistoornissen, haaruitval, oogaandoeningen, constipatie en leververvetting",
+        "inzetten_bij": "Insulineresistentie, metabool syndroom, vermindering depressie icm met omega 3 en B-complex",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nLecithine (ei, soja, pitten en plantaardige olie), zuivel",
+        "bijzonderheden": "Kan het lichaam zelf aanmaken.\nCholesterol wordt door inositol kleiner gemaakt.",
+    },
+    {
+        "naam": "B8 - (afkorting ontbreekt in afbeelding)",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Met choline tegen leververvetting en gezonde cholesterolspiegel, maakt cholesterol kleiner, goed voor de hersenfunctie",
+        "bij_tekort": "Eczeem",
+        "inzetten_bij": "",
+        "voedingsbronnen": "citrusvruchten, peulvruchten, sperziebonen",
+        "bijzonderheden": "Niet in B-complex",
+    },
+    {
+        "naam": "B5 - pantotheenzuur",
+        "andere_namen": "3 vormen: calcium pantothenaat, dexpanthenol en panthenol",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym, anti-stress hormoon\nSpecifiek\nMetabolisme macronutriënten (koolhydraten, vetten, eiwitten), vorming cholesterol, afbraak en transport vetten, vorming en opbouw vetzuren, aanmaak melatonine\nExtra\nVoortplanting, groei, opbouw hormonen, neurotransmitters, vetstoffen, hemoglobine, gezonde huid, gewicht en geestelijk welzijn vanwege gunstige werking op bijnieren en hypofyse",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nEczeem, spierkrampen, reumatische aandoeningen, krampen, haaruitval, verminderde weerstand, bijnieruitputting",
+        "inzetten_bij": "Stress, blessures, huidproblemen en voor het immuunsysteem",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nVis, ei, groenten, fruit, zuivel, noten, peulvruchten",
+        "bijzonderheden": "Bouwsteen voor acetyl-co-enzym A (cellulair verbrandingsproces), stimuleert werking vitamine C.\nGaat verloren tijdens bewerken en bewaren van voeding\nPantotheen niet veelvoorkomend, zit dus in veel voedingsmiddelen\nWordt afgebroken door aspirine, antibiotica, koffie, anticonceptiepil en stress",
+    },
+    {
+        "naam": "B6 - Pyridoxal-5-fosfaat (P5P)",
+        "andere_namen": "aka pyridoxine (PN) en Pyridoxamine (PM)",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym voor hormonen en enzymen, aanmaak rode bloedcellen\nSpecifiek\nStofwisseling koolhydraten, vetten en eiwitten, zenuwstelsel, regulatie cholesterol/cholesterolstofwisseling\nExtra\nCelenergie en vetstofwisseling, stimuleert oestrogeen, reguleert natrium/kalium balans, ondersteunt vochthuishouding",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nAcné, bloedarmoede, duizeligheid, PMS, weerstandvermindering, zenuwaandoeningen, oedeem, bloedsuikontregeling, verhoogde uitscheiding calcium, zink en magnesium en lagere koperopname",
+        "inzetten_bij": "PMS (stimuleert oestrogeen) en hormonale migraine samen met magnesium tauraat, zwangerschap misselijkheid",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nEidooier, banaan, aardappelen, kool, soja",
+        "bijzonderheden": "Verlagen homocysteïne gehalte icm B11 (foliumzuur) en B12.\nGaat verloren tijdens koken, hierdoor vaak tekort.\nP5P best opneembare vorm.\nUitscheiding verhoogt door vit C.",
+    },
+    {
+        "naam": "B7 - Inositol",
+        "andere_namen": "",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nVettransport van lever naar cellen, galvorming, insulinewerking, geheugen, concentratie, verbranding van lichaamsvet\nSpecifiek\nMet choline tegen leververvetting en gezonde cholesterolspiegel, maakt cholesterol kleiner, goed voor de hersenfunctie\nExtra\nOpbouw neurotransmitters, aanmaak celmembranen (icm choline), groei lichaamscellen (haargroei), kalmerend en stress verlagend",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nEczeem, groeistoornissen, haaruitval, oogaandoeningen, constipatie en leververvetting",
+        "inzetten_bij": "Insulineresistentie, metabool syndroom, vermindering depressie icm met omega 3 en B-complex",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nLecithine (ei, soja, pitten en plantaardige olie), zuivel, citrusvruchten, peulvruchten, sperziebonen",
+        "bijzonderheden": "Kan het lichaam zelf aanmaken.\nCholesterol wordt door inositol kleiner gemaakt.\nNiet in B-complex",
+    },
+    {
+        "naam": "B8 - Biotine",
+        "andere_namen": "aka B7 en vitamine H",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym voor hormonen en enzymen, neurotransmitters, aanmaak rode bloedcellen\nSpecifiek\nHuid, haar, nagels, Stofwisseling koolhydraten, vetten en eiwitten, werking talgklierjes, verhoogt tolerantie zon, gekoppeld aan histonen (eiwitten voor compact DNA)",
+        "bij_tekort": "Roos, haaruitval, grijs haar, hormoon disbalans, huidproblemen",
+        "inzetten_bij": "Haaruitval, wens voor gezond haar, huid en nagels",
+        "voedingsbronnen": "Algemeen\nZuivel, ei, noten, groenten, soja",
+        "bijzonderheden": "Kan aangemaakt worden in darm, B5 verlaagt opname B8, ander tijdstip innemen\nWerkt nauw samen met B6, B11 en B12.",
+    },
+    {
+        "naam": "B11 - Foliumzuur",
+        "andere_namen": "In USA en België vitamine B9, folaat",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym voor hormonen en enzymen, neurotransmitters, eiwitten, aanmaak rode bloedcellen\nSpecifiek\nVorming DNA/RNA, nieuwe lichaamscellen, herstel beschadigd weefsel, en methylerying (stoffen en cellen maken/dupliceren)\nExtra\nVerlaagt homocysteïne icm B6 en B12, eetlust, groei, vruchtbaarheid, bevordert melksecretie\nNatuurlijke vorm (tetrahydrofolaat) niet als supplement omdat onstabiel. Omzetting synthetische vorm naar biologisch beschikbare vorm is complex en inefficiënt.",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nBloedarmoede, slapeloosheid, rode tong, verhoogd homocysteïne, prikkelbaar, duizelig, open ruggetje en neurologische klachten",
+        "inzetten_bij": "Zwangerschap (wens), anemie (bloedarmoede)",
+        "voedingsbronnen": "Algemeen\nGranen (niet in vlees)\nSpecifiek\nZuivel, noten, groenten, zalm, soja",
+        "bijzonderheden": "Inname icm vit B12, hoge inname kan zink opname verminderen en vit. C vermindert foliumzuur uitscheiding, groene thee kan foliumzuur verlagen.\n5-MTHF Quatrefolic is actieve en stabiele vorm. Bij hoge dosering ook B11 doseren.",
+    },
+    {
+        "naam": "B12 - Cobalamine",
+        "andere_namen": "",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym neurotransmitters, aanmaak rode bloedcellen, goed functioneren zenuwstelsel, omzetten caroteen naar vit. A, ondersteunt ijzer\nSpecifiek\nMethylcobalamine = aanmaak DNA en myeline en neurotransmitters, cel herstel, hersenfunctie, neurologische schade en beenmergfalen\nExtra\nVoor opname afhankelijk van IF (intrinsieke factor), IF wordt aangemaakt in maag en gebonden aan B12 in darm, samen aan einde dunne darm opgenomen",
+        "bij_tekort": "Algemeen\nVermoeidheid\nSpecifiek\nBloedarmoede, vergeetachtigheid, dementie, trillen, duizeligheid\nverhoogd homocysteïne, depressie, zwakke weerstand\nZeer veel symptomen op psychisch, neurologisch en lichamelijk vlak.",
+        "inzetten_bij": "Stress, spanning, maag- en darm aandoeningen ivm IF, vegetariërs, slecht werkende schildklier, tekort aan ijzer, calcium, B6 en vit. C\nMethylcobalamine (actieve vorm) bij neurologische en lichamelijke klachten.\nAdenosylcobalamine bij vermoeidheid",
+        "voedingsbronnen": "Dierlijke producten",
+        "bijzonderheden": "Samen met B11 belangrijk voor vorming DNA en methylerying.\nB11 maskeert een tekort aan B12.\n>1000mg B11 per dag ook B12 suppleren.\nKan ook bij lagere doseringen.",
+    },
+    {
+        "naam": "C - ascorbinezuur",
+        "andere_namen": "Ester vorm is gebufferde vit. C",
+        "lost_op_in": "Water",
+        "eigenschap_functie": "Algemeen\nEnergieproductie, co-enzym o.a. neurotransmitters en prostaglandines (hormoonachtige stof), antioxidant, aanmaak collageen- en bindweefsel, immuunsysteem, vaatwanden en tegen bloedingen\nSpecifiek\nElasticiteit bloedvaten, alle weefsels voor stevigheid (pezen, huid, spieren, hart, botten, bindweefsel), omzetting cholesterol in gal, steroïde hormonen, carnitine, afbraak tyrosine\nExtra\nNatuurlijk vorm is linksdraaiend (L-ascorbinezuur), gebonden varianten (natrium, calcium, magnesium en zink) zijn niet zuur en Ester-C zijn niet zuur, eliminatie zware metalen, voorkomt omzetting nitraat/nitriet in nitrosaminen, verhoogt opname en opslag van ijzer, zink, chroom en mangaan (dus tegelijk met vit. C suppleren), verhoogt uitscheiding B6",
+        "bij_tekort": "Bloedend tandvlees, snel blauwe plekken (ook bij vit K), spataderen, aambeien",
+        "inzetten_bij": "+zink: weerstand, verkoudheid en groep\n+quercetine: hooikoorts\n+OPC: spataderen\n+glutathion: ontgifting en antioxidant\nBloedvat problemen\nGeen hoge dosis bij chemotherapie, bestraling, ijzerstapeling, sterk verminderde nierfunctie, zwangerschap en lactatie.",
+        "voedingsbronnen": "Alleen plantaardig\nCitrusvruchten, spruitjes, tomaten, broccoli, boerenkool en paprika",
+        "bijzonderheden": "Gaat verloren bij bewerken en bewaren voedsel en blootstellen aan lucht, warmte en licht.\nKomt meest voor in lever, skeletspieren, hypofyse en bijnieren.\nAlcohol, aspirine, stress en infecties verhogen vit. C behoefte.\nGebufferde vorm geeft geen zuurbelasting en betere opname = ester-C.\nBasissuppletie.",
+    },
+    {
+        "naam": "Calcium",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Gezonde en stevige botten en tanden, signaaloverdracht langs de celmembranen, zenuwprikkeloverdracht/neurotransmitters (elektrische prikkel), prikkelgeleiding hart, afgifte hormonen en bloedstolling. Bloeddruk regulatie, groei en samentrekking spieren. Ondersteunt enzymen. Gaat opstapeling van zuren (o.a. vetzuren) en basen in het bloed tegen.\nParathormoon (actieve vorm van vitamine D), calcitonine (schildklier) en calcium zelf reguleren calcium transport in maag darmkanaal, botten en nieren.\nCalciumniveau in bloed zegt niets over calcium in het lichaam. Niet snel supplementeren.",
+        "bij_tekort": "Hartkloppingen, hartkwalen, spierzwakte, spierpijn, vermoeidheid, prikkelbaarheid, hoog cholesterol, verhoogde triglyceriden.",
+        "inzetten_bij": "Behoud sterke botten, altijd icm K2 en D3",
+        "voedingsbronnen": "Zuivel, groenten, granen, noten, pitten en bonen.",
+        "bijzonderheden": "Elektrolyt\nMeest voorkomend mineraal in ons lichaam. Botten en tanden zijn opslagplaats. Zit in bloed, lichaamsvloeistof, celmembranen en intracellulaire structuren. Kan ijzer opname verminderen.",
+    },
+    {
+        "naam": "Kalium",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Elektrisch functioneren van lichaamscellen. Spiercontractie, zuurgaard in het lichaam, omzetten glycogeen in de lever, Kaliumrijk dieet ondersteunt gezonde nierfunctie.\nHelpt samen met natrium de bloeddruk reguleren, activiteit zenuwstelsel en enzymen.",
+        "bij_tekort": "Algehele zwakte en stijfheid, slapeloosheid, zwakke reflexen, onregelmatige pols, hartslag, hartspierschade, opgezwette buik.",
+        "inzetten_bij": "Slechte spijsvertering, insuline problemen en hart- en vaatproblemen",
+        "voedingsbronnen": "Algemeen\nVlees\nSpecifiek\nVis, citrusvruchten, bladgroenten, broccoli, bloemkool, bananen, tomaten.",
+        "bijzonderheden": "Elektrolyt\nOpgeslagen in cellen.",
+    },
+    {
+        "naam": "Magnesium",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Natuurlijk kalmeringsmiddel, stressreductie, betrokken bij meer dan 300 enzymatische reacties, stofwisseling koolhydraten, eiwitten, koolhydraten en vetten, zenuwgeleiding, spiercontractie, cholesterolstofwisseling, temperatuurregulatie, detoxificatie en gezonde botten en tanden (tandglazuur). Krachtig tegen stress, depressie en krampen. Noodzakelijk voor de calciumstofwisseling.\nBevindt zich 50% in organen en weefsels en 50% in botten (met calcium en fosfor). Slechts 1% in het bloed.",
+        "bij_tekort": "Ooglidtrillingen, krampen en spasmen, verhoogde schrikreactie, wakker schrikken omdat je denkt dat je valt. Stress is een magnesium rover!\nMigraine, hartritmestoornissen, kramp, rust in hoofd en PMS - tauraat\nFibromyalgie en CYS - malaat\nMentale functies en ontgifting van amalgaam/kwik - bisglycinaat",
+        "inzetten_bij": "Spierkramp, hartproblemen, hoge bloeddruk, diabetes, verbeteren insulinegevoeligheid, fibromyalgie, migraine, stress, hormonale stoornissen (PMS)",
+        "voedingsbronnen": "",
+        "bijzonderheden": "Elektrolyt\nWordt bij veel stress veel door lichaam gebruikt.\nAbsorptie is afhankelijk van vit D.\nBinding is essentieel voor opname. Goed opneembaar zijn bindingen aan tauraat (taurine), malaat (appelzuur) en bisglycinaat (glycine).",
+    },
+    {
+        "naam": "Chroom",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Opname insuline door cellen. Belangrijk voor koolhydraat-, eiwit- en vetmetabolisme. Vorming van vetzuren, groeiproces. Maakt deel uit van de GTF (glucose tolerantie factor). Vetopslag in lichaam onder controle houden en verbetert ratio LDL/HDL. Behoud stabiele bloedsuikerspiegel.",
+        "bij_tekort": "Verhoogde glucose- en cholesterolwaarden. Bij ernstig tekort ook neuropathie en gewichtsverlies.",
+        "inzetten_bij": "Overgewicht, insulineresistentie, diabetes en onderdrukken honger gevoel",
+        "voedingsbronnen": "Algemeen\nVlees, granen\nSpecifiek\nPlantaardige olie, groente en zuivel",
+        "bijzonderheden": "Chroom, B3 en D3 versterken elkaar bij verbeteren glucosestofwisseling en bloedsuikerspiegel.\nDit geldt ook voor de combi met alfa-liponzuur en biotine.",
+    },
+    {
+        "naam": "Jodium",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Vorming schildklierhormoon thyroxine (T4) en tri-jodothyronine (T3). Deze zorgen voor stofwisseling en lichaamstemperatuur. Jodium helpt bij afbraak voedingsmiddelen (spijsvertering), in de maag bindt het chloride (tekort aan chloride veroorzaakt maaguurtekort), stimuleert HDL-cholesterol, bij kinderen en zwangeren onmisbaar voor ontwikkeling hersenen.\nSchildklierhormonen worden gemaakt uit jodium en tyrosine. Essentieel voor groei botten, spieren en zenuwweefsel. Energieverbruik, verbranding vetten, reguleren hartslag en bloeddruk.",
+        "bij_tekort": "Hypothyreoide, kropvorming (struma), vertraagde groei en ontwikkeling, depressie, prikkelbaarheid, motorische achterstand, droge of gebarsten huid.",
+        "inzetten_bij": "Traag werkende schildklier, omzetten T4 naar T3 (combineren met selenium, zink, L-Tyrosine)",
+        "voedingsbronnen": "Vis, zeewier, gejodeerd brood en zout, zeezout",
+        "bijzonderheden": "20% opgeslagen in de huid, veel zweten kan leiden tot tekort, maaguurtekort kan oprispingen veroorzaken.\nVoorzichtig bij hyperthyreoide en ziekte van hashimoto.\nTekort aan selenium, zink, ijzer en vanadium versterkt hypothyreoide en versterkt daarmee effect van jodiumtekort.",
+    },
+    {
+        "naam": "Selenium",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Onderdeel van ontgiftig mechanisme, verhoogt veerkracht weefsels, lever ontgifting, versterkt het immuunsysteem.\nBelangrijk enzym onderdeel van glutathion (sterke antioxidant), onderdeel van enzym glutathion peroxidase (GPx, zet waterstof om in water). Beschermt tegen invloeden van zuurstof, dus tegen veroudering, belasting zware metalen onschadelijk maken, rol binnen jodium stofwisseling en ondersteunt schildklierwerking (omzetten T4 naar T3).\nEnergieproductie door samen met co-enzym Q10 (functioneren mitochondriën en energieproductie daarin), reguleren bloeddruk.",
+        "bij_tekort": "Vroegtijdig verlies van weerstand en ouderdomsverschijnselen, versnelde werking hartspier, achteruitgang huid elasticiteit.",
+        "inzetten_bij": "Traag schildklier en verminderde vruchtbaarheid mannen.",
+        "voedingsbronnen": "Lever, schaaldieren, knoflook, uien, broccoli, paranoten, champignons en tomaten.",
+        "bijzonderheden": "Werking wordt sterker icm vit E, zeker bij onschadelijk maken zware metalen.\nSlechte omzetting van T4 naar T3. Bij voldoende selenium is er een goede omzetting van T4 naar T3 en wordt jodium gebruikt om meer T4 te maken. Bij selenium suppletie kan hypothyreoide daarom verergeren als er een tekort is aan jodium.",
+    },
+    {
         "naam": "Zink",
         "andere_namen": "",
         "lost_op_in": "",
@@ -287,273 +277,242 @@ supplementen = [
         "bij_tekort": "Prostaatklachten, nagelproblemen, haaruitval, aderverkalking, minder weerstand, vertraagde groei, smaak en reuk, huidafwijkingen/slecht herstel, eetstoornis, minder eetlust, onvruchtbaarheid, miskraam, bloedsuikerproblemen en nachtblindheid.",
         "inzetten_bij": "Griep en verkoudheid icm vit C, ontstekingen, maculadegeneratie, huid- en prostaatproblemen.",
         "voedingsbronnen": "Oesters, ei, vlees, vis, zaden, pitten, noten, kiemen.",
-        "bijzonderheden": "Koper en zink zijn antagonisten, scheiden elkaar uit. Daarom samen innemen. Ijzer verlaagt de opname van zink, dus deze niet tegelijk innemen.\nKenmerkend bij tekort zijn witte vlekjes op nagels en verminderde reuk- en smaak."
-      },
-
-  {
-    "naam": "Koper",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Vorming bindweefsel en botten, pigment haar, vorming hemoglobine, vrijmaken energie uit koolhydraten, vetten en eiwitten (dus normale energiebalans en energieniveau).",
-    "bij_tekort": "",
-    "inzetten_bij": "",
-    "voedingsbronnen": "",
-    "bijzonderheden": ""
-  },
-  {
-    "naam": "Ijzer",
-    "andere_namen": "",
-    "lost_op_in": "",
-    "eigenschap_functie": "Onderdeel van rode bloedcellen (hemoglobine, eiwit in bloed voor transport zuurstof), zuurstoftransport naar alle weefsels. Aanmaak DNA (groei en ontwikkeling), aanmaak neurotransmitters (dopamine en serotonine), ondersteunt aanmaak catalase (antioxidant enzym), vorming energie (ATP, adenosinetrifosfaat, drager chemische energie in cellen), weerstand, vitamine en eiwitstofwisseling en celademhaling.\nHeemijzer (vlees) en Non-heemijzer (planten).\nNon-heemijzer is lastig op te nemen icm cafeïne (koffie, thee en chocolade, niet binnen 1 uur van maaltijd gebruiken).",
-    "bij_tekort": "Bloedarmoede, duizeligheid, verminderde concentratie, kortademigheid, vermoeidheid, bleke huid en weinig eetlust.",
-    "inzetten_bij": "Bloedarmoede, kortademigheid, vermoeidheid, bleke huid, weinig eetlust.",
-    "voedingsbronnen": "Algemeen\n(Rood) vlees, granen\nSpecifiek\nGroenten, noten, bonen, peulvruchten, eieren (dooier).",
-    "bijzonderheden": "Vitamine C bevordert opname Non-heemijzer.\nCalcium kan opname ijzer verhinderen.\nIjzer verlaagt koperopname en andersom. Antagonisten."
-  },
-  {
-    "naam": "Valine (BCAA) - Essentieel",
-    "eigenschap": "Aanmaak eiwitten, zenuwstelsel",
-    "inzetten_bij": "?",
-    "overige": "",
-    "voedingsbronnen": "Vlees, zuivel, pinda’s, sojabonen",
-    "bijzonderheden": ""
-  },
-  {
-    "naam": "Isoleucine (BCAA) - Essentieel",
-    "eigenschap": "Opbouw en groei spierweefsel, energieproductie en cel regulatie bloedsuikerspiegel",
-    "inzetten_bij": "Spieropbouw",
-    "overige": "",
-    "voedingsbronnen": "Vlees, vis, zuivel, ei, schelpdieren, bonen en noten",
-    "bijzonderheden": ""
-  },
-  {
-    "naam": "Leucine (BCAA) - Essentieel",
-    "eigenschap": "Aanmaak van eiwitten en mensesleiwit, spierweefseltype (afbraak en opbouw spieren) bij afwezig opbouw spieren (voor herstel) opbouw en afbraak weefsel",
-    "inzetten_bij": "Spieropbouw",
-    "overige": "",
-    "voedingsbronnen": "Rauw rundvlees, rauwe zalm, garnalen, varkensvlees, eigeel, volkorenrijst, soja, kikkererwten, linzen, bonen en noten",
-    "bijzonderheden": ""
-  },
-  {
-    "naam": "Glutamine - Essentieel",
-    "eigenschap": "Opbouw aminozuren (icm methionine en glucosamine), belangrijke bouwstof voor glutathion",
-    "inzetten_bij": "Lekkende darm, wondgenezing",
-    "overige": "Goede darmfunctie, immuunsysteem, snelle celherstelprocessen, hersenfunctie, synthese van spiereiwitten, afbraak na ziekte of operatie",
-    "voedingsbronnen": "Rundvlees, zuivel, lever, kool, avocado, bottenbouillon en wei",
-    "bijzonderheden": "Meest voorkomende aminozuur in het lichaam, kan in hersenen omgezet worden in glutamaat (glutaminerzuur), verhoogt met PSP hoeveelheid GABA** (verhoogt mentale activiteit)"
-  },
-  {
-    "naam": "Tyrosine - Niet-essentieel",
-    "eigenschap": "Omzetten schildklier- en bijnierhormoon en adrenaline stofwisseling (dopamine, adrenaline en noradrenaline)",
-    "inzetten_bij": "Cognitieve prestaties, slaapgebrek, geheugen, schildklierproblemen en stress",
-    "overige": "Kan aangemaakt worden uit fenylalanine. Helpt bij de aanmaak van melanine (pigment stof)",
-    "voedingsbronnen": "Vlees, vis, haver, hazelnoten, amandelen en kaas",
-    "bijzonderheden": "Snel tolerantie"
-  },
-  {
-    "naam": "Lysine - Essentieel",
-    "eigenschap": "Verbetert immuunsysteem, groei, vruchtbaarheid en opbouw spieren. Remmende werking op herpesvirus",
-    "inzetten_bij": "Herpesvirussen (o.a. koortslip en gordelroos)",
-    "overige": "Het versterkt het immuunsysteem als onderdeel van de antistoffen",
-    "voedingsbronnen": "Vlees, vis, zuivel, gierst en avocado",
-    "bijzonderheden": "Nodig voor Carnitine"
-  },
-  {
-    "naam": "Arganine - Semi-essentieel aka Arg of R",
-    "eigenschap": "Uitscheiden overtollig stikstof door urine (ureumcyclus, ureum vorming uit koolstofdioxide en ammoniak in de lever), stimulerende werking op herpesvirus",
-    "inzetten_bij": "Ondersteuning immuunsysteem en lever, stimuleert afgifte insuline door alvleesklier (pancreas)",
-    "overige": "Bij groeiende kinderen en zieke mensen essentieel",
-    "voedingsbronnen": "Noten, zaden, gelatine, chocolade, uien en champignons",
-    "bijzonderheden": "Niet inzetten bij herpesvirussen (o.a. koortslip en gordelroos)"
-  },
-
-    {
-      "naam": "Tryptofaan - Essentieel",
-      "eigenschap": "Basis voor serotonine (stimulerende werking), Neurologisch, bouwstof van 5-htp, serotonine en melatonine en B3.",
-      "inzetten_bij": "Depressie, pijn, slaapproblemen, vermoeidheid en migraine",
-      "overige": "Bevordert nachtrust en bioritme, vermindert de gevoeligheid van pijn, bij voldoende tryptofaan, kan het omgezet worden in B3 voor extra energie, speelt een rol bij regulatie immuunrespons bij infectie, inflammatie en zwangerschap",
-      "voedingsbronnen": "Kalkoen, vis, ei, cashew en paranoten, pompoenpitten, zaden, haver, banaan",
-      "bijzonderheden": ""
+        "bijzonderheden": "Koper en zink zijn antagonisten, scheiden elkaar uit. Daarom samen innemen. Ijzer verlaagt de opname van zink, dus deze niet tegelijk innemen.\nKenmerkend bij tekort zijn witte vlekjes op nagels en verminderde reuk- en smaak.",
     },
-
-  {
-    "naam": "Methionine - Essentieel",
-    "eigenschap": "Leverancier organisch zwavel, energiehuishouding, vorming huid, haar en nagels (door bevordering eiwit keratine), antioxidant, kan vermoeidheid tegengaan, ontgifting",
-    "inzetten_bij": "-",
-    "overige": "-",
-    "voedingsbronnen": "Vlees, vis, gevogelte en zuivel",
-    "bijzonderheden": "Nodig voor Carnitine"
-  },
-  {
-    "naam": "Cysteïne - Niet-essentieel",
-    "eigenschap": "Ontgifting, vorming huid, haar en nagels (door bevordering eiwit keratine), antioxidant",
-    "inzetten_bij": "-",
-    "overige": "-",
-    "voedingsbronnen": "Vlees, zuivel, rode peper, ui, knoflook, broccoli, spruiten en graan",
-    "bijzonderheden": "Vaak suppletie als N-Acetyl-L-Cysteine (NAC)"
-  },
-  {
-    "naam": "Taurine - Niet-essentieel",
-    "eigenschap": "Zenuw remmende functie, stofwisseling, angst, overactiviteit en nerveuze aandoeningen. Verbetert hartwerking, bloedvaten en spieren",
-    "inzetten_bij": "-",
-    "overige": "Zwaelhoudend, belangrijk in het netvlies (retina), een belangrijke cofactor is B6",
-    "voedingsbronnen": "Vlees en vis",
-    "bijzonderheden": "Eigenlijk geen aminozuur"
-  },
-  {
-    "naam": "Carnitine - Niet-essentieel",
-    "eigenschap": "L-carnitine transporteert lange vetzuren het mitochondrion in voor energiestofwisseling",
-    "inzetten_bij": "Verbetert sportprestaties, spermakwaliteit en het cognitieve vermogen bij Alzheimer",
-    "overige": "Stimuleert de verbranding van vet, vet-metabolisme van het hart en skeletspieren, afvoer overtollige triglyceriden, drager bij transport vetzuur",
-    "voedingsbronnen": "Vlees (lam, rund en varken) en in mindere mate zuivel en eieren",
-    "bijzonderheden": "Is geen officieel aminozuur, wordt gemaakt uit lysine en Methionine mbv B6, B3 en ijzer"
-  },
-  {
-    "naam": "Glutathion",
-    "eigenschap": "Moeder van alle antioxidanten (vrije radicalen bestrijder), ontgifting, immuun eigenschappen, DNA bescherming en anti aging (anti-oxidatieve functie)",
-    "inzetten_bij": "Langdurig chronische ziekte, toxische belasting en versterken immuunsysteem",
-    "overige": "Grote hoeveelheden aanwezig in cellen",
-    "voedingsbronnen": "Vlees, vis, walnoten, verse groenten (asperges, broccoli, wortel) en fruit",
-    "bijzonderheden": "Is geen officieel aminozuur, wordt gemaakt uit cysteïne, glycine en glutaminezuur. Orale toediening alleen als S-Acetyl-L Glutathion."
-  },
-
-  {
-    "naam": "Dopamine",
-    "bouwstof": "Aminozuur Tyrosine",
-    "eigenschappen": "Opwekkend, actief/out of the box denken, blij, keuzes maken, gezond libido, aangetrokken worden, goed werkend immuun- en zenuwstelsel, fysieke/emotionele/mentale kracht, bewegingsenergie, concentratie, daadkracht, doorvermogen.",
-    "bij_tekort": "Geen zin om dingen te ondernemen, niet fijn voelen, moeilijk keuzes maken",
-    "voedingsbronnen": "Gestimuleerd door leuke dingen doen, negatief beïnvloed door alcohol (op korte termijn stimulerend), cafeïne, drugs en suiker, positief beïnvloed door voeding met veel antioxidanten zoals groente en fruit. Tyrosine zit in vis, eieren, vlees, kaas, zuivel, avocado, noten, zaden en peulvruchten.",
-    "bijzonderheden": "Kwetsbaar, oxideert makkelijk, omgezet in noradrenaline."
-  },
-  {
-    "naam": "Noradrenaline / Norepinephrine",
-    "bouwstof": "Aminozuren Fenylalanine en Tyrosine. Dopamine wordt ook omgezet in noradrenaline",
-    "eigenschappen": "Motivatie, alertheid, concentratie, herinneringen opslaan in lange termijn geheugen. Omzetten vanuit de aminozuren kan alleen bij voldoende B3, B6, C, B11, ijzer en koper.",
-    "bij_tekort": "",
-    "voedingsbronnen": "",
-    "bijzonderheden": "Omgezet in adrenaline."
-  },
-  {
-    "naam": "Adrenaline",
-    "bouwstof": "Noradrenaline wordt omgezet in adrenaline",
-    "eigenschappen": "Verhoogde alertheid, vecht/vlucht reactie, overlevingsstand.",
-    "bij_tekort": "",
-    "voedingsbronnen": "",
-    "bijzonderheden": ""
-  },
-  {
-    "naam": "Acetylcholine",
-    "bouwstof": "Choline (400mg per dag)",
-    "eigenschappen": "Opwekkend, opslag en gebruik geheugen, concentratie, herinneringen, gedrachten, creativiteit, cognitieve functies, spiercontractie, alertheid.",
-    "bij_tekort": "Alzheimer, mindere werking geheugen (zoeken naar woorden/namen), slechte spijsvertering, onvolledig legen darmen/blaas, moeilijk ontspannen.",
-    "voedingsbronnen": "Eieren en lever, soja, volkoren graanproducten.",
-    "bijzonderheden": "Bij een tekort aan B11 of B12 wordt choline als vervanger gebruikt."
-  },
-  {
-    "naam": "Serotonine",
-    "bouwstof": "Tryptofaan (voorloper van 5-HTP) of 5-HTP (directe voorloper serotonine)",
-    "eigenschappen": "Kalmerend, lekker in je vel zitten, geheugen, bloeddruk, gezonde eetlust, natuurlijke pijnbestrijder, lichaamstemperatuur.",
-    "bij_tekort": "",
-    "voedingsbronnen": "Tryptofaan zit in bruine rijst, zonnebloem- en pompoenpitten, sesamzaadjes en bananen.",
-    "bijzonderheden": "5-HTP passeert de hersenbarrière makkelijker. Bij de opbouw ook B1, B3, B6 en B11 nodig. Magnesium nodig voor activiteit serotonine receptoren. 90% gemaakt en opgeslagen in maag-darmkanaal en bloed, 2% in hersenen."
-  },
-  {
-    "naam": "Melatonine",
-    "bouwstof": "Omgezet vanuit serotonine",
-    "eigenschappen": "Normaal slaappatroon",
-    "bij_tekort": "",
-    "voedingsbronnen": "",
-    "bijzonderheden": "Kan omgezet worden tot melatonine."
-  },
-
-  {
-    "naam": "Gaba (gamma amino boterzuur)",
-    "bouwstof": "",
-    "eigenschappen": "Remmende functie op centraal zenuwstelsel, remt overactiviteit in neuronen, gaba passeert hersenbarrière moeilijk, inname via mondslijmvliezen (sublinguaal) heeft de voorkeur.",
-    "bij_tekort": "Negatieve gedachten voor het slapen, hoofd dat altijd aan staat, verhoogt kans op epilepsie.",
-    "voedingsbronnen": "Broccoli, groene groenten, zaden, noten, bananen, uien en eieren.",
-    "bijzonderheden": "B1 tekort = verminderde werking gaba, veel alcohol verstoord gaba neurotransmissie (slaperigheid, slechte coördinatie, afgenomen concentratie en vergeetachtigheid)."
-  },
-  {
-    "naam": "Co-enzym Q10 (Ubiquinon/ubiquinon)",
-    "bouwstof": "Aminozuur tyrosine",
-    "eigenschappen": "Komt voor in iedere cel, vetoplosbare stof, cofactor bij celademhaling in mitochondriën (energiecentrales), energievorming in cel, zonder q10 sterft de cel af, antioxidant, radicalenvanger (celmembranen soepel houden), minder lipidenperoxidatie. Lichaam kan het zelf aanmaken, productie neemt af na 40e.",
-    "bij_tekort": "",
-    "voedingsbronnen": "Dierlijke bronnen een beetje.",
-    "bijzonderheden": "Hoge dosering te vinden in hart en weefsels die veel energie nodig hebben. Oxideert snel. 2 vormen, ubiquinon (geoxideerde vorm) en ubiquinol (biologisch actieve vorm). Het lichaam kan ubiquinon zelf omzetten naar ubiquinol. De omzetting gaat niet goed bij ouderen. Daarom beter ubiquinol suppleren."
-  },
-  {
-    "naam": "Silicium (kiezelzuur)",
-    "bouwstof": "",
-    "eigenschappen": "Onderdeel van alle bindweefsels (huid, pezen, botten, kraakbeen, nagels, bloedvaten en slijmvliezen, nieren). Dus bij synthese van collageen, glycosaminoglycanen, hydroxyapatiet. Officieel nog niet essentieel.",
-    "bij_tekort": "Afwijking bindweefsel, botten en gewrichten, mindere afweer, artherosclerose.",
-    "voedingsbronnen": "Volkoren granen, bananen, bonen, linzen, heermoos en brandnetel.",
-    "bijzonderheden": "Antagonist van aluminium, vermindert dus stapeling aluminium (rol bij Alzheimer). Siliciumdioxide hoofdbestanddeel zand."
-  },
-  {
-    "naam": "Glucosamine",
-    "bouwstof": "Glucose en glutamine",
-    "eigenschappen": "Bouwstof kraakbeen, in alle weefsels, hoge concentratie in pezen en kraakbeen. Preventie gewrichtsslijtage, ontstekingsremmend en pijnstillend (vervangt NSAID), onderhoud bindweefsel in bloedvaten, huid, slijmvliezen en maag-darmkanaal. Herstelt beschadigd gewrichtskraakbeen en bestrijdt ontstekingsprocessen in gewrichten. Niet essentieel.",
-    "bij_tekort": "Gewrichtsslijtage, ontstekingen gewrichten en gewrichtskraakbeen.",
-    "voedingsbronnen": "Wordt gemaakt uit chitine (pantser schaaldieren).",
-    "bijzonderheden": "Natuurlijk aminosuiker (enkelvoudige suiker met aminozuur) - glucose en glutamine."
-  },
-  {
-    "naam": "Chondroïtine (chondroïtinesulfaat)",
-    "bouwstof": "",
-    "eigenschappen": "Bouwstof kraakbeen, botten, pezen, huid, bloedvaten en hartkleppen.",
-    "bij_tekort": "Gewrichtsklachten en meer pijn.",
-    "voedingsbronnen": "",
-    "bijzonderheden": "Vaak gecombineerd met glucosamine."
-  },
-  {
-    "naam": "MSM (methylsulfonylmethaan)",
-    "bouwstof": "",
-    "eigenschap": "Organisch gebonden zwavel, vooral in weefsels die eiwitrijk zijn (eiwitten, enzymen, antlichamen, hormonen, spieren, bindweefsel/kraakbeen, keratine eiwitten in huid, haar en nagels).",
-    "bij_tekort": "",
-    "voedingsbronnen": "Moedermelk, verse groente en fruit. Verdwijnt snel bij bewerken en bewaren voeding.",
-    "bijzonderheden": "1% van ons gewicht bestaat uit zwavel. Belangrijk bij synthese van aminozuren cysteïne en glutathion."
-  },
-  {
-    "naam": "D-mannose",
-    "bouwstof": "",
-    "eigenschap": "Essentieel suiker, monosacharide, effectief bij blaasontsteking omdat de E-coli bacterie zich dan niet meer kan hechten aan het blaasslijmvlies, gezonde werking urinewegen.",
-    "bij_tekort": "",
-    "voedingsbronnen": "Ananas en cranberry, extract beuken en berkenhout.",
-    "bijzonderheden": "Voorkomt hechting E-coli bacterie aan urineweg slijmvlies."
-  },
-  {
-    "naam": "Curcuma (curcuminoiden)",
-    "bouwstof": "",
-    "eigenschap": "3 soorten curcuminoiden, werkzame stoffen uit de wortel, is niet hetzelfde als gemalen wortel, extract heeft 90-95% en gemalen 2,4%.\nAntioxidant, reduceert zware metalen, ontstekingsremmend en immunomodulatie (remt immuunsysteem af).",
-    "bij_tekort": "",
-    "voedingsbronnen": "",
-    "bijzonderheden": "Versterkt door zwarte peper.\nLage biologische beschikbaarheid.\nInzetten bij artherosclerose, reuma, galstenen, maagzweer, inflammatoire darmziekten, depressie en dementie."
-  }
+    {
+        "naam": "Koper",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Vorming bindweefsel en botten, pigment haar, vorming hemoglobine, vrijmaken energie uit koolhydraten, vetten en eiwitten (dus normale energiebalans en energieniveau).",
+        "bij_tekort": "",
+        "inzetten_bij": "",
+        "voedingsbronnen": "",
+        "bijzonderheden": "",
+    },
+    {
+        "naam": "Ijzer",
+        "andere_namen": "",
+        "lost_op_in": "",
+        "eigenschap_functie": "Onderdeel van rode bloedcellen (hemoglobine, eiwit in bloed voor transport zuurstof), zuurstoftransport naar alle weefsels. Aanmaak DNA (groei en ontwikkeling), aanmaak neurotransmitters (dopamine en serotonine), ondersteunt aanmaak catalase (antioxidant enzym), vorming energie (ATP, adenosinetrifosfaat, drager chemische energie in cellen), weerstand, vitamine en eiwitstofwisseling en celademhaling.\nHeemijzer (vlees) en Non-heemijzer (planten).\nNon-heemijzer is lastig op te nemen icm cafeïne (koffie, thee en chocolade, niet binnen 1 uur van maaltijd gebruiken).",
+        "bij_tekort": "Bloedarmoede, duizeligheid, verminderde concentratie, kortademigheid, vermoeidheid, bleke huid en weinig eetlust.",
+        "inzetten_bij": "Bloedarmoede, kortademigheid, vermoeidheid, bleke huid, weinig eetlust.",
+        "voedingsbronnen": "Algemeen\n(Rood) vlees, granen\nSpecifiek\nGroenten, noten, bonen, peulvruchten, eieren (dooier).",
+        "bijzonderheden": "Vitamine C bevordert opname Non-heemijzer.\nCalcium kan opname ijzer verhinderen.\nIjzer verlaagt koperopname en andersom. Antagonisten.",
+    },
+    {
+        "naam": "Valine (BCAA) - Essentieel",
+        "eigenschap": "Aanmaak eiwitten, zenuwstelsel",
+        "inzetten_bij": "?",
+        "overige": "",
+        "voedingsbronnen": "Vlees, zuivel, pinda’s, sojabonen",
+        "bijzonderheden": "",
+    },
+    {
+        "naam": "Isoleucine (BCAA) - Essentieel",
+        "eigenschap": "Opbouw en groei spierweefsel, energieproductie en cel regulatie bloedsuikerspiegel",
+        "inzetten_bij": "Spieropbouw",
+        "overige": "",
+        "voedingsbronnen": "Vlees, vis, zuivel, ei, schelpdieren, bonen en noten",
+        "bijzonderheden": "",
+    },
+    {
+        "naam": "Leucine (BCAA) - Essentieel",
+        "eigenschap": "Aanmaak van eiwitten en mensesleiwit, spierweefseltype (afbraak en opbouw spieren) bij afwezig opbouw spieren (voor herstel) opbouw en afbraak weefsel",
+        "inzetten_bij": "Spieropbouw",
+        "overige": "",
+        "voedingsbronnen": "Rauw rundvlees, rauwe zalm, garnalen, varkensvlees, eigeel, volkorenrijst, soja, kikkererwten, linzen, bonen en noten",
+        "bijzonderheden": "",
+    },
+    {
+        "naam": "Glutamine - Essentieel",
+        "eigenschap": "Opbouw aminozuren (icm methionine en glucosamine), belangrijke bouwstof voor glutathion",
+        "inzetten_bij": "Lekkende darm, wondgenezing",
+        "overige": "Goede darmfunctie, immuunsysteem, snelle celherstelprocessen, hersenfunctie, synthese van spiereiwitten, afbraak na ziekte of operatie",
+        "voedingsbronnen": "Rundvlees, zuivel, lever, kool, avocado, bottenbouillon en wei",
+        "bijzonderheden": "Meest voorkomende aminozuur in het lichaam, kan in hersenen omgezet worden in glutamaat (glutaminerzuur), verhoogt met PSP hoeveelheid GABA** (verhoogt mentale activiteit)",
+    },
+    {
+        "naam": "Tyrosine - Niet-essentieel",
+        "eigenschap": "Omzetten schildklier- en bijnierhormoon en adrenaline stofwisseling (dopamine, adrenaline en noradrenaline)",
+        "inzetten_bij": "Cognitieve prestaties, slaapgebrek, geheugen, schildklierproblemen en stress",
+        "overige": "Kan aangemaakt worden uit fenylalanine. Helpt bij de aanmaak van melanine (pigment stof)",
+        "voedingsbronnen": "Vlees, vis, haver, hazelnoten, amandelen en kaas",
+        "bijzonderheden": "Snel tolerantie",
+    },
+    {
+        "naam": "Lysine - Essentieel",
+        "eigenschap": "Verbetert immuunsysteem, groei, vruchtbaarheid en opbouw spieren. Remmende werking op herpesvirus",
+        "inzetten_bij": "Herpesvirussen (o.a. koortslip en gordelroos)",
+        "overige": "Het versterkt het immuunsysteem als onderdeel van de antistoffen",
+        "voedingsbronnen": "Vlees, vis, zuivel, gierst en avocado",
+        "bijzonderheden": "Nodig voor Carnitine",
+    },
+    {
+        "naam": "Arganine - Semi-essentieel aka Arg of R",
+        "eigenschap": "Uitscheiden overtollig stikstof door urine (ureumcyclus, ureum vorming uit koolstofdioxide en ammoniak in de lever), stimulerende werking op herpesvirus",
+        "inzetten_bij": "Ondersteuning immuunsysteem en lever, stimuleert afgifte insuline door alvleesklier (pancreas)",
+        "overige": "Bij groeiende kinderen en zieke mensen essentieel",
+        "voedingsbronnen": "Noten, zaden, gelatine, chocolade, uien en champignons",
+        "bijzonderheden": "Niet inzetten bij herpesvirussen (o.a. koortslip en gordelroos)",
+    },
+    {
+        "naam": "Tryptofaan - Essentieel",
+        "eigenschap": "Basis voor serotonine (stimulerende werking), Neurologisch, bouwstof van 5-htp, serotonine en melatonine en B3.",
+        "inzetten_bij": "Depressie, pijn, slaapproblemen, vermoeidheid en migraine",
+        "overige": "Bevordert nachtrust en bioritme, vermindert de gevoeligheid van pijn, bij voldoende tryptofaan, kan het omgezet worden in B3 voor extra energie, speelt een rol bij regulatie immuunrespons bij infectie, inflammatie en zwangerschap",
+        "voedingsbronnen": "Kalkoen, vis, ei, cashew en paranoten, pompoenpitten, zaden, haver, banaan",
+        "bijzonderheden": "",
+    },
+    {
+        "naam": "Methionine - Essentieel",
+        "eigenschap": "Leverancier organisch zwavel, energiehuishouding, vorming huid, haar en nagels (door bevordering eiwit keratine), antioxidant, kan vermoeidheid tegengaan, ontgifting",
+        "inzetten_bij": "-",
+        "overige": "-",
+        "voedingsbronnen": "Vlees, vis, gevogelte en zuivel",
+        "bijzonderheden": "Nodig voor Carnitine",
+    },
+    {
+        "naam": "Cysteïne - Niet-essentieel",
+        "eigenschap": "Ontgifting, vorming huid, haar en nagels (door bevordering eiwit keratine), antioxidant",
+        "inzetten_bij": "-",
+        "overige": "-",
+        "voedingsbronnen": "Vlees, zuivel, rode peper, ui, knoflook, broccoli, spruiten en graan",
+        "bijzonderheden": "Vaak suppletie als N-Acetyl-L-Cysteine (NAC)",
+    },
+    {
+        "naam": "Taurine - Niet-essentieel",
+        "eigenschap": "Zenuw remmende functie, stofwisseling, angst, overactiviteit en nerveuze aandoeningen. Verbetert hartwerking, bloedvaten en spieren",
+        "inzetten_bij": "-",
+        "overige": "Zwaelhoudend, belangrijk in het netvlies (retina), een belangrijke cofactor is B6",
+        "voedingsbronnen": "Vlees en vis",
+        "bijzonderheden": "Eigenlijk geen aminozuur",
+    },
+    {
+        "naam": "Carnitine - Niet-essentieel",
+        "eigenschap": "L-carnitine transporteert lange vetzuren het mitochondrion in voor energiestofwisseling",
+        "inzetten_bij": "Verbetert sportprestaties, spermakwaliteit en het cognitieve vermogen bij Alzheimer",
+        "overige": "Stimuleert de verbranding van vet, vet-metabolisme van het hart en skeletspieren, afvoer overtollige triglyceriden, drager bij transport vetzuur",
+        "voedingsbronnen": "Vlees (lam, rund en varken) en in mindere mate zuivel en eieren",
+        "bijzonderheden": "Is geen officieel aminozuur, wordt gemaakt uit lysine en Methionine mbv B6, B3 en ijzer",
+    },
+    {
+        "naam": "Glutathion",
+        "eigenschap": "Moeder van alle antioxidanten (vrije radicalen bestrijder), ontgifting, immuun eigenschappen, DNA bescherming en anti aging (anti-oxidatieve functie)",
+        "inzetten_bij": "Langdurig chronische ziekte, toxische belasting en versterken immuunsysteem",
+        "overige": "Grote hoeveelheden aanwezig in cellen",
+        "voedingsbronnen": "Vlees, vis, walnoten, verse groenten (asperges, broccoli, wortel) en fruit",
+        "bijzonderheden": "Is geen officieel aminozuur, wordt gemaakt uit cysteïne, glycine en glutaminezuur. Orale toediening alleen als S-Acetyl-L Glutathion.",
+    },
+    {
+        "naam": "Dopamine",
+        "bouwstof": "Aminozuur Tyrosine",
+        "eigenschappen": "Opwekkend, actief/out of the box denken, blij, keuzes maken, gezond libido, aangetrokken worden, goed werkend immuun- en zenuwstelsel, fysieke/emotionele/mentale kracht, bewegingsenergie, concentratie, daadkracht, doorvermogen.",
+        "bij_tekort": "Geen zin om dingen te ondernemen, niet fijn voelen, moeilijk keuzes maken",
+        "voedingsbronnen": "Gestimuleerd door leuke dingen doen, negatief beïnvloed door alcohol (op korte termijn stimulerend), cafeïne, drugs en suiker, positief beïnvloed door voeding met veel antioxidanten zoals groente en fruit. Tyrosine zit in vis, eieren, vlees, kaas, zuivel, avocado, noten, zaden en peulvruchten.",
+        "bijzonderheden": "Kwetsbaar, oxideert makkelijk, omgezet in noradrenaline.",
+    },
+    {
+        "naam": "Noradrenaline / Norepinephrine",
+        "bouwstof": "Aminozuren Fenylalanine en Tyrosine. Dopamine wordt ook omgezet in noradrenaline",
+        "eigenschappen": "Motivatie, alertheid, concentratie, herinneringen opslaan in lange termijn geheugen. Omzetten vanuit de aminozuren kan alleen bij voldoende B3, B6, C, B11, ijzer en koper.",
+        "bij_tekort": "",
+        "voedingsbronnen": "",
+        "bijzonderheden": "Omgezet in adrenaline.",
+    },
+    {
+        "naam": "Adrenaline",
+        "bouwstof": "Noradrenaline wordt omgezet in adrenaline",
+        "eigenschappen": "Verhoogde alertheid, vecht/vlucht reactie, overlevingsstand.",
+        "bij_tekort": "",
+        "voedingsbronnen": "",
+        "bijzonderheden": "",
+    },
+    {
+        "naam": "Acetylcholine",
+        "bouwstof": "Choline (400mg per dag)",
+        "eigenschappen": "Opwekkend, opslag en gebruik geheugen, concentratie, herinneringen, gedrachten, creativiteit, cognitieve functies, spiercontractie, alertheid.",
+        "bij_tekort": "Alzheimer, mindere werking geheugen (zoeken naar woorden/namen), slechte spijsvertering, onvolledig legen darmen/blaas, moeilijk ontspannen.",
+        "voedingsbronnen": "Eieren en lever, soja, volkoren graanproducten.",
+        "bijzonderheden": "Bij een tekort aan B11 of B12 wordt choline als vervanger gebruikt.",
+    },
+    {
+        "naam": "Serotonine",
+        "bouwstof": "Tryptofaan (voorloper van 5-HTP) of 5-HTP (directe voorloper serotonine)",
+        "eigenschappen": "Kalmerend, lekker in je vel zitten, geheugen, bloeddruk, gezonde eetlust, natuurlijke pijnbestrijder, lichaamstemperatuur.",
+        "bij_tekort": "",
+        "voedingsbronnen": "Tryptofaan zit in bruine rijst, zonnebloem- en pompoenpitten, sesamzaadjes en bananen.",
+        "bijzonderheden": "5-HTP passeert de hersenbarrière makkelijker. Bij de opbouw ook B1, B3, B6 en B11 nodig. Magnesium nodig voor activiteit serotonine receptoren. 90% gemaakt en opgeslagen in maag-darmkanaal en bloed, 2% in hersenen.",
+    },
+    {
+        "naam": "Melatonine",
+        "bouwstof": "Omgezet vanuit serotonine",
+        "eigenschappen": "Normaal slaappatroon",
+        "bij_tekort": "",
+        "voedingsbronnen": "",
+        "bijzonderheden": "Kan omgezet worden tot melatonine.",
+    },
+    {
+        "naam": "Gaba (gamma amino boterzuur)",
+        "bouwstof": "",
+        "eigenschappen": "Remmende functie op centraal zenuwstelsel, remt overactiviteit in neuronen, gaba passeert hersenbarrière moeilijk, inname via mondslijmvliezen (sublinguaal) heeft de voorkeur.",
+        "bij_tekort": "Negatieve gedachten voor het slapen, hoofd dat altijd aan staat, verhoogt kans op epilepsie.",
+        "voedingsbronnen": "Broccoli, groene groenten, zaden, noten, bananen, uien en eieren.",
+        "bijzonderheden": "B1 tekort = verminderde werking gaba, veel alcohol verstoord gaba neurotransmissie (slaperigheid, slechte coördinatie, afgenomen concentratie en vergeetachtigheid).",
+    },
+    {
+        "naam": "Co-enzym Q10 (Ubiquinon/ubiquinon)",
+        "bouwstof": "Aminozuur tyrosine",
+        "eigenschappen": "Komt voor in iedere cel, vetoplosbare stof, cofactor bij celademhaling in mitochondriën (energiecentrales), energievorming in cel, zonder q10 sterft de cel af, antioxidant, radicalenvanger (celmembranen soepel houden), minder lipidenperoxidatie. Lichaam kan het zelf aanmaken, productie neemt af na 40e.",
+        "bij_tekort": "",
+        "voedingsbronnen": "Dierlijke bronnen een beetje.",
+        "bijzonderheden": "Hoge dosering te vinden in hart en weefsels die veel energie nodig hebben. Oxideert snel. 2 vormen, ubiquinon (geoxideerde vorm) en ubiquinol (biologisch actieve vorm). Het lichaam kan ubiquinon zelf omzetten naar ubiquinol. De omzetting gaat niet goed bij ouderen. Daarom beter ubiquinol suppleren.",
+    },
+    {
+        "naam": "Silicium (kiezelzuur)",
+        "bouwstof": "",
+        "eigenschappen": "Onderdeel van alle bindweefsels (huid, pezen, botten, kraakbeen, nagels, bloedvaten en slijmvliezen, nieren). Dus bij synthese van collageen, glycosaminoglycanen, hydroxyapatiet. Officieel nog niet essentieel.",
+        "bij_tekort": "Afwijking bindweefsel, botten en gewrichten, mindere afweer, artherosclerose.",
+        "voedingsbronnen": "Volkoren granen, bananen, bonen, linzen, heermoos en brandnetel.",
+        "bijzonderheden": "Antagonist van aluminium, vermindert dus stapeling aluminium (rol bij Alzheimer). Siliciumdioxide hoofdbestanddeel zand.",
+    },
+    {
+        "naam": "Glucosamine",
+        "bouwstof": "Glucose en glutamine",
+        "eigenschappen": "Bouwstof kraakbeen, in alle weefsels, hoge concentratie in pezen en kraakbeen. Preventie gewrichtsslijtage, ontstekingsremmend en pijnstillend (vervangt NSAID), onderhoud bindweefsel in bloedvaten, huid, slijmvliezen en maag-darmkanaal. Herstelt beschadigd gewrichtskraakbeen en bestrijdt ontstekingsprocessen in gewrichten. Niet essentieel.",
+        "bij_tekort": "Gewrichtsslijtage, ontstekingen gewrichten en gewrichtskraakbeen.",
+        "voedingsbronnen": "Wordt gemaakt uit chitine (pantser schaaldieren).",
+        "bijzonderheden": "Natuurlijk aminosuiker (enkelvoudige suiker met aminozuur) - glucose en glutamine.",
+    },
+    {
+        "naam": "Chondroïtine (chondroïtinesulfaat)",
+        "bouwstof": "",
+        "eigenschappen": "Bouwstof kraakbeen, botten, pezen, huid, bloedvaten en hartkleppen.",
+        "bij_tekort": "Gewrichtsklachten en meer pijn.",
+        "voedingsbronnen": "",
+        "bijzonderheden": "Vaak gecombineerd met glucosamine.",
+    },
+    {
+        "naam": "MSM (methylsulfonylmethaan)",
+        "bouwstof": "",
+        "eigenschap": "Organisch gebonden zwavel, vooral in weefsels die eiwitrijk zijn (eiwitten, enzymen, antlichamen, hormonen, spieren, bindweefsel/kraakbeen, keratine eiwitten in huid, haar en nagels).",
+        "bij_tekort": "",
+        "voedingsbronnen": "Moedermelk, verse groente en fruit. Verdwijnt snel bij bewerken en bewaren voeding.",
+        "bijzonderheden": "1% van ons gewicht bestaat uit zwavel. Belangrijk bij synthese van aminozuren cysteïne en glutathion.",
+    },
+    {
+        "naam": "D-mannose",
+        "bouwstof": "",
+        "eigenschap": "Essentieel suiker, monosacharide, effectief bij blaasontsteking omdat de E-coli bacterie zich dan niet meer kan hechten aan het blaasslijmvlies, gezonde werking urinewegen.",
+        "bij_tekort": "",
+        "voedingsbronnen": "Ananas en cranberry, extract beuken en berkenhout.",
+        "bijzonderheden": "Voorkomt hechting E-coli bacterie aan urineweg slijmvlies.",
+    },
+    {
+        "naam": "Curcuma (curcuminoiden)",
+        "bouwstof": "",
+        "eigenschap": "3 soorten curcuminoiden, werkzame stoffen uit de wortel, is niet hetzelfde als gemalen wortel, extract heeft 90-95% en gemalen 2,4%.\nAntioxidant, reduceert zware metalen, ontstekingsremmend en immunomodulatie (remt immuunsysteem af).",
+        "bij_tekort": "",
+        "voedingsbronnen": "",
+        "bijzonderheden": "Versterkt door zwarte peper.\nLage biologische beschikbaarheid.\nInzetten bij artherosclerose, reuma, galstenen, maagzweer, inflammatoire darmziekten, depressie en dementie.",
+    },
 ]
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

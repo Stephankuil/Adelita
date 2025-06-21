@@ -1,13 +1,16 @@
 import sqlite3
-from DATABASE_AANMAKEN.planten_met_info import planten_info  # Importeer plantgegevens uit extern bestand
+from DATABASE_AANMAKEN.planten_met_info import (
+    planten_info,
+)  # Importeer plantgegevens uit extern bestand
 from Supplementen_lijst import supplementen  # Importeer supplementgegevens
 
 # Verbind met de SQLite-database (maakt bestand aan als het nog niet bestaat)
-conn = sqlite3.connect('../fytotherapie.db')
+conn = sqlite3.connect("../fytotherapie.db")
 cursor = conn.cursor()
 
 # Voer SQL-script uit voor het aanmaken van alle benodigde tabellen als ze nog niet bestaan
-cursor.executescript("""
+cursor.executescript(
+    """
 -- Tabel voor planteninformatie
 CREATE TABLE IF NOT EXISTS planten (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -106,31 +109,35 @@ CREATE TABLE supplementen (
     bouwstof TEXT,
     eigenschappen TEXT
 );
-""")
+"""
+)
 
 # Voeg planten toe aan de database, maar alleen als ze nog niet bestaan
 for plant in planten_info:
     cursor.execute("SELECT id FROM planten WHERE naam = ?", (plant["naam"],))
     result = cursor.fetchone()
     if not result:
-        cursor.execute('''
+        cursor.execute(
+            """
             INSERT INTO planten (
                 naam, botanische_naam, beschrijving, te_gebruiken_bij,
                 gebruikt_plantendeel, aanbevolen_combinaties, niet_te_gebruiken_bij,
                 categorie_kleur, details, afbeelding
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
-            plant["naam"],
-            plant["botanische_naam"],
-            plant["beschrijving"],
-            plant["te_gebruiken_bij"],
-            plant["gebruikt_plantendeel"],
-            plant["aanbevolen_combinaties"],
-            plant["niet_te_gebruiken_bij"],
-            plant.get("categorie_kleur", ""),  # optioneel veld
-            plant["details"],
-            plant["afbeelding"]
-        ))
+        """,
+            (
+                plant["naam"],
+                plant["botanische_naam"],
+                plant["beschrijving"],
+                plant["te_gebruiken_bij"],
+                plant["gebruikt_plantendeel"],
+                plant["aanbevolen_combinaties"],
+                plant["niet_te_gebruiken_bij"],
+                plant.get("categorie_kleur", ""),  # optioneel veld
+                plant["details"],
+                plant["afbeelding"],
+            ),
+        )
     else:
         print(f"⏩ Plant '{plant['naam']}' bestaat al, overslaan.")
 
@@ -140,24 +147,27 @@ for supplement in supplementen:
     result = cursor.fetchone()
 
     if not result:
-        cursor.execute("""
+        cursor.execute(
+            """
             INSERT INTO supplementen (
                 naam, andere_namen, lost_op_in, eigenschap_functie,
                 bij_tekort, inzetten_bij, voedingsbronnen, bijzonderheden,
                 bouwstof, eigenschappen
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (
-            supplement.get('naam', ''),
-            supplement.get('andere_namen', ''),
-            supplement.get('lost_op_in', ''),
-            supplement.get('eigenschap_functie', supplement.get('eigenschap', '')),
-            supplement.get('bij_tekort', ''),
-            supplement.get('inzetten_bij', ''),
-            supplement.get('voedingsbronnen', ''),
-            supplement.get('bijzonderheden', ''),
-            supplement.get('bouwstof', ''),
-            supplement.get('eigenschappen', supplement.get('overige', ''))
-        ))
+        """,
+            (
+                supplement.get("naam", ""),
+                supplement.get("andere_namen", ""),
+                supplement.get("lost_op_in", ""),
+                supplement.get("eigenschap_functie", supplement.get("eigenschap", "")),
+                supplement.get("bij_tekort", ""),
+                supplement.get("inzetten_bij", ""),
+                supplement.get("voedingsbronnen", ""),
+                supplement.get("bijzonderheden", ""),
+                supplement.get("bouwstof", ""),
+                supplement.get("eigenschappen", supplement.get("overige", "")),
+            ),
+        )
         print(f"✅ Toegevoegd: {supplement['naam']}")
     else:
         print(f"⏩ Bestaat al: {supplement['naam']}")
