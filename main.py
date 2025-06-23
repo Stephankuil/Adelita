@@ -1,51 +1,37 @@
-# Importeer benodigde modules van Flask
-from flask import Flask
+from flask import Flask  # Importeer de Flask klasse om een webapplicatie te maken
 
 # Importeer de verschillende route-bestanden (Blueprints)
-from routes.index_routes import index_bp
-from routes.plant_routes import plant_bp
-from routes.klacht_routes import klacht_bp
-from routes.klant_routes import klant_bp
-from routes.supplement_routes import supplement_bp
-from routes.klant_download_routes import klant_download_bp
+from routes.index_routes import index_bp  # Hoofdpagina-routes
+from routes.plant_routes import plant_bp  # Routes voor plantenbeheer
+from routes.klacht_routes import klacht_bp  # Routes voor klachtenbeheer
+from routes.klant_routes import klant_bp  # Routes voor klantbeheer
+from routes.supplement_routes import supplement_bp  # Routes voor supplementenbeheer
+from routes.klant_download_routes import klant_download_bp  # Routes voor klantgegevens downloaden
 
-# Maak een nieuwe Flask-applicatie aan
-app = Flask(__name__)
-# Stel de geheime sleutel in voor sessiebeheer
-app.secret_key = "geheim123"
+app = Flask(__name__)  # Maak een nieuwe Flask-app aan
+app.secret_key = "geheim123"  # Geheime sleutel instellen voor sessies
 
-# Map waarin geüploade bestanden opgeslagen worden
-UPLOAD_FOLDER = "static/uploads"
-# Sta alleen bepaalde bestandstypen toe om te uploaden
-ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
-# Voeg de uploadmap toe aan de configuratie van Flask
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+UPLOAD_FOLDER = "static/uploads"  # Map waarin geüploade bestanden worden opgeslagen
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}  # Toegestane bestandstypes voor upload
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER  # Voeg de uploadmap toe aan de configuratie
 
-# Zet admin gebruikersnaam en wachtwoord voor eenvoudige login/authenticatie
-ADMIN_GEBRUIKER = "admin"
-ADMIN_WACHTWOORD = "test123"
+ADMIN_GEBRUIKER = "admin"  # Gebruikersnaam voor admin-login
+ADMIN_WACHTWOORD = "test123"  # Wachtwoord voor admin-login
 
-# Registreer alle route-blueprints bij de Flask-app
-app.register_blueprint(index_bp)
-app.register_blueprint(plant_bp)
-app.register_blueprint(klacht_bp)
-app.register_blueprint(klant_bp)
-app.register_blueprint(supplement_bp)
-app.register_blueprint(klant_download_bp)
+# Registreer alle blueprints (routegroepen) bij de app
+app.register_blueprint(index_bp)  # Voeg index-routes toe
+app.register_blueprint(plant_bp)  # Voeg plant-routes toe
+app.register_blueprint(klacht_bp)  # Voeg klacht-routes toe
+app.register_blueprint(klant_bp)  # Voeg klant-routes toe
+app.register_blueprint(supplement_bp)  # Voeg supplement-routes toe
+app.register_blueprint(klant_download_bp)  # Voeg download-routes toe
 
-# Importeer modules voor threading en automatisch openen van de browser
-import threading
-import webbrowser
+import threading  # Voor het starten van taken op de achtergrond
+import webbrowser  # Voor het openen van de standaardbrowser
 
+def open_browser():  # Definieer een functie om de browser te openen
+    webbrowser.open_new("http://127.0.0.1:5000/")  # Open de standaardbrowser op het juiste adres
 
-# Definieer een functie die automatisch de standaardbrowser opent op het juiste adres
-def open_browser():
-    webbrowser.open_new("http://127.0.0.1:5000/")
-
-
-# Start de server als dit bestand direct wordt uitgevoerd
-if __name__ == "__main__":
-    # Start een timer die na 1.25 seconden de browser opent
-    threading.Timer(1.25, open_browser).start()
-    # Start de Flask webserver op poort 5000
-    app.run()
+if __name__ == "__main__":  # Als dit script direct wordt uitgevoerd...
+    threading.Timer(1.25, open_browser).start()  # Wacht 1.25 seconden en open dan de browser
+    app.run()  # Start de Flask-server op poort 5000
