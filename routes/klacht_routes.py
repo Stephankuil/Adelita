@@ -1,72 +1,53 @@
-import sqlite3
-from flask import render_template, Blueprint
+import sqlite3  # Voor communicatie met de SQLite-database
+from flask import render_template, Blueprint  # Voor templates en route-structuur (Blueprints)
 
 # Maak een blueprint aan voor routes die met klachten te maken hebben
-klacht_bp = Blueprint("klacht_bp", __name__)
-
+klacht_bp = Blueprint("klacht_bp", __name__)  # Blueprint met naam 'klacht_bp'
 
 # Route voor het overzicht van alle klachten
 @klacht_bp.route("/klachten")
 def klachten():
-    # Verbind met de database
-    conn = sqlite3.connect("fytotherapie.db")
-    cursor = conn.cursor()
+    conn = sqlite3.connect("fytotherapie.db")  # Verbind met de database
+    cursor = conn.cursor()  # Maak een cursor voor SQL-queries
 
-    # Haal id, naam en beschrijving van alle klachten op, alfabetisch gesorteerd
-    cursor.execute("SELECT id, naam, beschrijving FROM klachten ORDER BY naam ASC")
-    klachten_lijst = cursor.fetchall()
+    cursor.execute("SELECT id, naam, beschrijving FROM klachten ORDER BY naam ASC")  # Haal alle klachten op, gesorteerd
+    klachten_lijst = cursor.fetchall()  # Zet het resultaat in een lijst
 
-    # Sluit de databaseverbinding
-    conn.close()
+    conn.close()  # Sluit de databaseverbinding
 
-    # Render de klachten.html-template met de opgehaalde klachten
-    return render_template("klachten.html", klachten=klachten_lijst)
-
+    return render_template("klachten.html", klachten=klachten_lijst)  # Render de klachtenpagina met de lijst
 
 # Route voor de detailpagina van een specifieke klacht (inclusief koppel-interface)
 @klacht_bp.route("/klacht/<klacht_naam>")
 def klacht_detail(klacht_naam):
-    # Verbind met de database
-    conn = sqlite3.connect("fytotherapie.db")
-    cursor = conn.cursor()
+    conn = sqlite3.connect("fytotherapie.db")  # Verbind met de database
+    cursor = conn.cursor()  # Maak een cursor
 
-    # Haal het ID en de beschrijving op van de opgegeven klacht
-    cursor.execute(
-        "SELECT id, beschrijving FROM klachten WHERE naam = ?", (klacht_naam,)
-    )
-    klacht_row = cursor.fetchone()
+    cursor.execute("SELECT id, beschrijving FROM klachten WHERE naam = ?", (klacht_naam,))  # Zoek klacht op naam
+    klacht_row = cursor.fetchone()  # Haal één resultaat op
 
-    # Als de klacht niet bestaat, geef een foutmelding terug
-    if not klacht_row:
-        return f"❌ Klacht '{klacht_naam}' niet gevonden."
+    if not klacht_row:  # Als de klacht niet bestaat
+        return f"❌ Klacht '{klacht_naam}' niet gevonden."  # Toon foutmelding
 
-    # Haal het ID en de beschrijving uit de resultaat-row
-    klacht_id, beschrijving = klacht_row
+    klacht_id, beschrijving = klacht_row  # Haal ID en beschrijving uit de rij
 
-    # Haal de namen op van alle planten die gekoppeld zijn aan deze klacht
-    cursor.execute(
-        """
+    cursor.execute("""
         SELECT planten.naam FROM planten
         JOIN plant_klacht ON planten.id = plant_klacht.plant_id
         WHERE plant_klacht.klacht_id = ?
-    """,
-        (klacht_id,),
-    )
-    gekoppelde_planten = [r[0] for r in cursor.fetchall()]
+    """, (klacht_id,))  # Haal namen van gekoppelde planten op via JOIN
+    gekoppelde_planten = [r[0] for r in cursor.fetchall()]  # Maak lijst van plantennamen
 
-    # Haal alle planten op (voor het tonen van een keuzelijst om te koppelen)
-    cursor.execute("SELECT id, naam FROM planten ORDER BY LOWER(naam) ASC")
-    alle_planten = cursor.fetchall()
+    cursor.execute("SELECT id, naam FROM planten ORDER BY LOWER(naam) ASC")  # Haal alle planten op voor keuzelijst
+    alle_planten = cursor.fetchall()  # Resultaat in een lijst
 
-    # Sluit de databaseverbinding
-    conn.close()
+    conn.close()  # Sluit de database
 
-    # Render de detailpagina met alle opgehaalde gegevens
-    return render_template(
-        "klacht_detail.html",  # Template voor klachten-detail
+    return render_template(  # Laad de klachten-detailpagina met alle gegevens
+        "klacht_detail.html",  # Template-bestand
         klacht=klacht_naam,  # Naam van de klacht
-        beschrijving=beschrijving,  # Beschrijving van de klacht
-        gekoppelde_planten=gekoppelde_planten,  # Lijst met gekoppelde planten
+        beschrijving=beschrijving,  # Beschrijving uit de database
+        gekoppelde_planten=gekoppelde_planten,  # Alle gekoppelde planten
         alle_planten=alle_planten,  # Alle beschikbare planten
-        klacht_id=klacht_id,  # ID van de klacht (nodig voor formulieren)
+        klacht_id=klacht_id,  # ID van de klacht (voor formulieren)
     )
