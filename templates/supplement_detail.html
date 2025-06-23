@@ -68,42 +68,33 @@
 
 <body>
 
-    <h1>{{ supplement['naam'] }}</h1>
-    <!-- Titel van de pagina, met de naam van het supplement -->
+    <h1>{{ supplement['naam'] }}</h1> <!-- Titel van de pagina, met de naam van het supplement -->
 
-    <div class="container">
-        <!-- Container met alle eigenschappen van het supplement -->
+    <div class="container"> <!-- Container met alle eigenschappen van het supplement -->
 
-        <p><strong>Andere Namen:</strong> {{ supplement['andere_namen'] or '-' }}</p>
-        <!-- Alternatieve namen van het supplement -->
+        <p><strong>Andere Namen:</strong> {{ supplement['andere_namen'] or '-' }}</p> <!-- Alternatieve namen van het supplement -->
 
-        <p><strong>Lost Op In:</strong> {{ supplement['lost_op_in'] or '-' }}</p>
-        <!-- Oplosbaarheid van het supplement -->
+        <p><strong>Lost Op In:</strong> {{ supplement['lost_op_in'] or '-' }}</p> <!-- In welk soort vloeistof het supplement oplost (bijv. water of vet) -->
 
-        <p><strong>Eigenschap/Functie:</strong> {{ supplement['eigenschap_functie'] or '-' }}</p>
-        <!-- Wat doet het supplement in het lichaam -->
+        <p><strong>Eigenschap/Functie:</strong> {{ supplement['eigenschap_functie'] or '-' }}</p> <!-- De functie of werking van het supplement in het lichaam -->
 
-        <p><strong>Bij Tekort:</strong> {{ supplement['bij_tekort'] or '-' }}</p>
-        <!-- Gevolgen van tekort aan dit supplement -->
+        <p><strong>Bij Tekort:</strong> {{ supplement['bij_tekort'] or '-' }}</p> <!-- Wat er gebeurt bij een tekort aan dit supplement -->
 
-        <p><strong>Inzetten Bij:</strong> {{ supplement['inzetten_bij'] or '-' }}</p>
-        <!-- Wanneer wordt dit supplement aangeraden -->
+        <p><strong>Inzetten Bij:</strong> {{ supplement['inzetten_bij'] or '-' }}</p> <!-- Bij welke klachten of situaties dit supplement ingezet wordt -->
 
-        <p><strong>Voedingsbronnen:</strong> {{ supplement['voedingsbronnen'] or '-' }}</p>
-        <!-- Natuurlijke bronnen waar dit supplement in zit -->
+        <p><strong>Voedingsbronnen:</strong> {{ supplement['voedingsbronnen'] or '-' }}</p> <!-- Welke voeding natuurlijke bronnen van dit supplement zijn -->
 
-        <p><strong>Bijzonderheden:</strong> {{ supplement['bijzonderheden'] or '-' }}</p>
-        <!-- Extra relevante informatie -->
+        <p><strong>Bijzonderheden:</strong> {{ supplement['bijzonderheden'] or '-' }}</p> <!-- Eventuele extra informatie over het supplement -->
 
-        <p><strong>Bouwstof:</strong> {{ supplement['bouwstof'] or '-' }}</p>
-        <!-- Of het supplement als bouwstof wordt gebruikt in het lichaam -->
+        <p><strong>Bouwstof:</strong> {{ supplement['bouwstof'] or '-' }}</p> <!-- Of het supplement een bouwstof is voor het lichaam (bijv. voor spieren, cellen, etc.) -->
 
-        <p><strong>Eigenschappen:</strong> {{ supplement['eigenschappen'] or '-' }}</p>
-        <!-- Fysieke of medische eigenschappen van het supplement -->
+        <p><strong>Eigenschappen:</strong> {{ supplement['eigenschappen'] or '-' }}</p> <!-- Kenmerken zoals antioxidant, ontstekingsremmend, etc. -->
 
-        <a href="{{ url_for('supplement_bp.toon_supplementen') }}">← Terug naar overzicht</a>
-        <!-- Link terug naar het overzicht van alle supplementen -->
+        <a href="{{ url_for('supplement_bp.toon_supplementen') }}">← Terug naar overzicht</a> <!-- Link terug naar het supplementenoverzicht -->
+
     </div>
+
+</body>
 
 </body>
 </html>

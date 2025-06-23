@@ -46,35 +46,36 @@
     <!-- Nogmaals een terugknop onderaan -->
     <a class="terug" href="{{ url_for('index_bp.index') }}">← Terug naar startpagina</a>
 
-    <script>
-        // Toggle de zichtbaarheid van de klachtbeschrijving
-        function toggleBeschrijving(id) {
-            const beschrijving = document.getElementById('beschrijving-' + id);
-            const icoon = document.getElementById('icoon-' + id);
+<script>
+    // Toggle de zichtbaarheid van de klachtbeschrijving
+    function toggleBeschrijving(id) {  // Functie om de zichtbaarheid van de beschrijving te wisselen
+        const beschrijving = document.getElementById('beschrijving-' + id);  // Haalt het element van de beschrijving op
+        const icoon = document.getElementById('icoon-' + id);  // Haalt het pijltje/icoon element op
 
-            const isVisible = beschrijving.style.display === 'block';
-            beschrijving.style.display = isVisible ? 'none' : 'block';
-            icoon.textContent = isVisible ? '🔽' : '🔼';
-        }
+        const isVisible = beschrijving.style.display === 'block';  // Controleert of de beschrijving momenteel zichtbaar is
+        beschrijving.style.display = isVisible ? 'none' : 'block';  // Verberg of toon de beschrijving
+        icoon.textContent = isVisible ? '🔽' : '🔼';  // Pas het icoon aan afhankelijk van de zichtbaarheid
+    }
 
-        // Filter klachten op basis van zoekterm in het zoekveld
-        function filterKlachten() {
-            const zoekveld = document.getElementById('zoekveld').value.toLowerCase();
-            const klachtenLijst = document.getElementById('klachten-lijst');
-            const klachten = klachtenLijst.getElementsByTagName('li');
+    // Filter klachten op basis van zoekterm in het zoekveld
+    function filterKlachten() {  // Functie om de lijst met klachten te filteren
+        const zoekveld = document.getElementById('zoekveld').value.toLowerCase();  // Haalt de zoekterm op en zet die om naar kleine letters
+        const klachtenLijst = document.getElementById('klachten-lijst');  // Haalt de hele klachtenlijst op
+        const klachten = klachtenLijst.getElementsByTagName('li');  // Haalt alle <li>-elementen (klachten) op
 
-            for (let i = 0; i < klachten.length; i++) {
-                const titelElement = klachten[i].getElementsByClassName('klacht-titel')[0];
-                const titelText = titelElement.textContent.toLowerCase();
+        for (let i = 0; i < klachten.length; i++) {  // Loop door alle klachten heen
+            const titelElement = klachten[i].getElementsByClassName('klacht-titel')[0];  // Haalt het titel-element van een klacht op
+            const titelText = titelElement.textContent.toLowerCase();  // Zet de titeltekst om naar kleine letters
 
-                // Toon of verberg de klacht op basis van zoekterm
-                if (titelText.includes(zoekveld)) {
-                    klachten[i].style.display = '';
-                } else {
-                    klachten[i].style.display = 'none';
-                }
+            // Toon of verberg de klacht op basis van zoekterm
+            if (titelText.includes(zoekveld)) {  // Als de zoekterm voorkomt in de titel
+                klachten[i].style.display = '';  // Laat de klacht zien
+            } else {
+                klachten[i].style.display = 'none';  // Verberg de klacht
             }
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>

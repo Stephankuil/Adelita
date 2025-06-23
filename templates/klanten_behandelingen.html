@@ -16,79 +16,68 @@
 
 <body>
 
-<h1>Klanten & Behandelingen</h1>
-<!-- Hoofdtitel van de pagina -->
+<h1>Klanten & Behandelingen</h1> <!-- Hoofdtitel van de pagina -->
 
-<table>
-    <!-- Tabel waarin per klant de gegevens van de laatste behandeling worden getoond -->
+<table> <!-- Tabel waarin per klant de gegevens van de laatste behandeling worden getoond -->
 
     <thead>
-        <tr>
-            <!-- Kolomnamen -->
-            <th>Naam</th>
-            <th>Laatste behandeling</th>
-            <th>Datum</th>
-            <th>Klachten</th>
-            <th>Planten</th>
-            <th>Actie</th>
+        <tr> <!-- Rij met kolomnamen -->
+            <th>Naam</th> <!-- Kolom: Naam van de klant -->
+            <th>Laatste behandeling</th> <!-- Kolom: Naam van de laatste behandeling -->
+            <th>Datum</th> <!-- Kolom: Datum van de behandeling -->
+            <th>Klachten</th> <!-- Kolom: Lijst van klachten -->
+            <th>Planten</th> <!-- Kolom: Lijst van planten -->
+            <th>Actie</th> <!-- Kolom: Actieknop (link naar detailpagina) -->
         </tr>
     </thead>
 
     <tbody>
-        {% for klant in klanten %}
-        <!-- Loop door de lijst met klanten uit de backend -->
-        <tr>
-            <!-- Rij met gegevens per klant -->
-            <td>{{ klant.naam }}</td>
-            <!-- Naam van de klant -->
+        {% for klant in klanten %} <!-- Loop door alle klanten uit de backend -->
+        <tr> <!-- Rij met klantgegevens -->
+            <td>{{ klant.naam }}</td> <!-- Naam van de klant -->
 
-            <td>{{ klant.behandeling or '—' }}</td>
-            <!-- Naam van de laatste behandeling of een streepje als die er niet is -->
+            <td>{{ klant.behandeling or '—' }}</td> <!-- Laatste behandeling, of een streepje als er geen is -->
 
-            <td>{{ klant.datum or '—' }}</td>
-            <!-- Datum van de behandeling of een streepje -->
+            <td>{{ klant.datum or '—' }}</td> <!-- Behandelingsdatum, of een streepje -->
 
-            <td>
-                <!-- Klachten gekoppeld aan de behandeling -->
-                {% if klant.klachten %}
-                <ul>
+            <td> <!-- Kolom met klachten -->
+                {% if klant.klachten %} <!-- Als er klachten zijn -->
+                <ul> <!-- Toon lijst met klachten -->
                     {% for klacht in klant.klachten %}
-                    <li>{{ klacht }}</li>
+                    <li>{{ klacht }}</li> <!-- Eén klacht -->
                     {% endfor %}
                 </ul>
-                {% else %}
+                {% else %} <!-- Geen klachten gekoppeld -->
                 Geen klachten gekoppeld
                 {% endif %}
             </td>
 
-            <td>
-                <!-- Planten gekoppeld aan de behandeling -->
-                {% if klant.planten %}
-                <ul>
+            <td> <!-- Kolom met planten -->
+                {% if klant.planten %} <!-- Als er planten zijn -->
+                <ul> <!-- Toon lijst met planten -->
                     {% for plant in klant.planten %}
-                    <li>{{ plant }}</li>
+                    <li>{{ plant }}</li> <!-- Eén plant -->
                     {% endfor %}
                 </ul>
-                {% else %}
+                {% else %} <!-- Geen planten gekoppeld -->
                 Geen planten gekoppeld
                 {% endif %}
             </td>
 
-            <td>
-                <!-- Link naar de detailpagina van de klant -->
-                <a href="{{ url_for('klant_bp.klant_detail', klant_id=klant.id) }}">Bekijk</a>
+            <td> <!-- Actieknop -->
+                <a href="{{ url_for('klant_bp.klant_detail', klant_id=klant.id) }}">Bekijk</a> <!-- Link naar detailpagina klant -->
             </td>
         </tr>
-        {% endfor %}
+        {% endfor %} <!-- Einde loop over klanten -->
     </tbody>
 </table>
 
-<div class="back-link">
-    <!-- Navigatie teruglinks -->
-    <a href="{{ url_for('klant_bp.klanten') }}">← Terug naar klantenlijst</a>
+<div class="back-link"> <!-- Navigatie teruglinks -->
+    <a href="{{ url_for('klant_bp.klanten') }}">← Terug naar klantenlijst</a> <!-- Link terug naar klantenoverzicht -->
     <br><br><br>
-    <a class="terug" href="/">← Terug naar startpagina</a>
+    <a class="terug" href="/">← Terug naar startpagina</a> <!-- Link terug naar startpagina -->
 </div>
 
 </body>
+
 </html>
