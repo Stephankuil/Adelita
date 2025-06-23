@@ -1,54 +1,54 @@
-<!DOCTYPE html>
-<html lang="nl">
+<!DOCTYPE html> <!-- HTML5-documenttype -->
+<html lang="nl"> <!-- De taal van de pagina is Nederlands -->
 <head>
-    <meta charset="UTF-8">
-    <title>Klacht: {{ klacht }}</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/klacht_detail.css') }}">
-
+    <meta charset="UTF-8"> <!-- Tekencodering instellen -->
+    <title>Klacht: {{ klacht }}</title> <!-- Dynamische titel op basis van de klachtnaam -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/klacht_detail.css') }}"> <!-- Koppel een CSS-bestand -->
 </head>
 <body>
 
-<div class="container">
-    <h1>🌿 Klacht: {{ klacht }}</h1>
+<div class="container"> <!-- Container voor alle inhoud -->
+    <h1>🌿 Klacht: {{ klacht }}</h1> <!-- Toon de naam van de klacht -->
 
-    <h2>🔗 Gekoppelde planten</h2>
-    {% if gekoppelde_planten %}
+    <h2>🔗 Gekoppelde planten</h2> <!-- Titel voor gekoppelde planten -->
+    {% if gekoppelde_planten %} <!-- Als er gekoppelde planten zijn -->
         <ul>
-            {% for plant in gekoppelde_planten %}
+            {% for plant in gekoppelde_planten %} <!-- Herhaal voor elke gekoppelde plant -->
                 <li>
-                    <a href="{{ url_for('plant_bp.plant_info', plant_naam=plant) }}">{{ plant }}</a>
+                    <a href="{{ url_for('plant_bp.plant_info', plant_naam=plant) }}">{{ plant }}</a> <!-- Link naar plant-detail -->
                     <form class="inline" action="{{ url_for('plant_bp.verwijder_plant') }}" method="post" onsubmit="return confirmVerwijderen('{{ plant }}');">
-                        <input type="hidden" name="plant_naam" value="{{ plant }}">
-                        <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
-                        <button type="submit">Verwijder</button>
+                        <!-- Formulier om een plant te ontkoppelen, met bevestigingspopup -->
+                        <input type="hidden" name="plant_naam" value="{{ plant }}"> <!-- Verstopte input met de plantnaam -->
+                        <input type="hidden" name="klacht_id" value="{{ klacht_id }}"> <!-- Verstopte input met klacht-ID -->
+                        <button type="submit">Verwijder</button> <!-- Verwijderknop -->
                     </form>
                 </li>
             {% endfor %}
         </ul>
-    {% else %}
-        <p><em>Geen planten gekoppeld aan deze klacht.</em></p>
+    {% else %} <!-- Als er geen gekoppelde planten zijn -->
+        <p><em>Geen planten gekoppeld aan deze klacht.</em></p> <!-- Toon melding -->
     {% endif %}
 
-    <div class="toevoegen-form">
+    <div class="toevoegen-form"> <!-- Formulier om een plant te koppelen -->
         <h2>➕ Plant koppelen</h2>
-        <form action="{{ url_for('plant_bp.koppel_plant') }}" method="post">
-            <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
-            <select name="plant_id">
-                {% for id, naam in alle_planten %}
-                    <option value="{{ id }}">{{ naam }}</option>
+        <form action="{{ url_for('plant_bp.koppel_plant') }}" method="post"> <!-- Formulier voor POST-verzoek -->
+            <input type="hidden" name="klacht_id" value="{{ klacht_id }}"> <!-- Verstopte input met klacht-ID -->
+            <select name="plant_id"> <!-- Dropdown met planten -->
+                {% for id, naam in alle_planten %} <!-- Herhaal alle beschikbare planten -->
+                    <option value="{{ id }}">{{ naam }}</option> <!-- Voeg plant toe aan dropdown -->
                 {% endfor %}
             </select>
-            <button type="submit" style="background-color: #2e7d32;">Toevoegen</button>
+            <button type="submit" style="background-color: #2e7d32;">Toevoegen</button> <!-- Toevoegknop -->
         </form>
     </div>
 
-    <div class="back-link">
-        <a href="{{ url_for('klacht_bp.klachten') }}">← Terug naar klachtenlijst</a>
+    <div class="back-link"> <!-- Terug-link -->
+        <a href="{{ url_for('klacht_bp.klachten') }}">← Terug naar klachtenlijst</a> <!-- Link naar klachtenoverzicht -->
     </div>
 </div>
 
 <script>
-    function confirmVerwijderen(plantNaam) {
+    function confirmVerwijderen(plantNaam) { // Vraag bevestiging bij verwijderen
         return confirm("Weet je zeker dat je de plant '" + plantNaam + "' wilt verwijderen uit deze klacht?");
     }
 </script>
