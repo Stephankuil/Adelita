@@ -1,52 +1,41 @@
 # Importeer benodigde modules van Flask
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, session  # Voor routes, templates, formulierverwerking en sessiebeheer
 
 # Maak een Blueprint aan voor de index-routes
-index_bp = Blueprint("index_bp", __name__)
+index_bp = Blueprint("index_bp", __name__)  # Blueprint voor alle routes in dit bestand
 
 # Simpele hardcoded admin-inloggegevens
-ADMIN_GEBRUIKER = "admin"
-ADMIN_WACHTWOORD = "test123"
-
+ADMIN_GEBRUIKER = "admin"  # Gebruikersnaam voor admin-login
+ADMIN_WACHTWOORD = "test123"  # Wachtwoord voor admin-login
 
 # Route voor de startpagina ("/")
 @index_bp.route("/")
 def index():
-    # Als de gebruiker niet is ingelogd, stuur door naar de loginpagina
-    if "gebruiker" not in session:
-        return redirect(url_for("index_bp.login"))
-
-    # Als de gebruiker is ingelogd, toon de index.html pagina
-    return render_template("index.html")
-
+    if "gebruiker" not in session:  # Controleer of gebruiker is ingelogd
+        return redirect(url_for("index_bp.login"))  # Zo niet, stuur door naar loginpagina
+    return render_template("index.html")  # Toon indexpagina als gebruiker is ingelogd
 
 # Route voor inloggen ("/login"), ondersteunt GET en POST
 @index_bp.route("/login", methods=["GET", "POST"])
 def login():
-    foutmelding = None  # Variabele om foutmeldingen op te slaan
+    foutmelding = None  # Variabele voor foutmelding (bijv. verkeerde login)
 
-    # Verwerk formulier indien verstuurd via POST
-    if request.method == "POST":
-        gebruikersnaam = request.form["gebruikersnaam"]
-        wachtwoord = request.form["wachtwoord"]
+    if request.method == "POST":  # Als formulier is verstuurd
+        gebruikersnaam = request.form["gebruikersnaam"]  # Haal gebruikersnaam uit formulier
+        wachtwoord = request.form["wachtwoord"]  # Haal wachtwoord uit formulier
 
-        # Controleer of gebruikersnaam en wachtwoord overeenkomen met admin
-        if gebruikersnaam == ADMIN_GEBRUIKER and wachtwoord == ADMIN_WACHTWOORD:
+        if gebruikersnaam == ADMIN_GEBRUIKER and wachtwoord == ADMIN_WACHTWOORD:  # Controleer adminlogin
             session["gebruiker"] = gebruikersnaam  # Sla gebruiker op in sessie
-            return redirect(url_for("index_bp.index"))  # Doorsturen naar index
+            return redirect(url_for("index_bp.index"))  # Redirect naar homepage
         else:
-            foutmelding = "Onjuiste gebruikersnaam of wachtwoord."  # Foutmelding tonen
+            foutmelding = "Onjuiste gebruikersnaam of wachtwoord."  # Toon foutmelding
 
-    # Toon loginpagina (GET of bij mislukte inlog)
-    return render_template("login.html", foutmelding=foutmelding)
-
+    return render_template("login.html", foutmelding=foutmelding)  # Toon loginpagina (GET of na fout)
 
 # Route voor registreren (placeholder)
 @index_bp.route("/registreren")
 def registreren():
-    # Simpele HTML-reactie als placeholder voor de registratiepagina
-    return "<h2>Registratiepagina komt nog!</h2><p><a href='/login'>← Terug naar login</a></p>"
-
+    return "<h2>Registratiepagina komt nog!</h2><p><a href='/login'>← Terug naar login</a></p>"  # Placeholder HTML
 
 # Route voor uitloggen
 @index_bp.route("/logout")
