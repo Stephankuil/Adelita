@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Paddenstoelen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/paddenstoelen.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🍄 Paddenstoelen</h1>
+
+    <ul class="paddenstoelen-lijst">
+        {% for paddo in paddenstoelen %}
+            <li>
+<a href="{{ url_for('paddenstoel_bp.paddenstoel_detail', paddenstoel_id=paddo['id']) }}">
+    {{ paddo['nederlandse_naam'] }}
+</a>
+
+
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('index_bp.index') }}" class="terug">← Terug naar startpagina</a>
+</div>
+
+</body>
+</html>

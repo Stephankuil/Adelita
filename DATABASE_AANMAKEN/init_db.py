@@ -1,4 +1,8 @@
 import sqlite3
+import json
+with open("paddenstoelen_dataset.json", "r", encoding="utf-8") as f:
+    paddenstoelen = json.load(f)
+
 from DATABASE_AANMAKEN.planten_met_info import (
     planten_info,
 )  # Importeer plantgegevens uit extern bestand
@@ -109,8 +113,47 @@ CREATE TABLE supplementen (
     bouwstof TEXT,
     eigenschappen TEXT
 );
+CREATE TABLE IF NOT EXISTS paddenstoelen (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nederlandse_naam TEXT NOT NULL,
+    andere_namen TEXT,
+    familie TEXT,
+    belangrijkste_werkzame_stoffen TEXT,
+    toepassing TEXT,
+    werking TEXT
+);
 """
 )
+for item in paddenstoelen:
+    # Converteer naam altijd naar string
+    naam_raw = item.get("nederlandse_naam", "")
+    if isinstance(naam_raw, list):
+        nederlandse_naam = ", ".join(naam_raw)
+    else:
+        nederlandse_naam = str(naam_raw)
+
+    andere_namen = json.dumps({
+        "latijns": item.get("latijnse_naam"),
+        "japanse_naam": item.get("japanse_naam"),
+        "chinese_naam_tcm": item.get("chinese_naam_tcm"),
+        "algemene_naam": item.get("algemene_naam"),
+        "internationale_naam": item.get("internationale_naam"),
+        "maleisische_naam": item.get("maleisische_naam")
+    }, ensure_ascii=False)
+
+    familie = item.get("familie", "")
+    stoffen = json.dumps(item.get("belangrijkste_werkzame_stoffen", []), ensure_ascii=False)
+    toepassing = json.dumps(item.get("toepassing", []), ensure_ascii=False)
+    werking = json.dumps(item.get("werking", []), ensure_ascii=False)
+
+    cursor.execute("""
+        INSERT INTO paddenstoelen (
+            nederlandse_naam, andere_namen, familie,
+            belangrijkste_werkzame_stoffen, toepassing, werking
+        )
+        VALUES (?, ?, ?, ?, ?, ?)
+    """, (nederlandse_naam, andere_namen, familie, stoffen, toepassing, werking))
+
 
 # Voeg planten toe aan de database, maar alleen als ze nog niet bestaan
 for plant in planten_info:

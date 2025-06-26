@@ -770,6 +770,8 @@ paddenstoelen_info = [
       "hydraterend",
       "regulering bloedsuikerspiegel"
     ]
-  }
+  },
 ]
+
+
 
