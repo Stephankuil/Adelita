@@ -1,44 +1,70 @@
-# Importeer benodigde modules van Flask
-from flask import Blueprint, render_template, request, redirect, url_for, session  # Voor routes, templates, formulierverwerking en sessiebeheer
+import mysql.connector
+import bcrypt
+from flask import Blueprint, render_template, request, redirect, url_for, session
+from dotenv import load_dotenv
+import os
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-# Maak een Blueprint aan voor de index-routes
-index_bp = Blueprint("index_bp", __name__)  # Blueprint voor alle routes in dit bestand
+index_bp = Blueprint("index_bp", __name__)
 
-# Simpele hardcoded admin-inloggegevens
-ADMIN_GEBRUIKER = "admin"  # Gebruikersnaam voor admin-login
-ADMIN_WACHTWOORD = "test123"  # Wachtwoord voor admin-login
 
-# Route voor de startpagina ("/")
+
+
+secret_key = os.getenv("secret_key")
+ADMIN_GEBRUIKER = os.getenv("ADMIN_GEBRUIKER")
+ADMIN_WACHTWOORD = os.getenv("ADMIN_WACHTWOORD")
+
+
+
+# Database-configuratie uit .env
+db_config = {
+    "host": os.getenv("DB_HOST"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "database": os.getenv("DB_NAME"),
+}
+
+
+
 @index_bp.route("/")
 def index():
-    if "gebruiker" not in session:  # Controleer of gebruiker is ingelogd
-        return redirect(url_for("index_bp.login"))  # Zo niet, stuur door naar loginpagina
-    return render_template("index.html")  # Toon indexpagina als gebruiker is ingelogd
+    if "gebruiker" not in session:
+        return redirect(url_for("index_bp.login"))
+    return render_template("index.html")
 
-# Route voor inloggen ("/login"), ondersteunt GET en POST
 @index_bp.route("/login", methods=["GET", "POST"])
 def login():
-    foutmelding = None  # Variabele voor foutmelding (bijv. verkeerde login)
+    foutmelding = None
 
-    if request.method == "POST":  # Als formulier is verstuurd
-        gebruikersnaam = request.form["gebruikersnaam"]  # Haal gebruikersnaam uit formulier
-        wachtwoord = request.form["wachtwoord"]  # Haal wachtwoord uit formulier
+    if request.method == "POST":
+        gebruikersnaam = request.form["gebruikersnaam"]
+        wachtwoord = request.form["wachtwoord"]
 
-        if gebruikersnaam == ADMIN_GEBRUIKER and wachtwoord == ADMIN_WACHTWOORD:  # Controleer adminlogin
-            session["gebruiker"] = gebruikersnaam  # Sla gebruiker op in sessie
-            return redirect(url_for("index_bp.index"))  # Redirect naar homepage
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM gebruikers WHERE gebruikersnaam = %s", (gebruikersnaam,))
+        gebruiker = cursor.fetchone()
+        conn.close()
+
+        if gebruiker and bcrypt.checkpw(wachtwoord.encode("utf-8"), gebruiker["wachtwoord_hash"].encode("utf-8")):
+            session["gebruiker"] = gebruiker["gebruikersnaam"]
+            session["rol"] = gebruiker["rol"]
+            return redirect(url_for("index_bp.index"))
         else:
-            foutmelding = "Onjuiste gebruikersnaam of wachtwoord."  # Toon foutmelding
+            foutmelding = "❌ Onjuiste gebruikersnaam of wachtwoord."
 
-    return render_template("login.html", foutmelding=foutmelding)  # Toon loginpagina (GET of na fout)
+    return render_template("login.html", foutmelding=foutmelding)
 
-# Route voor registreren (placeholder)
-@index_bp.route("/registreren")
-def registreren():
-    return "<h2>Registratiepagina komt nog!</h2><p><a href='/login'>← Terug naar login</a></p>"  # Placeholder HTML
-
-# Route voor uitloggen
 @index_bp.route("/logout")
 def logout():
-    session.pop("gebruiker", None)  # Verwijder gebruiker uit sessie
-    return redirect(url_for("index_bp.login"))  # Redirect naar loginpagina
+    session.pop("gebruiker", None)
+    session.pop("rol", None)
+    return redirect(url_for("index_bp.login"))
+
+@index_bp.route("/registreren")
+def registreren():
+    return "<h2>Registratiepagina komt nog!</h2><p><a href='/login'>← Terug naar login</a></p>"
+
+print("Verbonden met database:", db_config["database"])
