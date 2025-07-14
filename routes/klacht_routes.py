@@ -15,29 +15,39 @@ db_config = {
 
 klacht_bp = Blueprint("klacht_bp", __name__)
 
+
+def get_db_connection():
+    return mysql.connector.connect(**db_config)
+
+
 # Route voor overzicht van klachten
 @klacht_bp.route("/klachten")
 def klachten():
-    conn = mysql.connector.connect(**db_config)
+    conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
 
     cursor.execute("SELECT id, naam, beschrijving FROM klachten ORDER BY naam ASC")
     klachten_lijst = cursor.fetchall()
 
+    cursor.close()
     conn.close()
+
     return render_template("klachten.html", klachten=klachten_lijst)
+
 
 # Route voor detailpagina van een klacht
 @klacht_bp.route("/klacht/<klacht_naam>")
 def klacht_detail(klacht_naam):
-    conn = mysql.connector.connect(**db_config)
+    conn = get_db_connection()
     cursor = conn.cursor()
 
     cursor.execute("SELECT id, beschrijving FROM klachten WHERE naam = %s", (klacht_naam,))
     klacht_row = cursor.fetchone()
 
     if not klacht_row:
-        return f"❌ Klacht '{klacht_naam}' niet gevonden."
+        cursor.close()
+        conn.close()
+        return f"❌ Klacht '{klacht_naam}' niet gevonden.", 404
 
     klacht_id, beschrijving = klacht_row
 
@@ -48,9 +58,10 @@ def klacht_detail(klacht_naam):
     """, (klacht_id,))
     gekoppelde_planten = [r[0] for r in cursor.fetchall()]
 
-    cursor.execute("SELECT id, naam FROM planten ORDER BY LOWER(naam) ASC")
+    cursor.execute("SELECT id, naam FROM planten ORDER BY naam ASC")
     alle_planten = cursor.fetchall()
 
+    cursor.close()
     conn.close()
 
     return render_template(

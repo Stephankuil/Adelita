@@ -23,24 +23,26 @@
         <br>
 
         <!-- Loop door alle klachten uit de database -->
-        {% for klacht in klachten %}
-            <li>
-                <!-- Titel van de klacht met klikbare toggle -->
-                <div class="klacht-titel" onclick="toggleBeschrijving('{{ loop.index0 }}')">
-                    <span class="icoon" id="icoon-{{ loop.index0 }}">🔽</span>
-                    {{ klacht[1] }}  <!-- Naam van de klacht -->
-                </div>
+<!-- Loop door alle klachten uit de database -->
+{% for klacht in klachten %}
+    <li>
+        <!-- Titel van de klacht met klikbare toggle -->
+        <div class="klacht-titel" onclick="toggleBeschrijving('{{ loop.index0 }}')">
+            <span class="icoon" id="icoon-{{ loop.index0 }}">🔽</span>
+            {{ klacht['naam'] }}
+        </div>
 
-                <!-- Beschrijving en link naar gekoppelde planten -->
-                <div class="beschrijving" id="beschrijving-{{ loop.index0 }}">
-                    {{ klacht[2] }}  <!-- Beschrijving van de klacht -->
-                    <br>
-                    <a class="meer-info" href="{{ url_for('klacht_bp.klacht_detail', klacht_naam=klacht[1]) }}">
-                        ➡️ Bekijk gekoppelde planten
-                    </a>
-                </div>
-            </li>
-        {% endfor %}
+        <!-- Beschrijving en link naar gekoppelde planten -->
+        <div class="beschrijving" id="beschrijving-{{ loop.index0 }}">
+            {{ klacht['beschrijving'] }}
+            <br>
+            <a class="meer-info" href="{{ url_for('klacht_bp.klacht_detail', klacht_naam=klacht['naam']) }}">
+                ➡️ Bekijk gekoppelde planten
+            </a>
+        </div>
+    </li>
+{% endfor %}
+
     </ul>
 
     <!-- Nogmaals een terugknop onderaan -->

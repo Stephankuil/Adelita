@@ -1,32 +1,46 @@
-from flask import Blueprint, Response  # Importeer Blueprint voor routing en Response voor HTTP-antwoorden
-import sqlite3  # Voor verbinding met de SQLite-database
-import csv  # Voor het genereren van CSV-bestanden
-import io  # Voor in-memory bestandsobjecten
+from flask import Blueprint, Response
+import mysql.connector
+import csv
+import io
+from dotenv import load_dotenv
+import os
 
-# Maak een Blueprint voor het downloaden van klantgegevens
-klant_download_bp = Blueprint("klant_download_bp", __name__)  # Blueprint genaamd 'klant_download_bp'
+# 🔐 Laad .env-variabelen
+load_dotenv()
 
-# Route om de klanten als CSV-bestand te downloaden
+# 📦 Haal MySQL-config op uit .env
+db_config = {
+    "host": os.getenv("DB_HOST"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "database": os.getenv("DB_NAME"),
+}
+
+# 📥 Blueprint aanmaken
+klant_download_bp = Blueprint("klant_download_bp", __name__)
+
+
 @klant_download_bp.route("/klanten/download")
 def download_klanten_csv():
-    conn = sqlite3.connect("fytotherapie.db")  # Verbind met de database
-    cursor = conn.cursor()  # Maak een cursor aan
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor()
 
-    cursor.execute("SELECT id, naam, emailadres, telefoon, adres FROM klanten")  # Haal alle klantgegevens op
-    klanten = cursor.fetchall()  # Sla alle opgehaalde rijen op in een lijst
+    cursor.execute("SELECT id, naam, emailadres, telefoon, adres FROM klanten")
+    klanten = cursor.fetchall()
 
-    conn.close()  # Sluit de verbinding met de database
+    conn.close()
 
-    output = io.StringIO()  # Maak een tijdelijk tekstbestand in het geheugen
-    writer = csv.writer(output)  # Maak een CSV-writer
+    output = io.StringIO()
+    writer = csv.writer(output)
 
-    writer.writerow(["ID", "Naam", "Emailadres", "Telefoon", "Adres"])  # Schrijf de kolomnamen als header
-    writer.writerows(klanten)  # Schrijf alle klantgegevens naar het CSV-bestand
+    writer.writerow(["ID", "Naam", "Emailadres", "Telefoon", "Adres"])
+    writer.writerows(klanten)
 
-    response = Response(output.getvalue(), mimetype="text/csv")  # Zet de inhoud om naar een HTTP-response als CSV
-    response.headers["Content-Disposition"] = "attachment; filename=klanten.csv"  # Geef het bestand een downloadnaam
+    response = Response(output.getvalue(), mimetype="text/csv")
+    response.headers["Content-Disposition"] = "attachment; filename=klanten.csv"
 
-    return response  # Stuur het CSV-bestand terug als download
+    return response
 
-# Zorg dat deze blueprint geëxporteerd kan worden bij import *
-__all__ = ["klant_download_bp"]  # Alleen deze naam wordt geëxporteerd bij from ... import *
+
+# Optioneel voor import *
+__all__ = ["klant_download_bp"]

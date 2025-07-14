@@ -1,30 +1,43 @@
-import sqlite3
-from flask import render_template, Blueprint
+import mysql.connector
+from flask import render_template, Blueprint, current_app
+from dotenv import load_dotenv
+import os
 
-# Blueprint aanmaken voor supplementroutes, met URL-prefix /supplementen
+# Laad .env variabelen
+load_dotenv()
+
+# Blueprint aanmaken voor supplementroutes
 supplement_bp = Blueprint("supplement_bp", __name__, url_prefix="/supplementen")
+
+# Databaseconfiguratie
+DB_CONFIG = {
+    "host": os.getenv("DB_HOST"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "database": os.getenv("DB_NAME"),
+}
+
+def get_db_connection():
+    return mysql.connector.connect(**DB_CONFIG)
 
 
 # Route: overzicht van alle supplementen
 @supplement_bp.route("/")
 def toon_supplementen():
-    # Verbind met de database
-    conn = sqlite3.connect("fytotherapie.db")
+    conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Haal alle kolommen van supplementen op (inclusief id)
     cursor.execute(
         """
         SELECT id, naam, andere_namen, lost_op_in, eigenschap_functie, 
                bij_tekort, inzetten_bij, voedingsbronnen, bijzonderheden, 
                bouwstof, eigenschappen 
         FROM supplementen
-    """
+        """
     )
 
     supplementen = cursor.fetchall()
 
-    # Kolomnamen instellen
     kolommen = [
         "id",
         "naam",
@@ -39,35 +52,32 @@ def toon_supplementen():
         "eigenschappen",
     ]
 
-    # Combineer de kolomnamen met de waarden tot een lijst van dictionaries
     supplementen_dicts = [dict(zip(kolommen, row)) for row in supplementen]
 
+    cursor.close()
     conn.close()
 
-    # Geef de data door aan de HTML-template
     return render_template("supplementen.html", supplementen=supplementen_dicts)
 
 
 # Route: detailpagina van één supplement
 @supplement_bp.route("/<int:id>")
 def detail_supplement(id):
-    conn = sqlite3.connect("fytotherapie.db")
+    conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Haal gegevens van supplement met specifieke ID op
     cursor.execute(
         """
         SELECT naam, andere_namen, lost_op_in, eigenschap_functie, bij_tekort, 
                inzetten_bij, voedingsbronnen, bijzonderheden, bouwstof, eigenschappen 
         FROM supplementen 
-        WHERE id = ?
-    """,
+        WHERE id = %s
+        """,
         (id,),
     )
 
     row = cursor.fetchone()
 
-    # Kolomnamen van het supplement (zonder id)
     kolommen = [
         "naam",
         "andere_namen",
@@ -81,14 +91,12 @@ def detail_supplement(id):
         "eigenschappen",
     ]
 
-    # Maak dictionary van kolommen en data, als er iets gevonden is
     supplement = dict(zip(kolommen, row)) if row else None
 
+    cursor.close()
     conn.close()
 
-    # Als het supplement bestaat, render de detailtemplate
     if supplement:
         return render_template("supplement_detail.html", supplement=supplement)
     else:
-        # Zo niet, geef 404 terug
         return "Supplement niet gevonden", 404
