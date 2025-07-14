@@ -56,7 +56,7 @@ def plant_info(plant_naam):
         WHERE plant_klacht.plant_id = %s
         ORDER BY klachten.naam
     """, (plant_id,))
-    gekoppelde_klachten = [r[0] for r in cursor.fetchall()]
+    gekoppelde_klachten = [r["naam"] for r in cursor.fetchall()]
 
     conn.close()
     return render_template("plant_info.html", plant=plant, gekoppelde_klachten=gekoppelde_klachten)
