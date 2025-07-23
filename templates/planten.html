@@ -19,6 +19,48 @@
     <h1>🌿 Overzicht van alle Planten</h1>
     <!-- Hoofdtitel van de pagina -->
 
+    <button onclick="togglePlantFormulier()" class="toevoegen-knop">🌿 Plant toevoegen</button>
+
+
+    <div id="plant-formulier-container">
+  <form method="post" action="{{ url_for('plant_bp.plant_toevoegen') }}" class="plant-formulier">
+    <h2>🌿 Nieuwe Plant toevoegen</h2>
+
+    <label for="naam">Naam:</label>
+    <input type="text" id="naam" name="naam" required>
+
+    <label for="botanische_naam">Botanische naam:</label>
+    <input type="text" id="botanische_naam" name="botanische_naam">
+
+    <label for="beschrijving">Beschrijving:</label>
+    <textarea id="beschrijving" name="beschrijving"></textarea>
+
+    <label for="te_gebruiken_bij">Te gebruiken bij:</label>
+    <textarea id="te_gebruiken_bij" name="te_gebruiken_bij"></textarea>
+
+    <label for="gebruikt_plantendeel">Gebruikt plantendeel:</label>
+    <input type="text" id="gebruikt_plantendeel" name="gebruikt_plantendeel">
+
+    <label for="aanbevolen_combinaties">Aanbevolen combinaties:</label>
+    <textarea id="aanbevolen_combinaties" name="aanbevolen_combinaties"></textarea>
+
+    <label for="niet_te_gebruiken_bij">Niet te gebruiken bij:</label>
+    <textarea id="niet_te_gebruiken_bij" name="niet_te_gebruiken_bij"></textarea>
+
+    <label for="categorie_kleur">Categorie kleur:</label>
+    <input type="text" id="categorie_kleur" name="categorie_kleur">
+
+    <label for="details">Details:</label>
+    <textarea id="details" name="details"></textarea>
+
+    <label for="afbeelding">Afbeelding (URL of pad):</label>
+    <input type="text" id="afbeelding" name="afbeelding">
+
+    <button type="submit">Opslaan</button>
+  </form>
+</div>
+
+
     <div class="container">
         <!-- Container die de lijst met planten en navigatie bevat -->
 
@@ -42,6 +84,12 @@
         <a class="terug" href="/">← Terug naar startpagina</a>
         <!-- Nogmaals een teruglink onderaan voor gebruiksgemak -->
     </div>
+<script>
+function togglePlantFormulier() {
+    const container = document.getElementById("plant-formulier-container");
+    container.style.display = container.style.display === "block" ? "none" : "block";
+}
+</script>
 
 </body>
 </html>

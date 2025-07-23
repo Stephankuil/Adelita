@@ -52,10 +52,10 @@
                 <!-- Scrollbare lijst van klachten met checkboxen -->
                 {% for klacht in klachten %}
                     <label>
-                        <input type="checkbox" name="klachten" value="{{ klacht[0] }}"
-                            {% if klacht[0] in gekoppelde_klachten %}checked{% endif %}>
-                        <!-- Vink aan als deze klacht al gekoppeld is aan de plant -->
-                        {{ klacht[1] }}
+<input type="checkbox" name="klachten" value="{{ klacht.id }}"
+    {% if klacht.id in gekoppelde_klachten %}checked{% endif %}>
+{{ klacht.naam }}
+
                     </label>
                 {% endfor %}
             </div>

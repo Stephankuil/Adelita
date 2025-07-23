@@ -56,3 +56,49 @@
         .terug:hover {
             text-decoration: underline;
         }
+#plant-formulier-container {
+    display: none;
+    margin-bottom: 30px;
+}
+.plant-formulier {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.plant-formulier label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.plant-formulier input[type="text"],
+.plant-formulier textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.plant-formulier button[type="submit"] {
+    background-color: #5a3da0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.plant-formulier button[type="submit"]:hover {
+    background-color: #472f91;
+}

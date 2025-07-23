@@ -72,3 +72,36 @@ def klacht_detail(klacht_naam):
         alle_planten=alle_planten,
         klacht_id=klacht_id,
     )
+from flask import request, redirect, url_for, flash
+
+@klacht_bp.route("/klacht/toevoegen", methods=["POST"])
+def klacht_toevoegen():
+    naam = request.form.get("naam")
+    beschrijving = request.form.get("beschrijving")
+
+    if not naam or not beschrijving:
+        flash("Naam en beschrijving zijn verplicht.")
+        return redirect(url_for("klacht_bp.klachten"))
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute(
+            "INSERT INTO klachten (naam, beschrijving) VALUES (%s, %s)",
+            (naam, beschrijving)
+        )
+        conn.commit()
+        flash(f"✅ Klacht '{naam}' succesvol toegevoegd.")
+    except mysql.connector.IntegrityError:
+        conn.rollback()
+        flash(f"⚠️ Klacht '{naam}' bestaat al.")
+    except Exception as e:
+        conn.rollback()
+        flash(f"❌ Fout bij toevoegen: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+    return redirect(url_for("klacht_bp.klachten"))
+

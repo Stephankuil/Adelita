@@ -15,12 +15,35 @@
         <input type="text" id="zoekveld" class="zoekveld" placeholder="Zoek een klacht..." onkeyup="filterKlachten()">
     </div>
 
+ <!-- 🔘 Knop die het formulier opent -->
+    <button onclick="toggleFormulier()" class="toevoegen-knop">➕ Klacht toevoegen</button>
+
+
+    <!-- 📝 Verborgen formulier -->
+    <div id="klacht-formulier-container">
+      <form method="post" action="{{ url_for('klacht_bp.klacht_toevoegen') }}" class="klacht-formulier">
+          <h2>➕ Klacht toevoegen</h2>
+
+          <label for="naam">Naam van de klacht:</label>
+          <input type="text" id="naam" name="naam" required>
+
+          <label for="beschrijving">Beschrijving:</label>
+          <textarea id="beschrijving" name="beschrijving" rows="4" required></textarea>
+
+          <button type="submit">Opslaan</button>
+      </form>
+    </div>
+
     <!-- Lijst van klachten -->
     <ul id="klachten-lijst">
         <!-- Link terug naar startpagina -->
         <a class="terug" href="/">← Terug naar startpagina</a>
         <br>
         <br>
+
+
+<hr>
+
 
         <!-- Loop door alle klachten uit de database -->
 <!-- Loop door alle klachten uit de database -->
@@ -77,6 +100,16 @@
             }
         }
     }
+</script>
+<script>
+  function toggleFormulier() {
+    const container = document.getElementById("klacht-formulier-container");
+    if (container.style.display === "none" || container.style.display === "") {
+      container.style.display = "block";
+    } else {
+      container.style.display = "none";
+    }
+  }
 </script>
 
 </body>

@@ -30,8 +30,16 @@
     </div>
 
     <div class="buttons">
-        <a href="{{ url_for('plant_bp.plant_detail', plant_naam=plant['naam']) }}">✏️ Bewerken</a>
-    </div>
+    <a href="{{ url_for('plant_bp.plant_detail', plant_naam=plant['naam']) }}" class="bewerken-link">✏️ Bewerken</a>
+
+    <form method="post"
+          action="{{ url_for('plant_bp.plant_verwijderen', plant_naam=plant['naam']) }}"
+          onsubmit="return confirm('Weet je zeker dat je deze plant wilt verwijderen?')"
+          class="verwijder-form">
+        <button type="submit" class="verwijder-knop">🗑️ Verwijder plant</button>
+    </form>
+</div>
+
 
     <div class="back-link">
         <a href="{{ url_for('plant_bp.planten') }}">← Terug naar plantenlijst</a>

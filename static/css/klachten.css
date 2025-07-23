@@ -96,3 +96,87 @@
         a.terug:hover {
             text-decoration: underline;
         }
+.klacht-formulier {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.klacht-formulier h2 {
+    color: #5a3da0;
+    font-size: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.klacht-formulier h2::before {
+    content: "➕";
+    font-size: 22px;
+    color: #5a3da0;
+}
+
+.klacht-formulier label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.klacht-formulier input[type="text"],
+.klacht-formulier textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.klacht-formulier input[type="text"]:focus,
+.klacht-formulier textarea:focus {
+    outline: none;
+    border-color: #5a3da0;
+    box-shadow: 0 0 0 2px rgba(90, 61, 160, 0.1);
+}
+
+.klacht-formulier button {
+    background-color: #5a3da0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.klacht-formulier button:hover {
+    background-color: #472f91;
+}
+.toevoegen-knop {
+    background-color: #5a3da0;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.toevoegen-knop:hover {
+    background-color: #472f91;
+}
+#klacht-formulier-container {
+    display: none;
+}

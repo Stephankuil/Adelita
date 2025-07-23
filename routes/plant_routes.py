@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, redirect, url_for, current_app, flash
 import mysql.connector
 from dotenv import load_dotenv
 import os
@@ -19,6 +19,11 @@ db_config = {
     "password": os.getenv("DB_PASSWORD"),
     "database": os.getenv("DB_NAME"),
 }
+
+# ✅ Database connectie-functie
+def get_db_connection():
+    return mysql.connector.connect(**db_config)
+
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -170,3 +175,77 @@ def verwijder_plant():
     conn.close()
 
     return redirect(url_for("klacht_bp.klacht_detail", klacht_naam=klacht_naam))
+# ✅ Functie om verbinding te maken
+
+
+# ✅ Route om nieuwe plant toe te voegen
+@plant_bp.route("/plant/toevoegen", methods=["POST"])
+def plant_toevoegen():
+    data = {
+        "naam": request.form.get("naam"),
+        "botanische_naam": request.form.get("botanische_naam"),
+        "beschrijving": request.form.get("beschrijving"),
+        "te_gebruiken_bij": request.form.get("te_gebruiken_bij"),
+        "gebruikt_plantendeel": request.form.get("gebruikt_plantendeel"),
+        "aanbevolen_combinaties": request.form.get("aanbevolen_combinaties"),
+        "niet_te_gebruiken_bij": request.form.get("niet_te_gebruiken_bij"),
+        "categorie_kleur": request.form.get("categorie_kleur"),
+        "details": request.form.get("details"),
+        "afbeelding": request.form.get("afbeelding")
+    }
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+            INSERT INTO planten (
+                naam, botanische_naam, beschrijving, te_gebruiken_bij,
+                gebruikt_plantendeel, aanbevolen_combinaties, niet_te_gebruiken_bij,
+                categorie_kleur, details, afbeelding
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """, tuple(data.values()))
+        conn.commit()
+        flash(f"✅ Plant '{data['naam']}' toegevoegd.")
+    except Exception as e:
+        conn.rollback()
+        flash(f"❌ Fout bij toevoegen plant: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+    return redirect(url_for('plant_bp.planten'))  # Zorg dat deze route bestaat
+
+
+
+@plant_bp.route("/plant/<plant_naam>/verwijderen", methods=["POST"])
+def plant_verwijderen(plant_naam):
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor()
+
+    try:
+        # Haal eerst het plant_id op
+        cursor.execute("SELECT id FROM planten WHERE naam = %s", (plant_naam,))
+        result = cursor.fetchone()
+        if not result:
+            flash("❌ Plant niet gevonden.")
+            return redirect(url_for('plant_bp.planten'))
+
+        plant_id = result[0]
+
+        # Verwijder eventuele koppelingen met klachten
+        cursor.execute("DELETE FROM plant_klacht WHERE plant_id = %s", (plant_id,))
+
+        # Verwijder de plant zelf
+        cursor.execute("DELETE FROM planten WHERE id = %s", (plant_id,))
+
+        conn.commit()
+        flash(f"✅ Plant '{plant_naam}' is verwijderd.")
+    except Exception as e:
+        conn.rollback()
+        flash(f"❌ Fout bij verwijderen: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+    return redirect(url_for('plant_bp.planten'))

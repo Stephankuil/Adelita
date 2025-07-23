@@ -79,4 +79,23 @@
 }
 
 
+.verwijder-knop {
+    background-color: #e74c3c; /* rood */
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.verwijder-knop:hover {
+    background-color: #c0392b; /* donkerder rood bij hover */
+}
+
+.verwijder-knop:before {
+    content: "🗑️ ";
+}
 
