@@ -51,4 +51,4 @@ def open_browser():  # Definieer een functie om de browser te openen
 
 if __name__ == "__main__":  # Als dit script direct wordt uitgevoerd...
     threading.Timer(1.25, open_browser).start()  # Wacht 1.25 seconden en open dan de browser
-    app.run()  # Start de Flask-server op poort 5000
+    app.run(debug=True)  # Start de Flask-server op poort 5000

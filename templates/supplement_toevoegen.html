@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplement toevoegen</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; background-color: #f4f7f9; }
+        .container { max-width: 600px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: auto; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input[type="text"], textarea { width: 100%; padding: 10px; margin-top: 4px; }
+        button { margin-top: 20px; padding: 10px 15px; background-color: #2e7d32; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>➕ Supplement toevoegen</h1>
+    <form method="POST">
+        <label>Naam</label>
+        <input type="text" name="naam" required>
+
+        <label>Andere Namen</label>
+        <input type="text" name="andere_namen">
+
+        <label>Lost Op In</label>
+        <input type="text" name="lost_op_in">
+
+        <label>Eigenschap/Functie</label>
+        <textarea name="functie"></textarea>
+
+        <label>Bij Tekort</label>
+        <textarea name="bij_tekort"></textarea>
+
+        <label>Inzetten Bij</label>
+        <textarea name="inzetten_bij"></textarea>
+
+        <label>Voedingsbronnen</label>
+        <textarea name="voedingsbronnen"></textarea>
+
+        <label>Bijzonderheden</label>
+        <textarea name="bijzonderheden"></textarea>
+
+        <label>Bouwstof</label>
+        <input type="text" name="bouwstof">
+
+        <label>Eigenschappen</label>
+        <input type="text" name="eigenschappen">
+
+        <button type="submit">✔️ Toevoegen</button>
+    </form>
+</div>
+</body>
+</html>

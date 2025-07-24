@@ -76,6 +76,25 @@
         .terug:hover {
             text-decoration: underline;
         }
+        .button-toevoegen {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.button-toevoegen:hover {
+    background-color: #1b5e20;
+}
+.toevoeg-links {
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+
     </style>
 </head>
 
@@ -83,6 +102,11 @@
 
     <h1>Supplementen Overzicht</h1>
     <!-- Hoofdtitel van de pagina -->
+<a href="{{ url_for('supplement_bp.supplement_toevoegen') }}" class="button-toevoegen toevoeg-links">
+    ➕ Supplement toevoegen
+</a>
+
+
 
     <div class="container">
         <!-- Container voor inhoud en layoutcentrering -->
