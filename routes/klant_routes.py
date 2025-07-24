@@ -5,6 +5,7 @@ from flask import (
     redirect,
     url_for,
     Blueprint,
+    flash
 )
 from dotenv import load_dotenv
 import os
@@ -285,3 +286,41 @@ def nieuwe_afspraak(klant_id):
     conn.close()
 
     return redirect(url_for("klant_bp.klant_detail", klant_id=klant_id))
+
+@klant_bp.route("/klant/<int:klant_id>/verwijderen", methods=["POST"])
+def klant_verwijderen(klant_id):
+    conn = mysql.connector.connect(**DB_CONFIG)
+    cursor = conn.cursor()
+
+    try:
+        # Stap 1: Verwijder gekoppelde behandeling_plant en behandeling_klacht via behandeling_id
+        cursor.execute("SELECT id FROM behandelingen WHERE klant_id = %s", (klant_id,))
+        behandeling_ids = [row[0] for row in cursor.fetchall()]
+
+        for behandeling_id in behandeling_ids:
+            cursor.execute("DELETE FROM behandeling_plant WHERE behandeling_id = %s", (behandeling_id,))
+            cursor.execute("DELETE FROM behandeling_klacht WHERE behandeling_id = %s", (behandeling_id,))
+
+        # Stap 2: Verwijder behandelingen zelf
+        cursor.execute("DELETE FROM behandelingen WHERE klant_id = %s", (klant_id,))
+
+        # Stap 3: Verwijder afspraken
+        cursor.execute("DELETE FROM afspraken WHERE klant_id = %s", (klant_id,))
+
+        # Stap 4: Verwijder notities
+        cursor.execute("DELETE FROM notities WHERE klant_id = %s", (klant_id,))
+
+        # Stap 5: Verwijder klant
+        cursor.execute("DELETE FROM klanten WHERE id = %s", (klant_id,))
+
+        conn.commit()
+        flash("✅ Klant en gekoppelde gegevens zijn volledig verwijderd.")
+    except Exception as e:
+        conn.rollback()
+        flash(f"❌ Fout bij verwijderen klant: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+    return redirect(url_for("klant_bp.klanten"))
+

@@ -31,6 +31,9 @@
                         <!-- Link naar de detailpagina van een specifieke klant -->
                         {{ naam }}
                     </a>
+                  <form action="{{ url_for('klant_bp.klant_verwijderen', klant_id=id) }}" method="post" style="display:inline;" onsubmit="return confirm('Weet je zeker dat je {{ naam }} wilt verwijderen?');">
+        <button type="submit" class="verwijder-knop">🗑️ Verwijderen</button>
+    </form>
                 </li>
             {% endfor %}
 
