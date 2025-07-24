@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8" />
+    <title>Paddenstoel toevoegen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/paddenstoelen.css') }}" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f4f7f9;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+        }
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        button {
+            background-color: #388e3c;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2e7d32;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2e7d32;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .naam-groep {
+            border: 1px solid #ccc;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>➕ Paddenstoel toevoegen</h1>
+
+    <form method="post">
+
+        <div id="naam-groepen-container">
+            <div class="naam-groep">
+                <label>Latijnse naam:
+                    <input type="text" name="latijnse_naam[]" placeholder="Latijnse naam">
+                </label>
+                <label>Nederlandse naam:
+                    <input type="text" name="nederlandse_naam[]" placeholder="Nederlandse naam">
+                </label>
+                <label>Chinese naam:
+                    <input type="text" name="chinese_naam[]" placeholder="Chinese naam">
+                </label>
+                <label>Japanse naam:
+                    <input type="text" name="japanse_naam[]" placeholder="Japanse naam">
+                </label>
+            </div>
+        </div>
+
+        <label>🌱 Familie:
+            <input type="text" name="familie" placeholder="Familie">
+        </label>
+
+        <label>💊 Belangrijkste werkzame stoffen:
+            <textarea name="belangrijkste_werkzame_stoffen" placeholder="Bijv. lentinan⏎eritadenine⏎beta-glucaan"></textarea>
+        </label>
+
+        <label>🎯 Toepassing:
+            <textarea name="toepassing" placeholder="Bijv. verhoogt weerstand⏎ontstekingsremmend⏎antivirale werking"></textarea>
+        </label>
+
+        <label>⚡ Werking:
+            <textarea name="werking" placeholder="Bijv. immunomodulerend⏎adaptogeen⏎energieverhogend"></textarea>
+        </label>
+
+        <button type="submit">✅ Toevoegen</button>
+    </form>
+
+    <a href="{{ url_for('paddenstoel_bp.index') }}">← Terug naar lijst</a>
+</div>
+
+<script>
+function voegNaamGroepToe() {
+    const container = document.getElementById('naam-groepen-container');
+    const div = document.createElement('div');
+    div.className = 'naam-groep';
+    div.innerHTML = `
+        <label>Latijnse naam:
+            <input type="text" name="latijnse_naam[]" placeholder="Latijnse naam">
+        </label>
+        <label>Nederlandse naam:
+            <input type="text" name="nederlandse_naam[]" placeholder="Nederlandse naam">
+        </label>
+        <label>Chinese naam:
+            <input type="text" name="chinese_naam[]" placeholder="Chinese naam">
+        </label>
+        <label>Japanse naam:
+            <input type="text" name="japanse_naam[]" placeholder="Japanse naam">
+        </label>
+    `;
+    container.appendChild(div);
+}
+</script>
+
+</body>
+</html>

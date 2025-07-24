@@ -1,22 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ pad.nederlandse_naam }} – Paddenstoel</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/paddenstoelen.css') }}">
 </head>
 <body>
-<h1>🍄 {{ pad.nederlandse_naam }}</h1>
+
+<form method="post"
+      action="{{ url_for('paddenstoel_bp.paddenstoel_verwijderen', paddenstoel_id=pad.id) }}"
+      onsubmit="return confirm('❗ Weet je zeker dat je deze paddenstoel wilt verwijderen?');"
+      class="verwijder-form">
+    <button type="submit" class="verwijder-knop">🗑️ Verwijder</button>
+</form>
+
+
 <div class="container">
+    <h1>🍄 {{ pad.nederlandse_naam }}</h1>
+
     <p><strong>Familie:</strong> {{ pad.familie or '-' }}</p>
 
-    {% if pad.andere_namen %}
-        <p><strong>Andere namen:</strong><br>
-        {% for key, value in pad.andere_namen.items() %}
-            <strong>{{ key }}:</strong> {{ value }}<br>
-        {% endfor %}
-        </p>
-    {% endif %}
+{% if pad.andere_namen %}
+    <p><strong>Andere namen:</strong></p>
+    <ul>
+    {% for naam in pad.andere_namen %}
+        <li>
+            <strong>Latijnse naam:</strong> {{ naam.latijnse_naam or '-' }}<br>
+            <strong>Nederlandse naam:</strong> {{ naam.nederlandse_naam or '-' }}<br>
+            <strong>Chinese naam:</strong> {{ naam.chinese_naam or '-' }}<br>
+            <strong>Japanse naam:</strong> {{ naam.japanse_naam or '-' }}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+
 
     {% if pad.stoffen %}
         <p><strong>Werkzame stoffen:</strong></p>
@@ -45,7 +64,9 @@
         </ul>
     {% endif %}
 
-    <a href="{{ url_for('paddenstoel_bp.index') }}" class="terug">← Terug naar lijst</a>
+
+
+    <a href="{{ url_for('paddenstoel_bp.index') }}" class="terug">← Terug naar overzicht</a>
 </div>
 
 </body>
