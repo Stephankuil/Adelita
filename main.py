@@ -41,6 +41,11 @@ app.register_blueprint(paddenstoel_bp)
 import threading  # Voor het starten van taken op de achtergrond
 import webbrowser  # Voor het openen van de standaardbrowser
 
+
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.jinja_env.auto_reload = True
+
+
 def open_browser():  # Definieer een functie om de browser te openen
     webbrowser.open_new("http://127.0.0.1:5000/")  # Open de standaardbrowser op het juiste adres
 

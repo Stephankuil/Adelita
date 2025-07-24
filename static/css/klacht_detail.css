@@ -1,72 +1,124 @@
+/* === Algemene pagina-opmaak === */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f8f5;
+    margin: 40px;
+    color: #2e7d32;
+}
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f8f5;
-            margin: 40px;
-            color: #2e7d32;
-        }
+/* === Container voor kaart === */
+.container {
+    max-width: 700px;
+    margin: auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+/* === Titels === */
+h1, h2 {
+    text-align: center;
+    color: #2e7d32;
+}
 
-        h1, h2 {
-            text-align: center;
-            color: #2e7d32;
-        }
+/* === Lijsten van planten === */
+ul {
+    padding-left: 20px;
+}
 
-        ul {
-            padding-left: 20px;
-        }
+li {
+    margin-bottom: 10px;
+}
 
-        li {
-            margin-bottom: 10px;
-        }
+/* === Inline formulier bij elke plant (Verwijder-knop) === */
+form.inline {
+    display: inline;
+    margin-left: 10px;
+}
 
-        form.inline {
-            display: inline;
-            margin-left: 10px;
-        }
+form.inline button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
 
-        button {
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
+form.inline button:hover {
+    background-color: #b71c1c;
+}
 
-        button:hover {
-            background-color: #b71c1c;
-        }
+/* === Dropdown + Toevoegknop === */
+select {
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
-        select {
-            padding: 6px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+/* === Blok voor plant toevoegen === */
+.toevoegen-form {
+    text-align: center;
+    margin-top: 30px;
+}
 
-        .toevoegen-form {
-            text-align: center;
-            margin-top: 30px;
-        }
+/* === Teruglink onderaan === */
+.back-link {
+    text-align: center;
+    margin-top: 30px;
+}
 
-        .back-link {
-            text-align: center;
-            margin-top: 30px;
-        }
+.back-link a {
+    text-decoration: none;
+    color: #555;
+}
 
-        .back-link a {
-            text-decoration: none;
-            color: #555;
-        }
+.back-link a:hover {
+    text-decoration: underline;
+}
 
-        .back-link a:hover {
-            text-decoration: underline;
-        }
+/* === Verwijder-klacht-knop linksboven === */
+.verwijder-klacht-buiten {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.verwijder-klacht-buiten button {
+    background-color: #c62828;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.verwijder-klacht-buiten button:hover {
+    background-color: #a32020;
+}
+.verwijder-klacht-buiten {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.verwijder-klacht-buiten button {
+    background-color: #c62828;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.verwijder-klacht-buiten button:hover {
+    background-color: #a32020;
+}

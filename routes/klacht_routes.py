@@ -105,3 +105,35 @@ def klacht_toevoegen():
 
     return redirect(url_for("klacht_bp.klachten"))
 
+@klacht_bp.route("/klacht/<int:klacht_id>/verwijderen", methods=["POST"])
+def klacht_verwijderen(klacht_id):
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor()
+    try:
+        # Controleer of de klacht bestaat
+        cursor.execute("SELECT naam FROM klachten WHERE id = %s", (klacht_id,))
+        result = cursor.fetchone()
+        if not result:
+            flash("❌ Klacht niet gevonden.")
+            return redirect(url_for('klacht_bp.klachten'))
+
+        klacht_naam = result[0]
+
+        # Verwijder eerst alle koppelingen (bijv. met planten of behandelingen)
+        cursor.execute("DELETE FROM plant_klacht WHERE klacht_id = %s", (klacht_id,))
+        cursor.execute("DELETE FROM behandeling_klacht WHERE klacht_id = %s", (klacht_id,))
+
+        # Verwijder daarna de klacht zelf
+        cursor.execute("DELETE FROM klachten WHERE id = %s", (klacht_id,))
+        conn.commit()
+
+        flash(f"✅ Klacht '{klacht_naam}' is verwijderd.")
+    except Exception as e:
+        conn.rollback()
+        flash(f"❌ Fout bij verwijderen van klacht: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+    return redirect(url_for('klacht_bp.klachten'))
+
