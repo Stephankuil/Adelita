@@ -75,43 +75,43 @@
 <div class="container">
     <h1>➕ Paddenstoel toevoegen</h1>
 
-    <form method="post">
+<form method="post">
 
-        <div id="naam-groepen-container">
-            <div class="naam-groep">
-                <label>Latijnse naam:
-                    <input type="text" name="latijnse_naam[]" placeholder="Latijnse naam">
-                </label>
-                <label>Nederlandse naam:
-                    <input type="text" name="nederlandse_naam[]" placeholder="Nederlandse naam">
-                </label>
-                <label>Chinese naam:
-                    <input type="text" name="chinese_naam[]" placeholder="Chinese naam">
-                </label>
-                <label>Japanse naam:
-                    <input type="text" name="japanse_naam[]" placeholder="Japanse naam">
-                </label>
-            </div>
-        </div>
+  <label>Latijnse naam:
+    <input type="text" name="latijnse_naam" required>
+  </label>
 
-        <label>🌱 Familie:
-            <input type="text" name="familie" placeholder="Familie">
-        </label>
+  <label>Nederlandse naam:
+    <input type="text" name="nederlandse_naam" required>
+  </label>
 
-        <label>💊 Belangrijkste werkzame stoffen:
-            <textarea name="belangrijkste_werkzame_stoffen" placeholder="Bijv. lentinan⏎eritadenine⏎beta-glucaan"></textarea>
-        </label>
+  <label>Chinese naam:
+    <input type="text" name="chinese_naam">
+  </label>
 
-        <label>🎯 Toepassing:
-            <textarea name="toepassing" placeholder="Bijv. verhoogt weerstand⏎ontstekingsremmend⏎antivirale werking"></textarea>
-        </label>
+  <label>Japanse naam:
+    <input type="text" name="japanse_naam">
+  </label>
 
-        <label>⚡ Werking:
-            <textarea name="werking" placeholder="Bijv. immunomodulerend⏎adaptogeen⏎energieverhogend"></textarea>
-        </label>
+  <label>Familie:
+    <input type="text" name="familie">
+  </label>
 
-        <button type="submit">✅ Toevoegen</button>
-    </form>
+  <label>Belangrijkste werkzame stoffen:
+    <textarea name="belangrijkste_werkzame_stoffen"></textarea>
+  </label>
+
+  <label>Toepassing:
+    <textarea name="toepassing"></textarea>
+  </label>
+
+  <label>Werking:
+    <textarea name="werking"></textarea>
+  </label>
+
+  <button type="submit">Toevoegen</button>
+</form>
+
 
     <a href="{{ url_for('paddenstoel_bp.index') }}">← Terug naar lijst</a>
 </div>

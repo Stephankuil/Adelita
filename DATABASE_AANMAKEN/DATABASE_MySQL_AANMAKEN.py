@@ -16,6 +16,7 @@ db_config = {
     "password": os.getenv("DB_PASSWORD"),
     "database": os.getenv("DB_NAME"),
 }
+db_name = os.getenv("DB_NAME")
 
 conn = mysql.connector.connect(**db_config)
 cursor = conn.cursor()
@@ -145,7 +146,9 @@ tables["paddenstoelen"] = """
 CREATE TABLE IF NOT EXISTS paddenstoelen (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nederlandse_naam TEXT NOT NULL,
-    andere_namen TEXT,
+    japanse_naam TEXT,
+    chinese_naam TEXT,
+    latijnse_naam TEXT,
     familie TEXT,
     belangrijkste_werkzame_stoffen TEXT,
     toepassing TEXT,
@@ -156,6 +159,15 @@ CREATE TABLE IF NOT EXISTS paddenstoelen (
 for name, ddl in tables.items():
     cursor.execute(ddl)
 
+def to_string(value):
+    if isinstance(value, list):
+        return ", ".join(value)
+    elif value is None:
+        return ""
+    else:
+        return str(value)
+
+
 # ✅ Voeg paddenstoelen toe
 with open("paddenstoelen_dataset.json", "r", encoding="utf-8") as f:
     paddenstoelen = json.load(f)
@@ -164,14 +176,9 @@ for item in paddenstoelen:
     naam_raw = item.get("nederlandse_naam", "")
     nederlandse_naam = ", ".join(naam_raw) if isinstance(naam_raw, list) else str(naam_raw)
 
-    andere_namen = json.dumps({
-        "latijns": item.get("latijnse_naam"),
-        "japanse_naam": item.get("japanse_naam"),
-        "chinese_naam_tcm": item.get("chinese_naam_tcm"),
-        "algemene_naam": item.get("algemene_naam"),
-        "internationale_naam": item.get("internationale_naam"),
-        "maleisische_naam": item.get("maleisische_naam")
-    }, ensure_ascii=False)
+    japanse_naam = to_string(item.get("japanse_naam", ""))
+    chinese_naam = to_string(item.get("chinese_naam_tcm", ""))
+    latijnse_naam = to_string(item.get("latijnse_naam", ""))
 
     familie = item.get("familie", "")
     stoffen = json.dumps(item.get("belangrijkste_werkzame_stoffen", []), ensure_ascii=False)
@@ -180,11 +187,13 @@ for item in paddenstoelen:
 
     cursor.execute("""
         INSERT INTO paddenstoelen (
-            nederlandse_naam, andere_namen, familie,
+            nederlandse_naam, japanse_naam, chinese_naam, latijnse_naam, familie,
             belangrijkste_werkzame_stoffen, toepassing, werking
         )
-        VALUES (%s, %s, %s, %s, %s, %s)
-    """, (nederlandse_naam, andere_namen, familie, stoffen, toepassing, werking))
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    """, (nederlandse_naam, japanse_naam, chinese_naam, latijnse_naam, familie, stoffen, toepassing, werking))
+
+
 
 # ✅ Voeg planten toe
 for plant in planten_info:

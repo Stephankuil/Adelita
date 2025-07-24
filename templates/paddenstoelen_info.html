@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<div class="container">
+
 <form method="post"
       action="{{ url_for('paddenstoel_bp.paddenstoel_verwijderen', paddenstoel_id=pad.id) }}"
       onsubmit="return confirm('❗ Weet je zeker dat je deze paddenstoel wilt verwijderen?');"
@@ -14,60 +16,43 @@
     <button type="submit" class="verwijder-knop">🗑️ Verwijder</button>
 </form>
 
+<h1>{{ pad.nederlandse_naam }}</h1>
 
-<div class="container">
-    <h1>🍄 {{ pad.nederlandse_naam }}</h1>
+<p><strong>Latijnse naam:</strong> {{ pad.latijnse_naam or '-' }}</p>
+<p><strong>Nederlandse naam:</strong> {{ pad.nederlandse_naam or '-' }}</p>
+<p><strong>Chinese naam:</strong> {{ pad.chinese_naam or '-' }}</p>
+<p><strong>Japanse naam:</strong> {{ pad.japanse_naam or '-' }}</p>
+<p><strong>Familie:</strong> {{ pad.familie or '-' }}</p>
 
-    <p><strong>Familie:</strong> {{ pad.familie or '-' }}</p>
-
-{% if pad.andere_namen %}
-    <p><strong>Andere namen:</strong></p>
+{% if pad.belangrijkste_werkzame_stoffen %}
+    <p><strong>Werkzame stoffen:</strong></p>
     <ul>
-    {% for naam in pad.andere_namen %}
-        <li>
-            <strong>Latijnse naam:</strong> {{ naam.latijnse_naam or '-' }}<br>
-            <strong>Nederlandse naam:</strong> {{ naam.nederlandse_naam or '-' }}<br>
-            <strong>Chinese naam:</strong> {{ naam.chinese_naam or '-' }}<br>
-            <strong>Japanse naam:</strong> {{ naam.japanse_naam or '-' }}
-        </li>
+    {% for stof in pad.belangrijkste_werkzame_stoffen %}
+        <li>{{ stof }}</li>
     {% endfor %}
     </ul>
 {% endif %}
 
+{% if pad.toepassing %}
+    <p><strong>Toepassing:</strong></p>
+    <ul>
+    {% for item in pad.toepassing %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
 
+{% if pad.werking %}
+    <p><strong>Werking:</strong></p>
+    <ul>
+    {% for w in pad.werking %}
+        <li>{{ w }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
 
+<a href="{{ url_for('paddenstoel_bp.index') }}" class="terug">← Terug naar overzicht</a>
 
-    {% if pad.stoffen %}
-        <p><strong>Werkzame stoffen:</strong></p>
-        <ul>
-        {% for stof in pad.stoffen %}
-            <li>{{ stof }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if pad.toepassing %}
-        <p><strong>Toepassing:</strong></p>
-        <ul>
-        {% for tp in pad.toepassing %}
-            <li>{{ tp }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if pad.werking %}
-        <p><strong>Werking:</strong></p>
-        <ul>
-        {% for wk in pad.werking %}
-            <li>{{ wk }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-
-
-
-    <a href="{{ url_for('paddenstoel_bp.index') }}" class="terug">← Terug naar overzicht</a>
 </div>
-
 </body>
 </html>

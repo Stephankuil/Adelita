@@ -33,7 +33,6 @@ def index():
     conn.close()
     return render_template("paddenstoelen.html", paddenstoelen=paddenstoelen)
 
-# 🔍 Route: detailpagina van één paddenstoel
 @paddenstoel_bp.route("/paddenstoelen/<int:paddenstoel_id>")
 def paddenstoel_detail(paddenstoel_id):
     conn = mysql.connector.connect(**DB_CONFIG)
@@ -48,7 +47,9 @@ def paddenstoel_detail(paddenstoel_id):
     detail = {
         "id": row["id"],
         "nederlandse_naam": row["nederlandse_naam"],
-        "andere_namen": safe_json_load(row.get("andere_namen"), []),
+        "latijnse_naam": row["latijnse_naam"],
+        "japanse_naam": row["japanse_naam"],
+        "chinese_naam": row["chinese_naam"],
         "familie": row["familie"],
         "stoffen": safe_json_load(row.get("belangrijkste_werkzame_stoffen"), []),
         "toepassing": safe_json_load(row.get("toepassing"), []),
@@ -56,67 +57,45 @@ def paddenstoel_detail(paddenstoel_id):
     }
 
     return render_template("paddenstoelen_info.html", pad=detail)
-@paddenstoel_bp.route("/paddenstoel/toevoegen", methods=["GET", "POST"])
+
+@paddenstoel_bp.route('/paddenstoel/toevoegen', methods=['GET', 'POST'])
 def paddenstoel_toevoegen():
-    if request.method == "POST":
-        familie = request.form.get("familie")
-        stoffen_raw = request.form.get("belangrijkste_werkzame_stoffen", "")
-        toepassing_raw = request.form.get("toepassing", "")
-        werking_raw = request.form.get("werking", "")
+    if request.method == 'POST':
+        latijnse_naam = request.form.get('latijnse_naam')
+        nederlandse_naam = request.form.get('nederlandse_naam')
+        chinese_naam = request.form.get('chinese_naam')
+        japanse_naam = request.form.get('japanse_naam')
+        familie = request.form.get('familie')
+        stoffen_raw = request.form.get('belangrijkste_werkzame_stoffen', '')
+        toepassing_raw = request.form.get('toepassing', '')
+        werking_raw = request.form.get('werking', '')
 
-        # Alle 4 naamvelden als lijsten ophalen
-        latijnse_namen = request.form.getlist("latijnse_naam[]")
-        nederlandse_namen = request.form.getlist("nederlandse_naam[]")
-        chinese_namen = request.form.getlist("chinese_naam[]")
-        japanse_namen = request.form.getlist("japanse_naam[]")
+        stoffen = [s.strip() for s in stoffen_raw.splitlines() if s.strip()]
+        toepassing = [s.strip() for s in toepassing_raw.splitlines() if s.strip()]
+        werking = [s.strip() for s in werking_raw.splitlines() if s.strip()]
 
-        # Maak een lijst van dicts met ingevulde naamgroepen (lege negeren)
-        naam_groepen = []
-        for lat, ned, chi, jap in zip(latijnse_namen, nederlandse_namen, chinese_namen, japanse_namen):
-            if lat.strip() or ned.strip() or chi.strip() or jap.strip():
-                naam_groepen.append({
-                    "latijnse_naam": lat.strip(),
-                    "nederlandse_naam": ned.strip(),
-                    "chinese_naam": chi.strip(),
-                    "japanse_naam": jap.strip(),
-                })
-
-        # Sla naam_groepen op als JSON string
-        namen_json = json.dumps(naam_groepen, ensure_ascii=False)
-
-        stoffen = json.dumps([s.strip() for s in stoffen_raw.split(",") if s.strip()])
-        toepassing = json.dumps([s.strip() for s in toepassing_raw.split(",") if s.strip()])
-        werking = json.dumps([s.strip() for s in werking_raw.split(",") if s.strip()])
-
-        # Kies primaire Nederlandse naam als eerste ingevulde nederlandse naam, anders leeg
-        primaire_nederlandse_naam = ""
-        for ng in naam_groepen:
-            if ng["nederlandse_naam"]:
-                primaire_nederlandse_naam = ng["nederlandse_naam"]
-                break
+        # Opslaan in database, bijv. stoffen, toepassing, werking als JSON strings
+        stoffen_json = json.dumps(stoffen, ensure_ascii=False)
+        toepassing_json = json.dumps(toepassing, ensure_ascii=False)
+        werking_json = json.dumps(werking, ensure_ascii=False)
 
         conn = mysql.connector.connect(**DB_CONFIG)
         cursor = conn.cursor()
 
         cursor.execute("""
-            INSERT INTO paddenstoelen (
-                nederlandse_naam,
-                andere_namen,
-                familie,
-                belangrijkste_werkzame_stoffen,
-                toepassing,
-                werking
-            ) VALUES (%s, %s, %s, %s, %s, %s)
-        """, (primaire_nederlandse_naam, namen_json, familie, stoffen, toepassing, werking))
+            INSERT INTO paddenstoelen
+            (latijnse_naam, nederlandse_naam, chinese_naam, japanse_naam, familie, belangrijkste_werkzame_stoffen, toepassing, werking)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        """, (latijnse_naam, nederlandse_naam, chinese_naam, japanse_naam, familie, stoffen_json, toepassing_json, werking_json))
 
         conn.commit()
         cursor.close()
         conn.close()
 
-        flash("✅ Paddenstoel toegevoegd.")
-        return redirect(url_for("paddenstoel_bp.index"))
+        flash('✅ Paddenstoel toegevoegd.')
+        return redirect(url_for('paddenstoel_bp.index'))
 
-    return render_template("paddenstoelen_toevoegen.html")
+    return render_template('paddenstoelen_toevoegen.html')
 
 
 
