@@ -63,12 +63,30 @@
         a:hover {
             background-color: #c8e6c9;
         }
+
+
+.verwijder-knop {
+    background-color: #e53935;      /* Rode achtergrond */
+    color: white;                   /* Witte tekst */
+    border: none;                   /* Geen rand */
+    padding: 10px 16px;             /* Binnenruimte */
+    border-radius: 8px;             /* Ronde hoeken */
+    font-size: 16px;                /* Lettergrootte */
+    cursor: pointer;                /* Handje als cursor */
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.verwijder-knop:hover {
+    background-color: #c62828;      /* Donkerdere rood bij hover */
+}
+
     </style>
 </head>
 
 <body>
 <form action="{{ url_for('supplement_bp.supplement_verwijderen', supplement_naam=supplement['naam']) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je dit supplement wilt verwijderen?');">
-    <button type="submit">🗑️ Verwijder</button>
+    <button type="submit" class="verwijder-knop">🗑️ Verwijder</button>
 </form>
 
 
