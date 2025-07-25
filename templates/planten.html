@@ -12,6 +12,35 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/planten.css') }}">
     <!-- Link naar het externe CSS-bestand voor styling -->
+    <style>
+.toevoegen-knop {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+    color: #2e7d32;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.toevoegen-knop:hover {
+    background: linear-gradient(135deg, #81c784, #aed581);
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.toevoegen-knop img {
+    width: 20px;
+    height: 20px;
+}
+</style>
+
 </head>
 
 <body>
