@@ -8,16 +8,15 @@ from routes.klant_routes import klant_bp  # Routes voor klantbeheer
 from routes.supplement_routes import supplement_bp  # Routes voor supplementenbeheer
 from routes.klant_download_routes import klant_download_bp  # Routes voor klantgegevens downloaden
 from routes.paddenstoelen_routes import paddenstoel_bp
-
+import os
 
 app = Flask(__name__)
-app.secret_key = "ietsgeheim"
 
+app.secret_key = os.getenv("app.secret_key")
 # Registreer de blueprint
-app.register_blueprint(paddenstoel_bp)
 
-app = Flask(__name__)  # Maak een nieuwe Flask-app aan
-app.secret_key = "geheim123"  # Geheime sleutel instellen voor sessies
+
+
 
 UPLOAD_FOLDER = "static/uploads"  # Map waarin geüploade bestanden worden opgeslagen
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}  # Toegestane bestandstypes voor upload
