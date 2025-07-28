@@ -1,0 +1,101 @@
+# Python & build
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.log
+*.db
+*.sqlite
+*.tar
+*.zip
+*.sock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Virtualenvs
+.venv/
+env/
+
+# Git
+.git/
+.gitignore
+
+# Docker zelf
+Dockerfile
+.dockerignore
+
+# OneDrive / Windows / certificaten
+Thumbs.db
+.DS_Store
+*.pem
+*.crt
+
+# Mappen die build kunnen breken
+mysqlData/
+db-init/
+
+
+# 📦 Negeer de virtuele omgeving
+.venv
+
+# 💻 Editor-bestanden
+.vscode
+.idea
+__pycache__
+
+# 🗃️ Overige grote bestanden/mappen
+*.pyc
+*.pyo
+*.pyd
+.env
+*.db
+*.log
+*.sqlite3
+.DS_Store
+Thumbs.db
+
+
+# Virtuele omgeving negeren
+.venv
+
+# Editorbestanden
+.vscode
+.idea
+__pycache__
+
+# Python build artifacts
+*.pyc
+*.pyo
+*.pyd
+
+# Config en logs
+.env
+*.db
+*.log
+
+# Overig
+.DS_Store
+Thumbs.db
+
+# Virtuele omgeving negeren
+.venv/
+
+# PyCharm- en Python-gerelateerde bestanden
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Config/logs/databases
+.env
+*.db
+*.log
+
+# Overige OS-bestanden
+.DS_Store
+Thumbs.db
+

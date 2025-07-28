@@ -3,18 +3,12 @@ import mysql.connector
 import json
 import os
 from dotenv import load_dotenv
-
+from DB_Config import db_config
 load_dotenv()
 
 paddenstoel_bp = Blueprint("paddenstoel_bp", __name__)
 
-# DB-configuratie
-DB_CONFIG = {
-    "host": os.getenv("DB_HOST"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": os.getenv("DB_NAME"),
-}
+
 
 # 🔒 Veilig JSON inladen zonder crash
 def safe_json_load(value, default):
@@ -26,7 +20,7 @@ def safe_json_load(value, default):
 # 📄 Route: overzicht van paddenstoelen
 @paddenstoel_bp.route("/paddenstoelen")
 def index():
-    conn = mysql.connector.connect(**DB_CONFIG)
+    conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT id, nederlandse_naam FROM paddenstoelen ORDER BY nederlandse_naam")
     paddenstoelen = cursor.fetchall()
@@ -35,7 +29,7 @@ def index():
 
 @paddenstoel_bp.route("/paddenstoelen/<int:paddenstoel_id>")
 def paddenstoel_detail(paddenstoel_id):
-    conn = mysql.connector.connect(**DB_CONFIG)
+    conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM paddenstoelen WHERE id = %s", (paddenstoel_id,))
     row = cursor.fetchone()
@@ -79,7 +73,7 @@ def paddenstoel_toevoegen():
         toepassing_json = json.dumps(toepassing, ensure_ascii=False)
         werking_json = json.dumps(werking, ensure_ascii=False)
 
-        conn = mysql.connector.connect(**DB_CONFIG)
+        conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -101,7 +95,7 @@ def paddenstoel_toevoegen():
 
 @paddenstoel_bp.route("/paddenstoelen/<int:paddenstoel_id>/verwijderen", methods=["POST"])
 def paddenstoel_verwijderen(paddenstoel_id):
-    conn = mysql.connector.connect(**DB_CONFIG)
+    conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor()
     try:
         cursor.execute("DELETE FROM paddenstoelen WHERE id = %s", (paddenstoel_id,))

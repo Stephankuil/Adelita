@@ -45,9 +45,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.jinja_env.auto_reload = True
 
 
-def open_browser():  # Definieer een functie om de browser te openen
-    webbrowser.open_new("http://127.0.0.1:5000/")  # Open de standaardbrowser op het juiste adres
 
-if __name__ == "__main__":  # Als dit script direct wordt uitgevoerd...
-    threading.Timer(1.25, open_browser).start()  # Wacht 1.25 seconden en open dan de browser
-    app.run(debug=True)  # Start de Flask-server op poort 5000
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8080, debug=True)

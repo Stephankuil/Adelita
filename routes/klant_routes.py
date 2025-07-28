@@ -9,26 +9,20 @@ from flask import (
 )
 from dotenv import load_dotenv
 import os
-
+from DB_Config import db_config
 # Laad omgevingsvariabelen
 load_dotenv()
 
 def get_db_connection():
-    return mysql.connector.connect(**DB_CONFIG)
+    return mysql.connector.connect(**db_config)
 
 # Definieer een Blueprint voor klantfunctionaliteit
 klant_bp = Blueprint("klant_bp", __name__)
 
-# Databaseconfiguratie uit .env
-DB_CONFIG = {
-    "host": os.getenv("DB_HOST"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": os.getenv("DB_NAME"),
-}
+
 
 def get_connection():
-    return mysql.connector.connect(**DB_CONFIG)
+    return mysql.connector.connect(**db_config)
 
 
 
@@ -289,7 +283,7 @@ def nieuwe_afspraak(klant_id):
 
 @klant_bp.route("/klant/<int:klant_id>/verwijderen", methods=["POST"])
 def klant_verwijderen(klant_id):
-    conn = mysql.connector.connect(**DB_CONFIG)
+    conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor()
 
     try:

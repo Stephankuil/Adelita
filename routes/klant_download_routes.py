@@ -4,17 +4,12 @@ import csv
 import io
 from dotenv import load_dotenv
 import os
-
+from DB_Config import db_config
 # 🔐 Laad .env-variabelen
 load_dotenv()
 
 # 📦 Haal MySQL-config op uit .env
-db_config = {
-    "host": os.getenv("DB_HOST"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": os.getenv("DB_NAME"),
-}
+
 
 # 📥 Blueprint aanmaken
 klant_download_bp = Blueprint("klant_download_bp", __name__)

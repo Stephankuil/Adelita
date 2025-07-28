@@ -2,16 +2,11 @@ from flask import render_template, Blueprint
 import mysql.connector
 from dotenv import load_dotenv
 import os
-
+from DB_Config import db_config
 load_dotenv()
 
 # Database-configuratie uit .env bestand halen
-db_config = {
-    "host": os.getenv("DB_HOST"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": os.getenv("DB_NAME"),
-}
+
 
 klacht_bp = Blueprint("klacht_bp", __name__)
 

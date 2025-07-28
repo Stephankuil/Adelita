@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+from DB_Config import db_config
 index_bp = Blueprint("index_bp", __name__)
 
 
@@ -19,13 +20,9 @@ ADMIN_WACHTWOORD = os.getenv("ADMIN_WACHTWOORD")
 
 
 # Database-configuratie uit .env
-db_config = {
-    "host": os.getenv("DB_HOST"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": os.getenv("DB_NAME"),
-}
 
+def get_db_connection():
+    return mysql.connector.connect(**db_config)
 
 
 @index_bp.route("/")
@@ -42,21 +39,31 @@ def login():
         gebruikersnaam = request.form["gebruikersnaam"]
         wachtwoord = request.form["wachtwoord"]
 
-        conn = mysql.connector.connect(**db_config)
-        cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM gebruikers WHERE gebruikersnaam = %s", (gebruikersnaam,))
-        gebruiker = cursor.fetchone()
-        conn.close()
-
-        if gebruiker and bcrypt.checkpw(wachtwoord.encode("utf-8"), gebruiker["wachtwoord_hash"].encode("utf-8")):
-            session["gebruiker"] = gebruiker["gebruikersnaam"]
-            session["rol"] = gebruiker["rol"]
+        # 🔐 Fallback: hardcoded admin-login via .env
+        if gebruikersnaam == ADMIN_GEBRUIKER and wachtwoord == ADMIN_WACHTWOORD:
+            session["gebruiker"] = ADMIN_GEBRUIKER
+            session["rol"] = "admin"
             return redirect(url_for("index_bp.index"))
-        else:
-            foutmelding = "❌ Onjuiste gebruikersnaam of wachtwoord."
+
+        # 🔎 Normale login via database
+        try:
+            conn = mysql.connector.connect(**db_config)
+            cursor = conn.cursor(dictionary=True)
+            cursor.execute("SELECT * FROM gebruikers WHERE gebruikersnaam = %s", (gebruikersnaam,))
+            gebruiker = cursor.fetchone()
+            conn.close()
+
+            if gebruiker and bcrypt.checkpw(wachtwoord.encode("utf-8"), gebruiker["wachtwoord_hash"].encode("utf-8")):
+                session["gebruiker"] = gebruiker["gebruikersnaam"]
+                session["rol"] = gebruiker["rol"]
+                return redirect(url_for("index_bp.index"))
+            else:
+                foutmelding = "❌ Onjuiste gebruikersnaam of wachtwoord."
+
+        except Exception as e:
+            foutmelding = f"❌ Fout bij verbinden met database: {e}"
 
     return render_template("login.html", foutmelding=foutmelding)
-
 @index_bp.route("/logout")
 def logout():
     session.pop("gebruiker", None)

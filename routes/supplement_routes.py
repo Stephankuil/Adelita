@@ -2,23 +2,17 @@ import mysql.connector
 from flask import render_template, Blueprint, current_app,flash, redirect, url_for, session, request
 from dotenv import load_dotenv
 import os
-
+from DB_Config import db_config
 # Laad .env variabelen
 load_dotenv()
 
 # Blueprint aanmaken voor supplementroutes
 supplement_bp = Blueprint("supplement_bp", __name__, url_prefix="/supplementen")
 
-# Databaseconfiguratie
-DB_CONFIG = {
-    "host": os.getenv("DB_HOST"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": os.getenv("DB_NAME"),
-}
+
 
 def get_db_connection():
-    return mysql.connector.connect(**DB_CONFIG)
+    return mysql.connector.connect(**db_config)
 
 
 # Route: overzicht van alle supplementen
@@ -105,7 +99,7 @@ def detail_supplement(id):
 def supplement_verwijderen(supplement_naam):
     print("Verwijderverzoek ontvangen voor:", supplement_naam)
 
-    conn = mysql.connector.connect(**DB_CONFIG)
+    conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(buffered=True)
 
 
@@ -168,7 +162,7 @@ def supplement_toevoegen():
         bouwstof = request.form.get("bouwstof")
         eigenschappen = request.form.get("eigenschappen")
 
-        conn = mysql.connector.connect(**DB_CONFIG)
+        conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
 
         try:

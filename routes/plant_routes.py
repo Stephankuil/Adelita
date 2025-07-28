@@ -3,7 +3,7 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 from werkzeug.utils import secure_filename
-
+from DB_Config import db_config, get_db_connection
 load_dotenv()
 
 # Blueprint aanmaken
@@ -12,13 +12,7 @@ plant_bp = Blueprint("plant_bp", __name__)
 # Toegestane bestandsextensies
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 
-# DB-configuratie vanuit .env
-db_config = {
-    "host": os.getenv("DB_HOST"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": os.getenv("DB_NAME"),
-}
+conn = get_db_connection()
 
 # ✅ Database connectie-functie
 def get_db_connection():
