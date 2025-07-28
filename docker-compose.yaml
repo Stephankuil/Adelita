@@ -1,48 +1,57 @@
-version: '3.9'
+version: '3.8'
 
 services:
-  web:
-    build:
-      context: .  # De map waarin je Dockerfile en Flask-code staan
+  nginxproxymanager:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    volumes:
+      - ./nginx-data:/data
+      - ./nginx-letsencrypt:/etc/letsencrypt
+    networks:
+      - adelita_net
+
+  web:
+    image: adelita_web:latest
     depends_on:
-      - mysql
-    restart: always
+      mysql:
+        condition: service_healthy
     env_file:
       - .env
     volumes:
       - ./static/uploads:/app/static/uploads
-      - ./certs:/certs  # Mount client-certificaten voor SSL in Flask
+      - ./certs:/certs
     command: gunicorn --bind 0.0.0.0:8080 main:app
     networks:
       - adelita_net
+    ports:
+      - "8080:8080"
 
   mysql:
     image: mysql:8.4
-    ports:
-      - "3307:3306"
-    restart: always
-    env_file:
-      - .env
     environment:
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     command: [
       "mysqld",
       "--character-set-server=utf8mb4",
       "--collation-server=utf8mb4_unicode_ci",
-      "--bind-address=0.0.0.0",
-      "--require_secure_transport=ON",
-      "--ssl-ca=/certs/ca.pem",
-      "--ssl-cert=/certs/server-cert.pem",
-      "--ssl-key=/certs/server-key.pem",
+      "--bind-address=0.0.0.0"
     ]
     volumes:
       - ./mysqlData:/var/lib/mysql
       - ./db-init:/docker-entrypoint-initdb.d
-      - ./certs:/certs  # Mount server-certificaten
     networks:
       - adelita_net
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   adelita_net:

@@ -12,7 +12,7 @@ import os
 
 app = Flask(__name__)
 
-app.secret_key = os.getenv("app.secret_key")
+app.secret_key = os.getenv("app.secret_key", "fallback_geheime_sleutel")
 # Registreer de blueprint
 
 
@@ -47,5 +47,3 @@ app.jinja_env.auto_reload = True
 
 
 
-if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)

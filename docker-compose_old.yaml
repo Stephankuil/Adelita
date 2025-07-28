@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .  # De map waarin je Dockerfile en Flask-code staan
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./static/uploads:/app/static/uploads
+      - ./certs:/certs  # Mount client-certificaten voor SSL in Flask
+    command: gunicorn --bind 0.0.0.0:8080 main:app
+    networks:
+      - adelita_net
+
+  mysql:
+    image: mysql:8.4
+    ports:
+      - "3307:3306"
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    command: [
+      "mysqld",
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_unicode_ci",
+      "--bind-address=0.0.0.0",
+      "--require_secure_transport=ON",
+      "--ssl-ca=/certs/ca.pem",
+      "--ssl-cert=/certs/server-cert.pem",
+      "--ssl-key=/certs/server-key.pem",
+    ]
+    volumes:
+      - ./mysqlData:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d
+      - ./certs:/certs  # Mount server-certificaten
+    networks:
+      - adelita_net
+
+networks:
+  adelita_net:
+    driver: bridge
