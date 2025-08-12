@@ -10,7 +10,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}     # -> Stephankuil/Adelita
+  IMAGE_NAME: stephankuil/adelita
   DOCKER_TAG: latest
 
 jobs:
