@@ -1,0 +1,57 @@
+name: Build & Deploy to VPS
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}     # -> Stephankuil/Adelita
+  DOCKER_TAG: latest
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build image
+        run: |
+          docker build -t $REGISTRY/${IMAGE_NAME}:$DOCKER_TAG \
+                       -t $REGISTRY/${IMAGE_NAME}:${{ github.sha }} .
+
+      - name: Push image
+        run: |
+          docker push $REGISTRY/${IMAGE_NAME}:$DOCKER_TAG
+          docker push $REGISTRY/${IMAGE_NAME}:${{ github.sha }}
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH to VPS and deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_SSH_PORT || 22 }}
+          script: |
+            set -e
+            cd /opt/adelita
+            # (optioneel) als je token korte TTL heeft:
+            # echo "${{ secrets.GHCR_READ_TOKEN }}" | docker login ghcr.io -u stephankuil --password-stdin
+            docker compose pull web
+            docker compose up -d web
+            docker image prune -f

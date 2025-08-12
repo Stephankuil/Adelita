@@ -11,11 +11,11 @@ services:
     volumes:
       - ./nginx-data:/data
       - ./nginx-letsencrypt:/etc/letsencrypt
-    networks:
-      - adelita_net
+    networks: [adelita_net]
 
   web:
-    image: adelita_web:latest
+    image: ghcr.io/stephankuil/adelita:${APP_TAG:-latest}   # ← was: adelita_web:latest
+    restart: unless-stopped
     depends_on:
       mysql:
         condition: service_healthy
@@ -25,13 +25,13 @@ services:
       - ./static/uploads:/app/static/uploads
       - ./certs:/certs
     command: gunicorn --bind 0.0.0.0:8080 main:app
-    networks:
-      - adelita_net
+    networks: [adelita_net]
     ports:
-      - "8080:8080"
+      - "8080:8080"   # mag weg als je alléén via NPM routeert
 
   mysql:
     image: mysql:8.4
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     command: [
@@ -43,12 +43,12 @@ services:
     volumes:
       - ./mysqlData:/var/lib/mysql
       - ./db-init:/docker-entrypoint-initdb.d
-    networks:
-      - adelita_net
-    ports:
-      - "3306:3306"
+    networks: [adelita_net]
+    # TIP: houd 3306 liever dicht tenzij je het extern nodig hebt
+    # ports:
+    #   - "3306:3306"
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
       interval: 10s
       timeout: 5s
       retries: 5
