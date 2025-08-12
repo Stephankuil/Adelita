@@ -27,7 +27,7 @@ services:
     command: gunicorn --bind 0.0.0.0:8080 main:app
     networks: [adelita_net]
     ports:
-      - "5080:8080"   # mag weg als je alléén via NPM routeert
+      - "8080:8080"   # mag weg als je alléén via NPM routeert
 
   mysql:
     image: mysql:8.4
