@@ -49,8 +49,9 @@ jobs:
           port: ${{ secrets.VPS_SSH_PORT || 22 }}
           script: |
             set -e
-            cd /opt/adelita
-            # (optioneel) als je token korte TTL heeft:
+            APP_DIR=/home/stephan/code
+            cd "$APP_DIR"
+            # (optioneel) login op GHCR als je dat per deploy wilt doen:
             # echo "${{ secrets.GHCR_READ_TOKEN }}" | docker login ghcr.io -u stephankuil --password-stdin
             docker compose pull web
             docker compose up -d web
