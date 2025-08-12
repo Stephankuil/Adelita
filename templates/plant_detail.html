@@ -28,6 +28,7 @@
     {% endif %}
 
     <form method="post" enctype="multipart/form-data">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <!-- Formulier voor het opslaan van plantgegevens (inclusief upload) -->
 
         <label>Beschrijving</label>

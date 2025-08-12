@@ -22,6 +22,7 @@
     <!-- 📝 Verborgen formulier -->
     <div id="klacht-formulier-container">
       <form method="post" action="{{ url_for('klacht_bp.klacht_toevoegen') }}" class="klacht-formulier">
+           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <h2>➕ Klacht toevoegen</h2>
 
           <label for="naam">Naam van de klacht:</label>

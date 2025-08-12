@@ -53,6 +53,7 @@
 
     <div id="plant-formulier-container">
   <form method="post" action="{{ url_for('plant_bp.plant_toevoegen') }}" class="plant-formulier">
+       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <h2>🌿 Nieuwe Plant toevoegen</h2>
 
     <label for="naam">Naam:</label>

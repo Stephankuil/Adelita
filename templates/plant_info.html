@@ -33,9 +33,11 @@
     <a href="{{ url_for('plant_bp.plant_detail', plant_naam=plant['naam']) }}" class="bewerken-link">✏️ Bewerken</a>
 
     <form method="post"
+
           action="{{ url_for('plant_bp.plant_verwijderen', plant_naam=plant['naam']) }}"
           onsubmit="return confirm('Weet je zeker dat je deze plant wilt verwijderen?')"
           class="verwijder-form">
+         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit" class="verwijder-knop">🗑️ Verwijder plant</button>
     </form>
 </div>

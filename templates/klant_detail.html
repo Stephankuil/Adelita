@@ -26,6 +26,7 @@
     </ul>
 
     <form method="post" action="{{ url_for('klant_bp.notitie_toevoegen', klant_id=klant['id']) }}">
+         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label>Nieuwe notitie:</label>
         <textarea name="inhoud" required></textarea>
         <button type="submit">Notitie toevoegen</button>
@@ -46,6 +47,7 @@
     </ul>
 
     <form method="post" action="{{ url_for('klant_bp.nieuwe_afspraak', klant_id=klant['id']) }}">
+         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label>Datum:</label>
         <input type="date" name="datum" required>
 
@@ -71,6 +73,7 @@
     </ul>
 
     <form method="post" action="{{ url_for('klant_bp.nieuwe_behandeling', klant_id=klant['id']) }}">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label>Behandelingsnaam:</label>
         <input type="text" name="naam" required>
 

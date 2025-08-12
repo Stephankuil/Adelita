@@ -50,6 +50,7 @@
         <h2>➕ Nieuwe klant toevoegen</h2>
 
         <form action="{{ url_for('klant_bp.nieuwe_klant') }}" method="post">
+             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <!-- Formulier dat een POST-verzoek stuurt naar de route 'nieuwe_klant' -->
 
             <label>Naam:</label>

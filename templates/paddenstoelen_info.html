@@ -13,6 +13,7 @@
       action="{{ url_for('paddenstoel_bp.paddenstoel_verwijderen', paddenstoel_id=pad.id) }}"
       onsubmit="return confirm('❗ Weet je zeker dat je deze paddenstoel wilt verwijderen?');"
       class="verwijder-form">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="verwijder-knop">🗑️ Verwijder</button>
 </form>
 

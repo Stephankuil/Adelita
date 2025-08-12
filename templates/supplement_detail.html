@@ -86,6 +86,7 @@
 
 <body>
 <form action="{{ url_for('supplement_bp.supplement_verwijderen', supplement_naam=supplement['naam']) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je dit supplement wilt verwijderen?');">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="verwijder-knop">🗑️ Verwijder</button>
 </form>
 

@@ -76,6 +76,7 @@
     <h1>➕ Paddenstoel toevoegen</h1>
 
 <form method="post">
+     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
   <label>Latijnse naam:
     <input type="text" name="latijnse_naam" required>

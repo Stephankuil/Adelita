@@ -14,10 +14,16 @@
 
 
 <!-- 🗑️ VERWIJDER-KLACHT KNOP BUITEN KAART -->
-<form class="verwijder-klacht-buiten" method="POST" action="{{ url_for('klacht_bp.klacht_verwijderen', klacht_id=klacht_id) }}"
+<form class="verwijder-klacht-buiten"
+      method="POST"
+      action="{{ url_for('klacht_bp.klacht_verwijderen', klacht_id=klacht_id) }}"
       onsubmit="return confirm('Weet je zeker dat je de klacht \'{{ klacht }}\' wilt verwijderen?');">
+
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
     <button type="submit">🗑️ Verwijder klacht</button>
 </form>
+
 
 
 
@@ -46,6 +52,7 @@
     <div class="toevoegen-form">
         <h2>➕ Plant koppelen</h2>
         <form action="{{ url_for('plant_bp.koppel_plant') }}" method="post">
+         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
             <select name="plant_id">
                 {% for id, naam in alle_planten %}
