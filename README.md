@@ -23,4 +23,6 @@ source venv/bin/activate
 Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
+hallo
+
 4.) run main.py en klik op de link in de console
