@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv("app.secret_key", "fallback_geheime_sleutel")
 # Registreer de blueprint
 
-
+#hallo
 
 
 UPLOAD_FOLDER = "static/uploads"  # Map waarin geüploade bestanden worden opgeslagen
