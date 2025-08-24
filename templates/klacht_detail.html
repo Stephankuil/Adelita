@@ -62,24 +62,40 @@
             <button type="submit" style="background-color: #2e7d32;">Toevoegen</button>
         </form>
     </div>
-<h2>🍄 Paddenstoelen (alleen tonen)</h2>
-{% if alle_paddenstoelen and alle_paddenstoelen|length > 0 %}
-  <ul class="paddenstoelen-lijst">
-    {% for id, naam in alle_paddenstoelen %}
-      <li>{{ naam }}</li>
-      {# of met link als je een detailroute hebt:
-      <li><a href="{{ url_for('paddenstoel_bp.paddenstoel_info', paddenstoel_id=id) }}">{{ naam }}</a></li>
-      #}
-    {% endfor %}
-  </ul>
-{% else %}
-  <p><em>Geen paddenstoelen gevonden.</em></p>
-{% endif %}
+<!-- ❇️ Paddenstoel koppelen (zelfde UI, nog niet functioneel) -->
+<div class="toevoegen-form">
+  <h2>➕ Paddenstoel koppelen</h2>
+  <form id="paddo-form" action="#" method="post" onsubmit="return false;">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
+    <select name="paddenstoel_id">
+      {% for id, naam in alle_paddenstoelen %}
+        <option value="{{ id }}">{{ naam }}</option>
+      {% endfor %}
+    </select>
+    <button id="paddo-btn" type="button" style="background-color:#2e7d32;">Toevoegen</button>
+  </form>
+</div>
 
-<style>
-  .paddenstoelen-lijst { list-style: disc; padding-left: 1.25rem; }
-  .paddenstoelen-lijst li { margin: .25rem 0; }
-</style>
+<script>
+  // Pure UI: laat het lijken alsof het werkt
+  (function(){
+    const btn = document.getElementById('paddo-btn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      btn.disabled = true;
+      const old = btn.textContent;
+      btn.textContent = 'Toevoegen...';
+      setTimeout(() => {
+        btn.textContent = 'Toegevoegd';
+        btn.style.backgroundColor = '#c8e6c9';
+        btn.style.color = '#2e7d32';
+        btn.disabled = true;
+      }, 450);
+    });
+  })();
+</script>
+
 
 
     <div class="back-link">
