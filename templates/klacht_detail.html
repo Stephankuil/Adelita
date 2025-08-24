@@ -29,6 +29,8 @@
 
 
 <div class="container">
+    <button class="bewerken-knop" type="submit">bewerken</button>
+        onclick="window.location.href='{{ url_for('klacht_bp.bewerken_klacht', klacht_id=klacht_id) }}'">
     <h1>🌿 Klacht: {{ klacht }}</h1>
 
     <h2>🔗 Gekoppelde planten</h2>
