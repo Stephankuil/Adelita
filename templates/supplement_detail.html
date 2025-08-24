@@ -80,7 +80,17 @@
 .verwijder-knop:hover {
     background-color: #c62828;      /* Donkerdere rood bij hover */
 }
-
+.bewerken-knop {
+    background-color: #FFDD32;      /* Rode achtergrond */
+    color: white;                   /* Witte tekst */
+    border: none;                   /* Geen rand */
+    padding: 10px 16px;             /* Binnenruimte */
+    border-radius: 8px;             /* Ronde hoeken */
+    font-size: 16px;                /* Lettergrootte */
+    cursor: pointer;                /* Handje als cursor */
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
     </style>
 </head>
 
@@ -89,6 +99,7 @@
      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="verwijder-knop">🗑️ Verwijder</button>
 </form>
+<button type="submit" class="bewerken-knop">Bewerken</button>
 
 
     <h1>{{ supplement['naam'] }}</h1> <!-- Titel van de pagina, met de naam van het supplement -->
