@@ -100,7 +100,7 @@ ul.paddenstoelen-lijst li a:hover {
 .verwijder-knop:hover {
     background-color: #b71c1c;
 }
-.verwijder-knop {
+.bewerk-knop {
        background-color: #FFE135;
     color: white;
     padding: 8px 14px;
