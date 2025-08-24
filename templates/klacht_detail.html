@@ -1,43 +1,44 @@
 <!DOCTYPE html>
+
+
+
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <title>Klacht: {{ klacht }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/klacht_detail.css') }}">
+
+
 </head>
 <body>
 
-<!-- 🗑️ Verwijder klacht -->
+
+<!-- 🗑️ VERWIJDER-KLACHT KNOP BUITEN KAART -->
 <form class="verwijder-klacht-buiten"
       method="POST"
       action="{{ url_for('klacht_bp.klacht_verwijderen', klacht_id=klacht_id) }}"
-      onsubmit="return confirm('Weet je zeker dat je de klacht {{ klacht|tojson }} wilt verwijderen?');">
+      onsubmit="return confirm('Weet je zeker dat je de klacht \'{{ klacht }}\' wilt verwijderen?');">
+
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
     <button type="submit">🗑️ Verwijder klacht</button>
 </form>
 
+
+
+
+
 <div class="container">
-    <div class="header-row">
-        <h1>🌿 Klacht: {{ klacht }}</h1>
-        <a class="bewerken-knop" href="{{ url_for('klacht_bp.bewerken_klacht', klacht_id=klacht_id) }}">Bewerken</a>
-    </div>
 
-    {% if beschrijving %}
-      <p class="klacht-beschrijving">{{ beschrijving }}</p>
-    {% endif %}
+    <h1>🌿 Klacht: {{ klacht }}</h1>
 
-    <!-- Gekoppelde planten -->
     <h2>🔗 Gekoppelde planten</h2>
     {% if gekoppelde_planten %}
         <ul>
             {% for plant in gekoppelde_planten %}
                 <li>
                     <a href="{{ url_for('plant_bp.plant_info', plant_naam=plant) }}">{{ plant }}</a>
-                    <form class="inline"
-                          action="{{ url_for('plant_bp.verwijder_plant') }}"
-                          method="post"
-                          onsubmit="return confirm('Weet je zeker dat je {{ plant|escapejs }} wilt verwijderen uit deze klacht?');">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <form class="inline" action="{{ url_for('plant_bp.verwijder_plant') }}" method="post" onsubmit="return confirmVerwijderen('{{ plant }}');">
                         <input type="hidden" name="plant_naam" value="{{ plant }}">
                         <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
                         <button type="submit">Verwijder</button>
@@ -49,48 +50,42 @@
         <p><em>Geen planten gekoppeld aan deze klacht.</em></p>
     {% endif %}
 
-    <!-- Plant koppelen -->
     <div class="toevoegen-form">
         <h2>➕ Plant koppelen</h2>
         <form action="{{ url_for('plant_bp.koppel_plant') }}" method="post">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
             <select name="plant_id">
-                {% for id, naam in (alle_planten or []) %}
+                {% for id, naam in alle_planten %}
                     <option value="{{ id }}">{{ naam }}</option>
                 {% endfor %}
             </select>
-            <button type="submit" style="background-color:#2e7d32;">Toevoegen</button>
+            <button type="submit" style="background-color: #2e7d32;">Toevoegen</button>
         </form>
     </div>
-
-    <!-- Paddenstoel koppelen (UI only; geen server call) -->
-    <div class="toevoegen-form">
-        <h2>➕ Paddenstoel koppelen</h2>
-        <form id="paddo-form" action="#" method="post" onsubmit="return false;">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
-            <select name="paddenstoel_id">
-                {% for id, naam in (alle_paddenstoelen or []) %}
-                    <option value="{{ id }}">{{ naam }}</option>
-                {% endfor %}
-            </select>
-            <button id="paddo-btn" type="button" style="background-color:#2e7d32;">Toevoegen</button>
-        </form>
-    </div>
-
-    <div class="back-link">
-        <a href="{{ url_for('klacht_bp.klachten') }}">← Terug naar klachtenlijst</a>
-    </div>
+<!-- ❇️ Paddenstoel koppelen (zelfde UI, nog niet functioneel) -->
+<div class="toevoegen-form">
+  <h2>➕ Paddenstoel koppelen</h2>
+  <form id="paddo-form" action="#" method="post" onsubmit="return false;">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="klacht_id" value="{{ klacht_id }}">
+    <select name="paddenstoel_id">
+      {% for id, naam in alle_paddenstoelen %}
+        <option value="{{ id }}">{{ naam }}</option>
+      {% endfor %}
+    </select>
+    <button id="paddo-btn" type="button" style="background-color:#2e7d32;">Toevoegen</button>
+  </form>
 </div>
 
 <script>
-  // Paddenstoel "lijkt te werken" zonder server
+  // Pure UI: laat het lijken alsof het werkt
   (function(){
     const btn = document.getElementById('paddo-btn');
     if (!btn) return;
     btn.addEventListener('click', () => {
       btn.disabled = true;
+      const old = btn.textContent;
       btn.textContent = 'Toevoegen...';
       setTimeout(() => {
         btn.textContent = 'Toegevoegd';
@@ -100,6 +95,19 @@
       }, 450);
     });
   })();
+</script>
+
+
+
+    <div class="back-link">
+        <a href="{{ url_for('klacht_bp.klachten') }}">← Terug naar klachtenlijst</a>
+    </div>
+</div>
+
+<script>
+    function confirmVerwijderen(plantNaam) {
+        return confirm("Weet je zeker dat je de plant '" + plantNaam + "' wilt verwijderen uit deze klacht?");
+    }
 </script>
 
 </body>
