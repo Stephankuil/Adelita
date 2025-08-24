@@ -62,6 +62,25 @@
             <button type="submit" style="background-color: #2e7d32;">Toevoegen</button>
         </form>
     </div>
+<h2>🍄 Paddenstoelen (alleen tonen)</h2>
+{% if alle_paddenstoelen and alle_paddenstoelen|length > 0 %}
+  <ul class="paddenstoelen-lijst">
+    {% for id, naam in alle_paddenstoelen %}
+      <li>{{ naam }}</li>
+      {# of met link als je een detailroute hebt:
+      <li><a href="{{ url_for('paddenstoel_bp.paddenstoel_info', paddenstoel_id=id) }}">{{ naam }}</a></li>
+      #}
+    {% endfor %}
+  </ul>
+{% else %}
+  <p><em>Geen paddenstoelen gevonden.</em></p>
+{% endif %}
+
+<style>
+  .paddenstoelen-lijst { list-style: disc; padding-left: 1.25rem; }
+  .paddenstoelen-lijst li { margin: .25rem 0; }
+</style>
+
 
     <div class="back-link">
         <a href="{{ url_for('klacht_bp.klachten') }}">← Terug naar klachtenlijst</a>

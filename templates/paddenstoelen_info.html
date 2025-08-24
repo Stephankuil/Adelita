@@ -16,7 +16,7 @@
      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="verwijder-knop">🗑️ Verwijder</button>
 </form>
-<button type="submit" class="bewerk-knop"> bewerken</button>
+
 
 <h1>{{ pad.nederlandse_naam }}</h1>
 
@@ -52,7 +52,7 @@
     {% endfor %}
     </ul>
 {% endif %}
-
+<button type="submit" class="bewerk-knop"> bewerken</button>
 <a href="{{ url_for('paddenstoel_bp.index') }}" class="terug">← Terug naar overzicht</a>
 
 </div>

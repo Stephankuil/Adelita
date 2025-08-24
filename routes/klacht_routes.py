@@ -38,7 +38,6 @@ def klacht_detail(klacht_naam):
 
     cursor.execute("SELECT id, beschrijving FROM klachten WHERE naam = %s", (klacht_naam,))
     klacht_row = cursor.fetchone()
-
     if not klacht_row:
         cursor.close()
         conn.close()
@@ -46,6 +45,7 @@ def klacht_detail(klacht_naam):
 
     klacht_id, beschrijving = klacht_row
 
+    # Gekoppelde planten
     cursor.execute("""
         SELECT planten.naam FROM planten
         JOIN plant_klacht ON planten.id = plant_klacht.plant_id
@@ -53,8 +53,13 @@ def klacht_detail(klacht_naam):
     """, (klacht_id,))
     gekoppelde_planten = [r[0] for r in cursor.fetchall()]
 
+    # Alle planten (voor je bestaande select)
     cursor.execute("SELECT id, naam FROM planten ORDER BY naam ASC")
     alle_planten = cursor.fetchall()
+
+    # 👇 Nieuw: alle paddenstoelen ophalen (alleen tonen)
+    cursor.execute("SELECT id, nederlandse_naam FROM paddenstoelen ORDER BY nederlandse_naam ASC")
+    alle_paddenstoelen = cursor.fetchall()   # lijst van tuples (id, naam)
 
     cursor.close()
     conn.close()
@@ -65,9 +70,10 @@ def klacht_detail(klacht_naam):
         beschrijving=beschrijving,
         gekoppelde_planten=gekoppelde_planten,
         alle_planten=alle_planten,
+        alle_paddenstoelen=alle_paddenstoelen,  # 👈 meegeven aan template
         klacht_id=klacht_id,
     )
-from flask import request, redirect, url_for, flash
+
 
 @klacht_bp.route("/klacht/toevoegen", methods=["POST"])
 def klacht_toevoegen():
