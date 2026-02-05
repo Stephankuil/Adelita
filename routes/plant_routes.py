@@ -12,7 +12,7 @@ plant_bp = Blueprint("plant_bp", __name__)
 # Toegestane bestandsextensies
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 
-conn = get_db_connection()
+
 
 # ✅ Database connectie-functie
 def get_db_connection():
